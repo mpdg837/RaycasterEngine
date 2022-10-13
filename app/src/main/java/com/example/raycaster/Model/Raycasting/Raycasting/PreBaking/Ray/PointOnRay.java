@@ -2,6 +2,7 @@ package com.example.raycaster.Model.Raycasting.Raycasting.PreBaking.Ray;
 
 import com.example.raycaster.Model.Raycasting.Raycasting.Analyse.Entities.Ray;
 import com.example.raycaster.Model.Raycasting.Raycasting.Analyse.Entities.Sight;
+import com.example.raycaster.Model.Raycasting.Raycasting.PreBaking.Ray.PreColumns.PreColumn;
 import com.example.raycaster.Model.Raycasting.RenderProcedure;
 
 public final class PointOnRay {
@@ -59,6 +60,8 @@ public final class PointOnRay {
 
         intdeltaPosX = (int) PointOnRay.deltaPosX & RenderProcedure.deltaPosMask;
         intdeltaPosY = (int) PointOnRay.deltaPosY & RenderProcedure.deltaPosMask;
+
+        PreColumn.lheightpos = PreColumn.height;
     }
 
     public static void reductionAmountOfRaycastStep(){

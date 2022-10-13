@@ -2,7 +2,7 @@ package com.example.raycaster.View.Raycasting.Sprites;
 
 import com.example.raycaster.Model.Raycasting.Raycasting.Analyse.Entities.InPoint;
 import com.example.raycaster.Model.Raycasting.Raycasting.Analyse.Entities.Ray;
-import com.example.raycaster.Model.Raycasting.Raycasting.PreBaking.Ray.PreColumn;
+import com.example.raycaster.Model.Raycasting.Raycasting.PreBaking.Ray.PreColumns.PreColumn;
 import com.example.raycaster.Model.Raycasting.Raycasting.RenderInfoBuffer;
 import com.example.raycaster.Model.Raycasting.RenderProcedure;
 import com.example.raycaster.Model.Raycasting.Raycasting.Textures.TextureContainer;
@@ -33,11 +33,11 @@ public final class SpriteRotateColumn extends SpriteRenderer{
         posTexY = 0;
 
         ltexX = RenderInfoBuffer.mapsprite[InPoint.countPos];
-        texX = (byte) (((32 - tex) & 0x1f) << 1);
+        texX = (byte) (((64 - tex) & 0x3f));
 
         dtexX = ((double) texX - (double) ltexX) / (double) RenderProcedure.SCREEN_STEP;
 
-        if (ltexX > texX && !RenderInfoBuffer.mapspritechange[InPoint.countPos]) {
+        if (tex<=2 && !RenderInfoBuffer.mapspritechange[InPoint.countPos]) {
             RenderInfoBuffer.mapspritechange[InPoint.countPos] = true;
         }
     }

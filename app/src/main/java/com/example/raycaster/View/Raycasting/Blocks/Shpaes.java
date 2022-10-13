@@ -1,11 +1,11 @@
-package com.example.raycaster.Model.Raycasting.Raycasting.Analyse;
+package com.example.raycaster.View.Raycasting.Blocks;
 
 import com.example.raycaster.Model.Resources.Map.Map;
 import com.example.raycaster.Model.Raycasting.Raycasting.Analyse.Entities.Ray;
 import com.example.raycaster.Model.Raycasting.Raycasting.Analyse.Entities.Sight;
 import com.example.raycaster.Model.Raycasting.Raycasting.PreBaking.Ray.AngleRay;
 import com.example.raycaster.Model.Raycasting.Raycasting.PreBaking.Ray.PointOnRay;
-import com.example.raycaster.Model.Raycasting.Raycasting.PreBaking.Ray.PreColumn;
+import com.example.raycaster.Model.Raycasting.Raycasting.PreBaking.Ray.PreColumns.PreColumn;
 import com.example.raycaster.Model.Raycasting.RenderProcedure;
 import com.example.raycaster.View.Raycasting.BasicElements.Column;
 import com.example.raycaster.View.Raycasting.BasicElements.Floor;

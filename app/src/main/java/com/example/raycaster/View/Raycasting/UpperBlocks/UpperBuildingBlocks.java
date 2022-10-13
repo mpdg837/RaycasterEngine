@@ -5,7 +5,8 @@ import com.example.raycaster.Model.Raycasting.Raycasting.Analyse.Entities.Ray;
 import com.example.raycaster.Model.Raycasting.Raycasting.Analyse.Entities.Sight;
 import com.example.raycaster.Model.Raycasting.Raycasting.Analyse.WallHit;
 import com.example.raycaster.Model.Raycasting.Raycasting.PreBaking.Ray.PointOnRay;
-import com.example.raycaster.Model.Raycasting.Raycasting.PreBaking.Ray.PreColumn;
+import com.example.raycaster.Model.Raycasting.Raycasting.PreBaking.Ray.PreColumns.PreColumn;
+import com.example.raycaster.Model.Raycasting.Raycasting.PreBaking.Ray.PreColumns.UpperPreColumn;
 import com.example.raycaster.Model.Raycasting.Raycasting.RenderInfoBuffer;
 import com.example.raycaster.Model.Raycasting.RenderProcedure;
 import com.example.raycaster.View.Raycasting.BasicElements.Column;
@@ -49,7 +50,7 @@ public final class UpperBuildingBlocks extends Upper {
                     Sight.lshadowu = shadow;
                 }
 
-                PreColumn.bufferUpperBuildingColumn(height);
+                UpperPreColumn.bufferUpperBuildingColumn(height);
             }
         }
     }

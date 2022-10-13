@@ -1,7 +1,7 @@
 package com.example.raycaster.View.Raycasting.BasicElements;
 
 import com.example.raycaster.Model.Raycasting.Raycasting.PreBaking.Math.Functions;
-import com.example.raycaster.Model.Raycasting.Raycasting.PreBaking.Ray.PreColumn;
+import com.example.raycaster.Model.Raycasting.Raycasting.PreBaking.Ray.PreColumns.PreColumn;
 import com.example.raycaster.View.Render;
 import com.example.raycaster.Model.Resources.Textures.Texture;
 import com.example.raycaster.Model.Raycasting.RenderProcedure;
@@ -123,15 +123,15 @@ public final class Column {
         trnsx = 0;
     }
 
-    private static void makeSmoothBorders(boolean upperb,boolean upper,boolean half,int x,boolean renderHalf){
+    private static void makeSmoothBorders(boolean upperb,boolean upper,boolean half,int x,boolean renderHalf,boolean upperhalf){
         if(upperb){
             posStart = (int)(((int)((double)ys-3*dh) * (double)RenderProcedure.SCREEN_WIDTH + (double)x)) << Render.shiftPixelWidth;
             posFinal = (int)(((int)((double)yf-2*dh) * (double)RenderProcedure.SCREEN_WIDTH + (double)x)) << Render.shiftPixelWidth;
         }else
         if(upper){
 
-            posStart = (int)(((int)((double)ys-2*dh) * (double)RenderProcedure.SCREEN_WIDTH + (double)x)) << Render.shiftPixelWidth;
-
+            if(upperhalf)posStart = (int)(((int)((double)ys-1.5*dh) * (double)RenderProcedure.SCREEN_WIDTH + (double)x)) << Render.shiftPixelWidth;
+            else posStart = (int)(((int)((double)ys-2*dh) * (double)RenderProcedure.SCREEN_WIDTH + (double)x)) << Render.shiftPixelWidth;
             posFinal = (int)(((int)((double)yf-dh) * (double)RenderProcedure.SCREEN_WIDTH + (double)x)) << Render.shiftPixelWidth;
 
         }else{
@@ -163,7 +163,7 @@ public final class Column {
         if(yf>0)
             for(int n=0;n<len ;n++) {
 
-                makeSmoothBorders(upperb,upper,half,x,dhalf);
+                makeSmoothBorders(upperb,upper,half,x,dhalf,halfup);
                 drawSmallColumn(llminh,llmaxh,upperb,shadow,tex);
 
             }

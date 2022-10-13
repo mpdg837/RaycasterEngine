@@ -1,13 +1,12 @@
 package com.example.raycaster.View.Raycasting.Blocks;
 
-import com.example.raycaster.Model.Raycasting.Raycasting.Analyse.Shpaes;
 import com.example.raycaster.Model.Raycasting.Raycasting.Analyse.WallHit;
 import com.example.raycaster.Model.Resources.Map.Map;
 import com.example.raycaster.Model.Raycasting.Raycasting.Analyse.Entities.Ray;
 import com.example.raycaster.Model.Raycasting.Raycasting.Analyse.Entities.Sight;
 import com.example.raycaster.Model.Raycasting.Raycasting.PreBaking.Ray.AngleRay;
 import com.example.raycaster.Model.Raycasting.Raycasting.PreBaking.Ray.PointOnRay;
-import com.example.raycaster.Model.Raycasting.Raycasting.PreBaking.Ray.PreColumn;
+import com.example.raycaster.Model.Raycasting.Raycasting.PreBaking.Ray.PreColumns.PreColumn;
 import com.example.raycaster.Model.Raycasting.RenderProcedure;
 import com.example.raycaster.View.Raycasting.BasicElements.Column;
 
@@ -96,18 +95,23 @@ public final class Blocks {
                             Sight.wallinitized = true;
 
                         }
-                        PreColumn.llmaxh = RenderProcedure.cameraY - (int) height;
-                        Sight.lheight = height;
 
-                        Sight.llposX = (int) PointOnRay.posX;
-                        Sight.llposY = (int) PointOnRay.posY;
                     }
                 }
 
 
+                bufferInfo(height);
                 Ray.oneheight = true;
                 Ray.sprite = false;
             }
         }
+    }
+
+    public static void bufferInfo(double height){
+        PreColumn.llmaxh = RenderProcedure.cameraY - (int) height;
+        Sight.lheight = height;
+
+        Sight.llposX = (int) PointOnRay.posX;
+        Sight.llposY = (int) PointOnRay.posY;
     }
 }

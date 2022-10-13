@@ -3,10 +3,12 @@ package com.example.raycaster.View.Raycasting.Sprites;
 import com.example.raycaster.Model.Raycasting.Raycasting.Analyse.Entities.InPoint;
 import com.example.raycaster.Model.Raycasting.Raycasting.Analyse.Entities.Ray;
 import com.example.raycaster.Model.Raycasting.Raycasting.Analyse.Entities.Sight;
-import com.example.raycaster.Model.Raycasting.Raycasting.PreBaking.Ray.PreColumn;
+import com.example.raycaster.Model.Raycasting.Raycasting.PreBaking.Ray.PointOnRay;
+import com.example.raycaster.Model.Raycasting.Raycasting.PreBaking.Ray.PreColumns.PreColumn;
 import com.example.raycaster.Model.Raycasting.Raycasting.RenderInfoBuffer;
 import com.example.raycaster.Model.Raycasting.RenderProcedure;
 import com.example.raycaster.Model.Raycasting.Raycasting.Textures.TextureContainer;
+import com.example.raycaster.View.Raycasting.BasicElements.Floor;
 
 public final class SpriteColumn extends SpriteRenderer{
 
@@ -21,6 +23,12 @@ public final class SpriteColumn extends SpriteRenderer{
     private static byte texX;
 
     private static  double dtexX;
+
+    public static void renderFloor(double r){
+        Floor.renderFloor((int) PointOnRay.posX, (int) PointOnRay.posY, Ray.renderFloor, Sight.posScreenX, PointOnRay.deltaPosY, PointOnRay.deltaPosX, r,
+                Ray.half, Ray.oneheight,Ray.halfupx == 1 || Ray.halfupx == 2, PreColumn.maxhh, PreColumn.minhh);
+
+    }
 
     public static void prepare(double heights, int tex,boolean texM){
         ys = RenderProcedure.cameraY - heights;

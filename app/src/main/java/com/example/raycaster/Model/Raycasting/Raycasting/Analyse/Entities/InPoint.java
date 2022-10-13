@@ -5,7 +5,7 @@ import com.example.raycaster.Model.Raycasting.Raycasting.Analyse.Uppers.UpperBlo
 import com.example.raycaster.View.Raycasting.UpperBlocks.UpperShapes;
 import com.example.raycaster.Model.Raycasting.Raycasting.Analyse.WallHit;
 import com.example.raycaster.Model.Raycasting.Raycasting.PreBaking.Ray.PointOnRay;
-import com.example.raycaster.Model.Raycasting.Raycasting.PreBaking.Ray.PreColumn;
+import com.example.raycaster.Model.Raycasting.Raycasting.PreBaking.Ray.PreColumns.PreColumn;
 import com.example.raycaster.Model.Raycasting.RenderProcedure;
 import com.example.raycaster.Model.Raycasting.Raycasting.PreBaking.Sprites.Sprites;
 import com.example.raycaster.View.Raycasting.BasicElements.Floor;

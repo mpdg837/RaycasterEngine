@@ -1,11 +1,12 @@
 package com.example.raycaster.Model.Raycasting.Raycasting.Analyse.Uppers;
 
 import com.example.raycaster.Model.Raycasting.Raycasting.Analyse.Entities.Ray;
+import com.example.raycaster.Model.Raycasting.Raycasting.PreBaking.Ray.PreColumns.UpperPreColumn;
 import com.example.raycaster.View.Raycasting.UpperBlocks.UpperBlock;
 import com.example.raycaster.View.Raycasting.UpperBlocks.UpperBuildingBlocks;
 import com.example.raycaster.View.Raycasting.UpperBlocks.UpperHalfBlock;
 import com.example.raycaster.Model.Raycasting.Raycasting.PreBaking.Ray.PointOnRay;
-import com.example.raycaster.Model.Raycasting.Raycasting.PreBaking.Ray.PreColumn;
+import com.example.raycaster.Model.Raycasting.Raycasting.PreBaking.Ray.PreColumns.PreColumn;
 import com.example.raycaster.Model.Raycasting.RenderProcedure;
 
 public final class UpperBlocks {
@@ -15,7 +16,7 @@ public final class UpperBlocks {
 
             final double height = PreColumn.fakeHeight / PreColumn.z;
             final double lha = PreColumn.getLastUpperHeight(height);
-            final double lhaa = PreColumn.getLastUpperBuildingHeight(height);
+            final double lhaa = UpperPreColumn.getLastUpperBuildingHeight(height);
 
             int shadow = 0;
 

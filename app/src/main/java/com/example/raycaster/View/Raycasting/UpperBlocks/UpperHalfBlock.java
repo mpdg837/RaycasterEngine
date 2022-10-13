@@ -4,8 +4,9 @@ import com.example.raycaster.Model.Raycasting.Raycasting.Analyse.Entities.InPoin
 import com.example.raycaster.Model.Raycasting.Raycasting.Analyse.Entities.Ray;
 import com.example.raycaster.Model.Raycasting.Raycasting.Analyse.Entities.Sight;
 import com.example.raycaster.Model.Raycasting.Raycasting.Analyse.WallHit;
+import com.example.raycaster.Model.Raycasting.Raycasting.PreBaking.Ray.PreColumns.HalfPreColumn;
 import com.example.raycaster.Model.Raycasting.Raycasting.PreBaking.Ray.PointOnRay;
-import com.example.raycaster.Model.Raycasting.Raycasting.PreBaking.Ray.PreColumn;
+import com.example.raycaster.Model.Raycasting.Raycasting.PreBaking.Ray.PreColumns.PreColumn;
 import com.example.raycaster.Model.Raycasting.Raycasting.RenderInfoBuffer;
 import com.example.raycaster.Model.Raycasting.RenderProcedure;
 import com.example.raycaster.View.Raycasting.BasicElements.Column;
@@ -38,7 +39,7 @@ public final class UpperHalfBlock extends Upper {
             if ((WallHit.pY1 || WallHit.pY2)) {
                 if (WallHit.pY1) shadow += 2;
 
-                renderXWall(height,lhaa,shadow);
+                renderXWall(height,lha,shadow);
                 RenderInfoBuffer.lcolumnh[InPoint.countPos] = PointOnRay.intdeltaPosX;
                 Sight.lcolumnhx = PointOnRay.intdeltaPosX;
             }else if(WallHit.pY){
@@ -47,14 +48,14 @@ public final class UpperHalfBlock extends Upper {
 
                 if (WallHit.pX1) shadow += 2;
 
-                renderYWall(height,lhaa,shadow);
+                renderYWall(height,lha,shadow);
                 RenderInfoBuffer.lcolumnh[InPoint.countPos] = PointOnRay.intdeltaPosY;
                 Sight.lcolumnhx = PointOnRay.intdeltaPosY;
             }else{
-                renderNWall(height,lhaa,shadow);
+                renderNWall(height,lha,shadow);
             }
 
-            PreColumn.bufferHalfUpperColumn(height);
+            HalfPreColumn.bufferHalfUpperColumn(height);
 
         }
 

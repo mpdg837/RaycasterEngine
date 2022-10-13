@@ -10,6 +10,7 @@ import com.example.raycaster.Model.Raycasting.Raycasting.RenderInfoBuffer;
 import com.example.raycaster.Model.Raycasting.RenderProcedure;
 import com.example.raycaster.Model.Resources.Map.Map;
 import com.example.raycaster.View.Raycasting.BasicElements.Column;
+import com.example.raycaster.View.Raycasting.Blocks.Blocks;
 import com.example.raycaster.View.Render;
 
 import java.beans.IndexedPropertyChangeEvent;
@@ -83,6 +84,7 @@ public final class Half {
             }
 
             bufferInfo(heights);
+
         }
 
         Ray.half = true;

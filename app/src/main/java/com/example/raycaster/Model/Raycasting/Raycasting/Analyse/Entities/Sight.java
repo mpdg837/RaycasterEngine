@@ -44,10 +44,10 @@ public final class Sight {
     public static int lcolumnhalf = 0;
     public static int lshadowh = 0;
 
+    public static int halflposX;
+    public static int halflposY;
 
     public static double halflheight = 0;
-    public static int halflposX = 0;
-    public static int halflposY = 0;
 
 
     private static double countTan(){
@@ -105,10 +105,10 @@ public final class Sight {
         lcolumnhalf = 0;
         lshadowh = 0;
 
+        halflposX = 0;
+        halflposY = 0;
 
         halflheight = 0;
-        halflposY = 0;
-        halflposX = 0;
     }
     public static void renderSight(){
 
