@@ -13,6 +13,14 @@ public final class ShapeHit {
     private final static int min = 16;
     private final static int max = 48;
 
+
+    public static boolean isInShape(){
+        boolean inX = PointOnRay.intdeltaPosX > min && PointOnRay.intdeltaPosX < max;
+        boolean inY = PointOnRay.intdeltaPosY > min && PointOnRay.intdeltaPosY < max;
+
+        return inX && inY;
+    }
+
     public static void analyse(){
         inX1 = (PointOnRay.intdeltaPosX == min && PointOnRay.lintdeltaPosX != min);
         inX2 = (PointOnRay.intdeltaPosY == min && PointOnRay.lintdeltaPosY != min);

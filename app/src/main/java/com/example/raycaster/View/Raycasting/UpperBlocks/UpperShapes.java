@@ -12,13 +12,6 @@ import com.example.raycaster.Model.Raycasting.Raycasting.RenderInfoBuffer;
 
 public final class UpperShapes{
 
-    private static boolean isInShape(){
-        boolean inX = PointOnRay.intdeltaPosX > 16 && PointOnRay.intdeltaPosX < 48;
-        boolean inY = PointOnRay.intdeltaPosY > 16 && PointOnRay.intdeltaPosY < 48;
-
-        return inX && inY;
-    }
-
     private static void  renderYWall(double height,double lha){
         Column.drawLine((short) (Sight.posScreenX - RenderProcedure.D_SCREEN_STEP), (int) height, (int) lha, PointOnRay.intdeltaPosY, RenderInfoBuffer.lcolumnh[InPoint.countPos],
                 0, Ray.half, true,  PreColumn.llminh,  PreColumn.llmaxh, false, 0, false, false);
@@ -32,7 +25,7 @@ public final class UpperShapes{
     }
     public static void renderUpperShapes(){
 
-        if (isInShape()) {
+        if (ShapeHit.isInShape()) {
 
             ShapeHit.analyse();
             if (Sight.renderwall && !Ray.luppershape) {
@@ -40,7 +33,7 @@ public final class UpperShapes{
                 final double height =  PreColumn.fakeHeight/PreColumn.z;
                 double lha = PreColumn.getLastUpperHeight(height);
 
-                if( PointOnRay.lintdeltaPosX <=16 || PointOnRay.lintdeltaPosX>=48){
+                if( ShapeHit.inX1 ||ShapeHit.inX2){
 
                     renderYWall(height,lha);
                     RenderInfoBuffer.lcolumnh[InPoint.countPos] = PointOnRay.intdeltaPosY;

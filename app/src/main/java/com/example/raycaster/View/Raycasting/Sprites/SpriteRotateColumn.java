@@ -2,6 +2,7 @@ package com.example.raycaster.View.Raycasting.Sprites;
 
 import com.example.raycaster.Model.Raycasting.Raycasting.Analyse.Entities.InPoint;
 import com.example.raycaster.Model.Raycasting.Raycasting.Analyse.Entities.Ray;
+import com.example.raycaster.Model.Raycasting.Raycasting.Analyse.Entities.Sight;
 import com.example.raycaster.Model.Raycasting.Raycasting.PreBaking.Ray.PointOnRay;
 import com.example.raycaster.Model.Raycasting.Raycasting.PreBaking.Ray.PreColumns.PreColumn;
 import com.example.raycaster.Model.Raycasting.Raycasting.RenderInfoBuffer;
@@ -21,6 +22,7 @@ public final class SpriteRotateColumn extends SpriteRenderer{
     private static double texX;
 
     private static  double dtexX;
+
 
 
     private static void prepare(double heights, double tex){
@@ -53,10 +55,29 @@ public final class SpriteRotateColumn extends SpriteRenderer{
             if (texX < 0) {
                 texX = 0;
             }
-            if (PointOnRay.intdeltaPosX < 31 ) {
-                texX =(127 - texX);
-            }
 
+            if((RenderProcedure.angle<0 && RenderProcedure.angle>-RenderProcedure.pi) ||
+                    (RenderProcedure.angle<2*RenderProcedure.pi && RenderProcedure.angle>RenderProcedure.pi)) {
+                if (Sight.tan > 0) {
+                    if (PointOnRay.intdeltaPosX < 32) {
+                        texX = (127 - texX);
+                    }
+                } else {
+                    if (PointOnRay.intdeltaPosX >= 32) {
+                        texX = (127 - texX);
+                    }
+                }
+            }else{
+                if (Sight.tan < 0) {
+                    if (PointOnRay.intdeltaPosX < 32) {
+                        texX = (127 - texX);
+                    }
+                } else {
+                    if (PointOnRay.intdeltaPosX >= 32) {
+                        texX = (127 - texX);
+                    }
+                }
+            }
 
         }
         dtexX = (texX - ltexX) / (double) RenderProcedure.SCREEN_STEP;

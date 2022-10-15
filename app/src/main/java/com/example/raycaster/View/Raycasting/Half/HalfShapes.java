@@ -3,6 +3,7 @@ package com.example.raycaster.View.Raycasting.Half;
 import com.example.raycaster.Model.Raycasting.Raycasting.Analyse.Entities.InPoint;
 import com.example.raycaster.Model.Raycasting.Raycasting.Analyse.Entities.Ray;
 import com.example.raycaster.Model.Raycasting.Raycasting.Analyse.Entities.Sight;
+import com.example.raycaster.Model.Raycasting.Raycasting.Analyse.ShapeHit;
 import com.example.raycaster.Model.Raycasting.Raycasting.PreBaking.Ray.PointOnRay;
 import com.example.raycaster.Model.Raycasting.Raycasting.PreBaking.Ray.PreColumns.PreColumn;
 import com.example.raycaster.Model.Raycasting.Raycasting.RenderInfoBuffer;
@@ -10,14 +11,6 @@ import com.example.raycaster.Model.Raycasting.RenderProcedure;
 import com.example.raycaster.View.Raycasting.BasicElements.Column;
 
 public final class HalfShapes {
-
-    private static boolean inX;
-    private static boolean inY;
-
-    private static void detectShape(int intdeltaPosX,int intdeltaPosY){
-        inX = intdeltaPosX > 16 && intdeltaPosX < 48;
-        inY = intdeltaPosY > 16 && intdeltaPosY < 48;
-    }
 
     private static int countShadowX(int intdeltaPosX,int shadow){
         if (intdeltaPosX < 19) {
@@ -61,9 +54,7 @@ public final class HalfShapes {
 
     public static void renderHalfShapes(int intdeltaPosX,int intdeltaPosY){
 
-        detectShape(intdeltaPosX,intdeltaPosY);
-
-        if(inX && inY) {
+        if(ShapeHit.isInShape()) {
             Ray.sprite = true;
 
             final double height =  PreColumn.height;
@@ -76,7 +67,7 @@ public final class HalfShapes {
 
                 if(lheight == 0) lheight = height;
 
-                if (PointOnRay.lintdeltaPosX <=16 || PointOnRay.lintdeltaPosX>=48) {
+                if (ShapeHit.inX1 ||ShapeHit.inX2) {
 
                     ignoreBigDiffrence(intdeltaPosY);
 

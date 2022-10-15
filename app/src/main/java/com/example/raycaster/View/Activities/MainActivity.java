@@ -14,6 +14,7 @@ import com.example.raycaster.Controller.Input.VirtualSticks;
 import com.example.raycaster.Model.Game.StartGame;
 import com.example.raycaster.Model.Raycasting.GameLoop.RenderLoop;
 import com.example.raycaster.Model.Raycasting.GameLoop.RenderLoopTask;
+import com.example.raycaster.Model.Raycasting.Raycasting.Analyse.Entities.Sight;
 import com.example.raycaster.Model.Raycasting.RenderProcedure;
 import com.example.raycaster.R;
 import com.example.raycaster.View.Render;
@@ -40,7 +41,7 @@ public class MainActivity extends AppCompatActivity {
 
     public void updateTextView(){
         // update TextView here!
-        speedCounter.setText(RenderLoopTask.delay+" ms "+width+" "+height);
+        speedCounter.setText(RenderLoopTask.delay+" ms "+width+" "+height+ " angle:"+ RenderProcedure.angle);
     }
 
     public void startGame(View view){

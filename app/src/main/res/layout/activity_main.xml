@@ -46,7 +46,7 @@
         android:rotation="0"
         android:text="TextView"
         android:textColor="@android:color/holo_red_dark"
-        android:visibility="invisible"
+        android:visibility="visible"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 

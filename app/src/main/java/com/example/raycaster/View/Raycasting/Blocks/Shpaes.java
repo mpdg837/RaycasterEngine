@@ -1,5 +1,7 @@
 package com.example.raycaster.View.Raycasting.Blocks;
 
+import com.example.raycaster.Model.Raycasting.Raycasting.Analyse.ShapeHit;
+import com.example.raycaster.Model.Raycasting.Raycasting.Analyse.WallHit;
 import com.example.raycaster.Model.Resources.Map.Map;
 import com.example.raycaster.Model.Raycasting.Raycasting.Analyse.Entities.Ray;
 import com.example.raycaster.Model.Raycasting.Raycasting.Analyse.Entities.Sight;
@@ -12,12 +14,6 @@ import com.example.raycaster.Model.Raycasting.Raycasting.PreBaking.Floor;
 
 public final class Shpaes {
 
-    private static boolean isInShape(){
-        boolean inX = PointOnRay.intdeltaPosX > 16 && PointOnRay.intdeltaPosX < 48;
-        boolean inY = PointOnRay.intdeltaPosY > 16 && PointOnRay.intdeltaPosY < 48;
-
-        return inX && inY;
-    }
 
     private static void ignoreBigDiffrence(int value){
         int diff = value- Sight.lcolumn;
@@ -54,7 +50,7 @@ public final class Shpaes {
     }
     public static void renderShapes(double r){
 
-        if(isInShape()) {
+        if(ShapeHit.isInShape()) {
             Ray.finish = true;
 
             final double height =  PreColumn.height;
@@ -79,7 +75,7 @@ public final class Shpaes {
 
                 Sight.wallinitized = true;
 
-                if(PointOnRay.lintdeltaPosX <=16 || PointOnRay.lintdeltaPosX>=48){
+                if(ShapeHit.inX1 ||ShapeHit.inX2){
 
                     ignoreBigDiffrence(PointOnRay.intdeltaPosY);
 
