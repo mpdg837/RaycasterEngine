@@ -1,4 +1,4 @@
-package com.example.raycaster.Model.Game;
+package com.example.raycaster.Model;
 
 public class RaycasterPoint {
     public double x;

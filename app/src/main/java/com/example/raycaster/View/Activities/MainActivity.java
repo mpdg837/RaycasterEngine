@@ -11,6 +11,7 @@ import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import com.example.raycaster.Controller.Input.VirtualSticks;
+import com.example.raycaster.Model.Game.StartGame;
 import com.example.raycaster.Model.Raycasting.GameLoop.RenderLoop;
 import com.example.raycaster.Model.Raycasting.GameLoop.RenderLoopTask;
 import com.example.raycaster.Model.Raycasting.RenderProcedure;
@@ -27,7 +28,7 @@ public class MainActivity extends AppCompatActivity {
     public int value;
 
     public ImageView img;
-    TextView speedCounter;
+    public TextView speedCounter;
 
 
     @Override
@@ -35,61 +36,15 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        if(!initized) {
-            RenderProcedure.app = this;
-
-            RenderLoop.run(this);
-
-            img = RenderProcedure.app.findViewById(R.id.imageView);
-            img.setWillNotDraw(true);
-            img.setImageBitmap(Render.screen);
-
-            speedCounter = (TextView) this.findViewById(R.id.textView);
-
-
-            Button butt = (Button) this.findViewById(R.id.start);
-            VirtualSticks stick = new VirtualSticks(this,butt,false);
-
-            Thread thread = new Thread() {
-
-                @Override
-                public void run() {
-                    try {
-                        while (!isInterrupted()) {
-                            Thread.sleep(200);
-                            runOnUiThread(new Runnable() {
-                                @Override
-                                public void run() {
-                                    updateTextView();
-
-                                }
-                            });
-                        }
-                    } catch (InterruptedException e) {
-                    }
-                }
-            };
-
-            thread.start();
-
-
-            img.setLayoutParams(new LinearLayout.LayoutParams(LinearLayout.LayoutParams.MATCH_PARENT, LinearLayout.LayoutParams.MATCH_PARENT));
-            img.setScaleType(ImageView.ScaleType.FIT_XY);
-
-            ViewGroup.LayoutParams params = (ViewGroup.LayoutParams) img.getLayoutParams();
-
-            img.setLayoutParams(params);
-            initized = true;
-        }
-
     }
 
-    private void updateTextView(){
+    public void updateTextView(){
         // update TextView here!
         speedCounter.setText(RenderLoopTask.delay+" ms "+width+" "+height);
     }
-    public void startGame(View view){
 
+    public void startGame(View view){
+        StartGame.initGame(this);
 
     }
 

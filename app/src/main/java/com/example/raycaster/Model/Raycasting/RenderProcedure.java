@@ -1,6 +1,6 @@
 package com.example.raycaster.Model.Raycasting;
 
-import com.example.raycaster.Model.Game.RaycasterPoint;
+import com.example.raycaster.Model.RaycasterPoint;
 import com.example.raycaster.View.Activities.MainActivity;
 import com.example.raycaster.Model.Game.Moving;
 import com.example.raycaster.Model.Raycasting.GameLoop.RenderLoopTask;
@@ -69,18 +69,20 @@ public final class RenderProcedure extends Render {
     public static boolean render() {
 
 
-        if (context != null) {
+        if(app.initized) {
+            if (context != null) {
 
-            startredner();
-            adaptationQuality();
-            RenderInfoBuffer.clearBuffers();
+                startredner();
+                adaptationQuality();
+                RenderInfoBuffer.clearBuffers();
 
-            Sight.renderSight();
+                Sight.renderSight();
 
-            initizer();
+                initizer();
 
-            convertToImage();
+                convertToImage();
 
+            }
         }
         return true;
     }

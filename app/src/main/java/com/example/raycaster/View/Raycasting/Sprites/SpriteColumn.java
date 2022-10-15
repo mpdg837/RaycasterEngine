@@ -3,12 +3,12 @@ package com.example.raycaster.View.Raycasting.Sprites;
 import com.example.raycaster.Model.Raycasting.Raycasting.Analyse.Entities.InPoint;
 import com.example.raycaster.Model.Raycasting.Raycasting.Analyse.Entities.Ray;
 import com.example.raycaster.Model.Raycasting.Raycasting.Analyse.Entities.Sight;
+import com.example.raycaster.Model.Raycasting.Raycasting.PreBaking.Floor;
 import com.example.raycaster.Model.Raycasting.Raycasting.PreBaking.Ray.PointOnRay;
 import com.example.raycaster.Model.Raycasting.Raycasting.PreBaking.Ray.PreColumns.PreColumn;
 import com.example.raycaster.Model.Raycasting.Raycasting.RenderInfoBuffer;
 import com.example.raycaster.Model.Raycasting.RenderProcedure;
 import com.example.raycaster.Model.Raycasting.Raycasting.Textures.TextureContainer;
-import com.example.raycaster.View.Raycasting.BasicElements.Floor;
 
 public final class SpriteColumn extends SpriteRenderer{
 
@@ -40,7 +40,7 @@ public final class SpriteColumn extends SpriteRenderer{
 
         posTexY = 0;
 
-        ltexX = RenderInfoBuffer.mapsprite[InPoint.countPos];
+        ltexX = (byte)RenderInfoBuffer.mapsprite[InPoint.countPos];
 
         if (texM) ltexX = RenderInfoBuffer.mapsprite2[InPoint.countPos];
         if (ltexX == 0) ltexX = (byte)tex;

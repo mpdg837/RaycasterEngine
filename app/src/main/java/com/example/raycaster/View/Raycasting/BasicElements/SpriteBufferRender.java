@@ -6,7 +6,7 @@ import com.example.raycaster.View.Render;
 import com.example.raycaster.Model.Raycasting.Raycasting.RenderInfoBuffer;
 import com.example.raycaster.Model.Raycasting.RenderProcedure;
 
-public final class SpriteColumn {
+public final class SpriteBufferRender {
 
     public static void renderBufferedColumn(){
         int width = RenderProcedure.SCREEN_STEP << Render.shiftPixelWidth;

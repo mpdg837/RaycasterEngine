@@ -8,7 +8,7 @@ import com.example.raycaster.Model.Raycasting.Raycasting.PreBaking.Ray.PointOnRa
 import com.example.raycaster.Model.Raycasting.Raycasting.PreBaking.Ray.PreColumns.PreColumn;
 import com.example.raycaster.Model.Raycasting.RenderProcedure;
 import com.example.raycaster.View.Raycasting.BasicElements.Column;
-import com.example.raycaster.View.Raycasting.BasicElements.Floor;
+import com.example.raycaster.Model.Raycasting.Raycasting.PreBaking.Floor;
 
 public final class Shpaes {
 

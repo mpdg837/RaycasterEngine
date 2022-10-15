@@ -39,14 +39,20 @@ public class Render {
 
     }
     protected static void convertToImage() {
+        if(app!= null) {
+            if(app.img != null) {
+                synchronized (app.img) {
+                    final ByteBuffer raster = ByteBuffer.wrap(pixels);
+                    screen.copyPixelsFromBuffer(raster);
 
-            final ByteBuffer raster = ByteBuffer.wrap(pixels);
-            screen.copyPixelsFromBuffer(raster);
+                    if (app.img != null) {
 
-            if(app.img!=null) {
 
-                app.img.invalidate();
+                        app.img.invalidate();
+                    }
+                }
             }
+        }
     }
 
     public static void setPixel(int pos, int rgb){

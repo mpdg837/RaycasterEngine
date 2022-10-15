@@ -2,6 +2,7 @@ package com.example.raycaster.Model.Game;
 
 import android.graphics.Point;
 
+import com.example.raycaster.Model.RaycasterPoint;
 import com.example.raycaster.Model.Raycasting.GameLoop.RenderLoopTask;
 import com.example.raycaster.Model.Raycasting.RenderProcedure;
 import com.example.raycaster.Model.Resources.Map.Map;

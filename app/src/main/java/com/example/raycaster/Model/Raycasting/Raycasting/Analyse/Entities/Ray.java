@@ -5,7 +5,7 @@ import com.example.raycaster.Model.Raycasting.Raycasting.PreBaking.Ray.PointOnRa
 import com.example.raycaster.Model.Raycasting.Raycasting.PreBaking.Ray.PreColumns.PreColumn;
 import com.example.raycaster.Model.Raycasting.RenderProcedure;
 import com.example.raycaster.Model.Resources.Map.Map;
-import com.example.raycaster.View.Raycasting.BasicElements.SpriteColumn;
+import com.example.raycaster.View.Raycasting.BasicElements.SpriteBufferRender;
 
 public final class Ray {
 
@@ -59,41 +59,39 @@ public final class Ray {
 
     private static void initRay(){
 
+            halfupx = 0;
+            lhalfupx = 0;
 
-        halfupx =0;
-        lhalfupx = 0;
+            renderFloor = true;
 
-        renderFloor = true;
+            finish = false;
+            lstatusofAngle = false;
+            sprite = false;
 
-        finish = false;
-        lstatusofAngle = false;
-        sprite = false;
-
-        upper = false;
-        half = false;
-
-
-        oneheight = false;
-
-        ceili = 0;
-
-        lceiling = Map.ceiling[(int)  PointOnRay.posX][(int)  PointOnRay.posY];
-
-        finalrender = false;
+            upper = false;
+            half = false;
 
 
-        halfupper = false;
+            oneheight = false;
 
-        spriterendered = false;
+            ceili = 0;
 
-        lceili = 0;
+            lceiling = Map.ceiling[(int) PointOnRay.posX][(int) PointOnRay.posY];
 
-        spriteStableCounter = 0;
+            finalrender = false;
 
-        upperbuildingXa = false;
-        upperXa = false;
-        luppershapeR = false;
 
+            halfupper = false;
+
+            spriterendered = false;
+
+            lceili = 0;
+
+            spriteStableCounter = 0;
+
+            upperbuildingXa = false;
+            upperXa = false;
+            luppershapeR = false;
 
     }
 
@@ -145,7 +143,7 @@ public final class Ray {
 
         if(spriterendered) {
 
-            SpriteColumn.renderBufferedColumn();
+            SpriteBufferRender.renderBufferedColumn();
 
         }
 

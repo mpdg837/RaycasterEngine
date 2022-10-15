@@ -11,15 +11,17 @@ public final class DynamicSprite {
     public static boolean statusofangle = false;
 
     public static void renderDynamicSprite(double heights,int shadows){
-        final int fun = (int) (-Sight.tan * (double) PointOnRay.intdeltaPosX + Sight.tan * (double) Sight.spritePosX + (double) Sight.spritePosY);
 
 
-        final int posTexX = Functions.getSqrt(SpriteDetector.eq) + 1;
+        final double fun = (double) (-Sight.tan * (double) PointOnRay.intdeltaPosX + Sight.tan * (double) Sight.spritePosX + (double) Sight.spritePosY);
+
+
+        final double posTexX = Functions.getSqrt(SpriteDetector.eq) + 1;
         statusofangle = PointOnRay.intdeltaPosY > fun;
 
         if (statusofangle != Ray.lstatusofAngle) {
 
-            SpriteRotateColumn.render(heights, (byte) posTexX, shadows);
+            SpriteRotateColumn.render(heights, posTexX, shadows);
 
         }
 

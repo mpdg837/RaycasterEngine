@@ -11,7 +11,7 @@ public final class RenderInfoBuffer {
     public static int[] lupperd =new int[32<<5];
     public static double[] lheightsh = new double[32<<5];
     public static int[] lcolumnd =new int[32<<5];
-    public static byte[] mapsprite = new byte[32<<5];
+    public static double[] mapsprite = new double[32<<5];
     public static byte[] mapsprite2 = new byte[32<<5];
     public static double[] lhheight = new double[32<<5];
     public static double[] lhhheight = new double[32<<5];
@@ -39,7 +39,7 @@ public final class RenderInfoBuffer {
         llluposY = new int[16];
         llluposX = new int[16];
 
-        mapsprite = new byte[(32 << 5)];
+        mapsprite = new double[(32 << 5)];
         mapsprite2 = new byte[(32 << 5)];
         mapspritechange= new boolean[(32 << 5)];
         lheightsh= new double[(32 << 5)];
