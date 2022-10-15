@@ -67,7 +67,7 @@ public final class HalfShapes {
 
                 if(lheight == 0) lheight = height;
 
-                if (ShapeHit.inX1 ||ShapeHit.inX2) {
+                if (PointOnRay.lintdeltaPosX <=16 || PointOnRay.lintdeltaPosX>=48) {
 
                     ignoreBigDiffrence(intdeltaPosY);
 

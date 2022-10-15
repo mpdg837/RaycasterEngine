@@ -23,7 +23,31 @@ public final class SpriteRotateColumn extends SpriteRenderer{
 
     private static  double dtexX;
 
+    private static void startPointOfSprite(){
 
+        if((RenderProcedure.angle<0 && RenderProcedure.angle>-RenderProcedure.pi) ||
+                (RenderProcedure.angle<2*RenderProcedure.pi && RenderProcedure.angle>RenderProcedure.pi)) {
+            if (Sight.tan > 0) {
+                if (PointOnRay.intdeltaPosX < 32) {
+                    texX = (127 - texX);
+                }
+            } else {
+                if (PointOnRay.intdeltaPosX >= 32) {
+                    texX = (127 - texX);
+                }
+            }
+        }else{
+            if (Sight.tan < 0) {
+                if (PointOnRay.intdeltaPosX < 32) {
+                    texX = (127 - texX);
+                }
+            } else {
+                if (PointOnRay.intdeltaPosX >= 32) {
+                    texX = (127 - texX);
+                }
+            }
+        }
+    }
 
     private static void prepare(double heights, double tex){
         ys = RenderProcedure.cameraY - heights;
@@ -56,29 +80,7 @@ public final class SpriteRotateColumn extends SpriteRenderer{
                 texX = 0;
             }
 
-            if((RenderProcedure.angle<0 && RenderProcedure.angle>-RenderProcedure.pi) ||
-                    (RenderProcedure.angle<2*RenderProcedure.pi && RenderProcedure.angle>RenderProcedure.pi)) {
-                if (Sight.tan > 0) {
-                    if (PointOnRay.intdeltaPosX < 32) {
-                        texX = (127 - texX);
-                    }
-                } else {
-                    if (PointOnRay.intdeltaPosX >= 32) {
-                        texX = (127 - texX);
-                    }
-                }
-            }else{
-                if (Sight.tan < 0) {
-                    if (PointOnRay.intdeltaPosX < 32) {
-                        texX = (127 - texX);
-                    }
-                } else {
-                    if (PointOnRay.intdeltaPosX >= 32) {
-                        texX = (127 - texX);
-                    }
-                }
-            }
-
+            startPointOfSprite();
         }
         dtexX = (texX - ltexX) / (double) RenderProcedure.SCREEN_STEP;
     }

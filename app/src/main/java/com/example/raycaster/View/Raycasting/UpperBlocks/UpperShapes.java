@@ -33,7 +33,7 @@ public final class UpperShapes{
                 final double height =  PreColumn.fakeHeight/PreColumn.z;
                 double lha = PreColumn.getLastUpperHeight(height);
 
-                if( ShapeHit.inX1 ||ShapeHit.inX2){
+                if(PointOnRay.lintdeltaPosX <=16 || PointOnRay.lintdeltaPosX>=48){
 
                     renderYWall(height,lha);
                     RenderInfoBuffer.lcolumnh[InPoint.countPos] = PointOnRay.intdeltaPosY;
