@@ -12,7 +12,7 @@ import com.example.raycaster.Model.Raycasting.RenderProcedure;
 public final class UpperBlocks {
 
     public static void renderUpperBlocks(){
-        if((Ray.ceili == 1) || (Ray.upperbuildingx&& !Ray.lupperbuildingx)){
+        if((Ray.ceili == 1 && Ray.lceili != 1) || (Ray.upperbuildingx&& !Ray.lupperbuildingx)){
 
             final double height = PreColumn.fakeHeight / PreColumn.z;
             final double lha = PreColumn.getLastUpperHeight(height);

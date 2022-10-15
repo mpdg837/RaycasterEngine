@@ -57,7 +57,7 @@ public final class StartGame {
 
 
             app.img.setLayoutParams(new LinearLayout.LayoutParams(LinearLayout.LayoutParams.MATCH_PARENT, LinearLayout.LayoutParams.MATCH_PARENT));
-            app.img.setScaleType(ImageView.ScaleType.FIT_XY);
+            app.img.setScaleType(ImageView.ScaleType.FIT_CENTER);
 
             ViewGroup.LayoutParams params = (ViewGroup.LayoutParams) app.img.getLayoutParams();
 

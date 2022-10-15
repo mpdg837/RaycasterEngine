@@ -13,12 +13,13 @@ public final class FloorRender {
     public static int posllY;
     public static int posllX;
 
+    private static final int delta = (RenderProcedure.D_SCREEN_STEP);
     private static boolean isGoodCeilingQuality(int ceil,double r){
 
         boolean goodQuality = false;
 
         if(ceil !=2) {
-            if (RenderProcedure.SCREEN_STEP == 4) {
+            if (RenderProcedure.SCREEN_STEP == RenderProcedure.SCREEN_STEP_STAND) {
                 goodQuality = r < MAX_GOOD_QUALITY_DISTANCE_UP;
             } else {
                 goodQuality = r < MAX_GOOD_QUALITY_DISTANCE_UP_WALK;
@@ -31,7 +32,7 @@ public final class FloorRender {
 
         boolean goodQuality = false;
 
-        if (RenderProcedure.SCREEN_STEP == 4) {
+        if (RenderProcedure.SCREEN_STEP == RenderProcedure.SCREEN_STEP_STAND) {
             goodQuality = r < MAX_GOOD_QUALITY_DISTANCE_DOWN;
         } else {
             goodQuality = r < MAX_GOOD_QUALITY_DISTANCE_DOWN_WALK;
@@ -62,8 +63,8 @@ public final class FloorRender {
                 posYa += deltaPosYa;
             }
 
-            FloorPixel.setCPixelGoodQuality(posScreenX - (RenderProcedure.SCREEN_STEP << 1),
-                    posstart, color, hei + (ceil - 1), false);
+            FloorPixel.setCPixelGoodQuality(posScreenX - delta,
+                    posstart + delta, color, hei + (ceil - 1), false);
         }else{
             int color = 0;
 
@@ -73,7 +74,7 @@ public final class FloorRender {
                 color = TextureContainer.floor.getPixel((int) poslX, (int) poslY, 1);
 
 
-            FloorPixel.setCPixel(posScreenX - (RenderProcedure.SCREEN_STEP << 1),
+            FloorPixel.setCPixel(posScreenX - delta,
                     posstart, color, hei + (ceil - 1), false);
         }
     }
@@ -99,11 +100,11 @@ public final class FloorRender {
                 posXa += deltaPosXa;
                 posYa += deltaPosYa;
             }
-            FloorPixel.setCPixelGoodQuality(posScreenX - (RenderProcedure.SCREEN_STEP << 1), posfinish, scolor, hei, true);
+            FloorPixel.setCPixelGoodQuality(posScreenX - delta, posfinish, scolor, hei, true);
 
         }else{
             int scolor = TextureContainer.floor.getPixel((int) poslX, (int) poslY, intensity);
-            FloorPixel.setCPixel(posScreenX - (RenderProcedure.SCREEN_STEP << 1), posfinish, scolor, hei, true);
+            FloorPixel.setCPixel(posScreenX - delta, posfinish, scolor, hei, true);
         }
     }
 }

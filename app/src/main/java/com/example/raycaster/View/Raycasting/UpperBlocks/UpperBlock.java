@@ -29,6 +29,8 @@ public final class UpperBlock extends Upper {
         Column.drawLine((short) (Sight.posScreenX - RenderProcedure.D_SCREEN_STEP), (int)lha, (int) lha, Sight.lcolumnhx, Sight.lcolumnhx, Sight.lshadowu,
                 Ray.half, true,  PreColumn.llminh,  PreColumn.llmaxh,false,0,false,false);
     }
+
+
     public static void analyse(double height,int shadow,double lha,double lhaa){
 
         Ray.upperXa = true;

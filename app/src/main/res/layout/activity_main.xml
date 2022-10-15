@@ -7,10 +7,44 @@
     tools:context=".View.Activities.MainActivity">
 
     <ImageView
+        android:id="@+id/imageView2"
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent"
+        android:background="@color/black"
+        android:backgroundTintMode="screen"
+        android:baselineAlignBottom="false"
+        android:clickable="false"
+        android:cropToPadding="false"
+        android:drawingCacheQuality="low"
+        android:duplicateParentState="false"
+        android:fadeScrollbars="false"
+        android:filterTouchesWhenObscured="false"
+        android:fitsSystemWindows="false"
+        android:focusableInTouchMode="false"
+        android:hapticFeedbackEnabled="false"
+        android:importantForAccessibility="no"
+        android:isScrollContainer="false"
+        android:keepScreenOn="false"
+        android:longClickable="false"
+        android:nestedScrollingEnabled="false"
+        android:rotation="0"
+        android:saveEnabled="false"
+        android:scaleType="fitCenter"
+        android:scaleX="1"
+        android:scaleY="1"
+        android:soundEffectsEnabled="true"
+        app:guidelineUseRtl="false"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:srcCompat="@drawable/skybox"
+        tools:srcCompat="@drawable/skybox" />
+
+    <ImageView
         android:id="@+id/imageView"
         android:layout_width="fill_parent"
         android:layout_height="fill_parent"
-        android:background="@drawable/skybox"
+        android:background="@android:color/transparent"
+        android:backgroundTintMode="screen"
         android:baselineAlignBottom="false"
         android:clickable="false"
         android:cropToPadding="false"
@@ -35,7 +69,7 @@
         app:guidelineUseRtl="false"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        tools:srcCompat="@drawable/skybox" />
+        tools:srcCompat="@android:color/transparent" />
 
     <TextView
         android:id="@+id/textView"

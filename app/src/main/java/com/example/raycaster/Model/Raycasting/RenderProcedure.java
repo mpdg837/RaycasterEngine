@@ -32,7 +32,8 @@ public final class RenderProcedure extends Render {
     public static RaycasterPoint pos = new RaycasterPoint(61.5f,64.5f);
     public static double angle = 0;
 
-
+    public static final int SCREEN_STEP_STAND = 5;
+    public static final int SCREEN_STEP_WALK = 6;
     public static final int cameraY = 200;
 
 
@@ -54,9 +55,9 @@ public final class RenderProcedure extends Render {
 
     public static void adaptationQuality(){
         if(Moving.walking()){
-            SCREEN_STEP =5;
+            SCREEN_STEP =SCREEN_STEP_WALK;
         }else{
-            SCREEN_STEP =4;
+            SCREEN_STEP =SCREEN_STEP_STAND;
         }
         D_SCREEN_STEP = SCREEN_STEP << 1;
         realWidth = SCREEN_WIDTH << Render.shiftPixelWidth;

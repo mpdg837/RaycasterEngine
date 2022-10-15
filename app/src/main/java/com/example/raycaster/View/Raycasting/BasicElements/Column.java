@@ -2,6 +2,7 @@ package com.example.raycaster.View.Raycasting.BasicElements;
 
 import android.graphics.Point;
 
+import com.example.raycaster.Model.Raycasting.Raycasting.Analyse.Entities.Ray;
 import com.example.raycaster.Model.Raycasting.Raycasting.PreBaking.Math.Functions;
 import com.example.raycaster.Model.Raycasting.Raycasting.PreBaking.Ray.PointOnRay;
 import com.example.raycaster.Model.Raycasting.Raycasting.PreBaking.Ray.PreColumns.PreColumn;
@@ -12,42 +13,26 @@ import com.example.raycaster.Model.Raycasting.Raycasting.Textures.TextureContain
 
 public final class Column {
 
-    private static double ys;
-    private static double yf;
+    public static double ys;
+    public static double yf;
 
-    private static int lheight;
-    private static double height;
+    public static int lheight;
+    public static double height;
 
-    private static int posStart;
-    private static int posFinal;
-
-
-    private static int diff ;
-    private static int len;
-    private static int cdiff;
-
-    private static double delta;
-    private static double deltacolor;
-
-    private static double dh = 0;
-    private static double dc;
-    private static byte trnsx = 0;
-
-    public static void setPixelColumn(int pos,int column, int y,int shadow,Texture tex ){
-        if(pos>0 && pos < Render.maxLen) {
-            if (((RenderProcedure.isEmpty(pos)))) {
-                int pcol;
-
-                pcol = tex.getPixel(column << 1, y, shadow);
+    public static int posStart;
+    public static int posFinal;
 
 
-                RenderProcedure.setPixel(pos, pcol);
-            }
+    public static int diff ;
+    public static int len;
+    public static int cdiff;
 
+    public static double delta;
+    public static double deltacolor;
 
-        }
-    }
-
+    public static double dh = 0;
+    public static double dc;
+    public static byte trnsx = 0;
 
     public static boolean noTrapeze(double deltaPosY,int val){
         boolean decision = true;
@@ -167,42 +152,12 @@ public final class Column {
             for(int n=0;n<len ;n++) {
 
                 makeSmoothBorders(upperb,upper,half,x,dhalf,halfup);
-                drawSmallColumn(llminh,llmaxh,upperb,shadow,tex);
+                ColumnPixel.drawSmallColumn(llminh,llmaxh,upperb,shadow,tex);
 
             }
     }
 
-    private static void drawSmallColumn(int llminh,int llmaxh,boolean upperb,int shadow,Texture tex){
-        final double deltaPos = ((double)lheight + (dh) )/(double) RenderProcedure.textureResolution;
 
-        double texPos = 0;
-        double deltaP = 0;
-
-        final int minimal =  llminh*(int)RenderProcedure.realWidth;
-        final int maximal = llmaxh*(int)RenderProcedure.realWidth;
-        final int minimalY =  PreColumn.maxh*(int)RenderProcedure.realWidth;
-
-        for(int y=posStart;y<posFinal;y+=RenderProcedure.realWidth) {
-            if ((y >= minimal && y>=minimalY&& y < maximal) || upperb) {
-
-                final int acolumn = ((int) dc & RenderProcedure.deltaPosMask);
-                setPixelColumn(y + trnsx, acolumn, (int) texPos & 0x7f, shadow,tex);
-
-            }
-
-            deltaP ++;
-            if(deltaP >= deltaPos) {
-                texPos+= deltaP / deltaPos;
-                deltaP =0;
-            }
-
-
-        }
-
-        dc += deltacolor;
-        dh+=delta;
-        trnsx += Render.pixelWidth;
-    }
 
 
 }
