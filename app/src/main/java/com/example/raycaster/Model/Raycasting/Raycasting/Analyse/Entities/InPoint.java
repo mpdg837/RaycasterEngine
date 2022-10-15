@@ -84,6 +84,7 @@ public final class InPoint {
                 case 1:
                 case 2:
                 case 11:
+
                     Blocks.renderBlocks(r);
                     break;
 

@@ -47,9 +47,8 @@ public final class Blocks {
 
                     if (Map.isNeighbourhood((int) PointOnRay.posX, (int) PointOnRay.posY, Sight.llposX, Sight.llposY)) {
 
-                        if (Column.noTrapeze(PointOnRay.deltaPosY, AngleRay.val)) {
-                            Sight.lheight = height;
-                        }
+                        Sight.lheight = height;
+
 
                     }
 

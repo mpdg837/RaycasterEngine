@@ -58,9 +58,8 @@ public final class Shpaes {
 
             if (Map.isNeighbourhood((int) PointOnRay.posX, (int) PointOnRay.posY, Sight.llcposX, Sight.llcposY)) {
 
-                if (Column.noTrapeze(PointOnRay.deltaPosY, AngleRay.val)) {
                     Sight.lheighte = height;
-                }
+
 
             }
 

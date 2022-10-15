@@ -1,6 +1,9 @@
 package com.example.raycaster.View.Raycasting.BasicElements;
 
+import android.graphics.Point;
+
 import com.example.raycaster.Model.Raycasting.Raycasting.PreBaking.Math.Functions;
+import com.example.raycaster.Model.Raycasting.Raycasting.PreBaking.Ray.PointOnRay;
 import com.example.raycaster.Model.Raycasting.Raycasting.PreBaking.Ray.PreColumns.PreColumn;
 import com.example.raycaster.View.Render;
 import com.example.raycaster.Model.Resources.Textures.Texture;

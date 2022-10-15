@@ -63,9 +63,8 @@ public final class PreColumn {
         double lha = RenderInfoBuffer.lhheight[InPoint.countPos];
 
         if (Map.isNeighbourhood((int) PointOnRay.posX, (int) PointOnRay.posY, RenderInfoBuffer.lluposX[PreColumn.uppernum], RenderInfoBuffer.lluposY[ PreColumn.uppernum])) {
-            if (Column.noTrapeze(PointOnRay.deltaPosY, AngleRay.val) || (!Sight.lupperXa || Ray.upperXa)) {
-                lha = height;
-            }
+            lha = height;
+
         }
 
         if (lha == 0) {

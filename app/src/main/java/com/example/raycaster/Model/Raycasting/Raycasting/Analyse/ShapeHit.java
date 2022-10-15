@@ -18,7 +18,14 @@ public final class ShapeHit {
         boolean inX = PointOnRay.intdeltaPosX > min && PointOnRay.intdeltaPosX < max;
         boolean inY = PointOnRay.intdeltaPosY > min && PointOnRay.intdeltaPosY < max;
 
-        return inX && inY;
+        int aintX = PointOnRay.intdeltaPosX - 32;
+        int aintY = PointOnRay.intdeltaPosY - 32;
+
+        int fun = aintX * aintX + aintY * aintY;
+
+        boolean inZ = fun < 256;
+
+        return inX && inY && inZ;
     }
 
     public static void analyse(){

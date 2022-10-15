@@ -16,9 +16,8 @@ public final class UpperPreColumn {
         double lhaa = RenderInfoBuffer.lhhheight[InPoint.countPos];
 
         if (Map.isNeighbourhood((int) PointOnRay.posX, (int) PointOnRay.posY, RenderInfoBuffer.llluposX[PreColumn.uppernumh],RenderInfoBuffer.llluposY[ PreColumn.uppernumh])) {
-            if (Column.noTrapeze(PointOnRay.deltaPosY, AngleRay.val) || (!Sight.lupperbuildingXa || Ray.upperbuildingXa)) {
-                lhaa = height;
-            }
+            lhaa = height;
+
         }
 
         if (lhaa == 0) {
