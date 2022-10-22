@@ -29,17 +29,17 @@ public final class ColumnPixel {
 
 
     public static void drawSmallColumn(int llminh,int llmaxh,boolean upperb,int shadow,Texture tex){
-        final double deltaPos = ((double)Column.lheight + (Column.dh) )/(double) RenderProcedure.textureResolution;
+        final float deltaPos = ((float)Column.lheight + (Column.dh) )/(float) RenderProcedure.textureResolution;
 
-        double texPos = 0;
-        double deltaP = 0;
+        float texPos = 0;
+        float deltaP = 0;
 
         final int minimal =  llminh*(int)RenderProcedure.realWidth;
         final int maximal = llmaxh*(int)RenderProcedure.realWidth;
         final int minimalY =  PreColumn.maxh*(int)RenderProcedure.realWidth;
 
         for(int y=Column.posStart;y<Column.posFinal;y+=RenderProcedure.realWidth) {
-            if ((y >= minimal && y>=minimalY&& y < maximal) || upperb) {
+            if ((y >= minimal && y < maximal && y>minimalY) || upperb) {
 
                 final int acolumn = ((int) Column.dc & RenderProcedure.deltaPosMask);
                 setPixelColumn(y + Column.trnsx, acolumn, (int) texPos & 0x7f, shadow,tex);

@@ -5,20 +5,20 @@ import com.example.raycaster.Model.Raycasting.RenderProcedure;
 
 public final class AngleRay {
 
-    public AngleRay(double fi){
+    public AngleRay(float fi){
         countAngleRayProperties(fi);
     }
     public static int val;
     public static int dval;
 
-    public static double sinDeltaX;
-    public static double cosDeltaY;
+    public static float sinDeltaX;
+    public static float cosDeltaY;
 
-    public static double sinPosX;
-    public static double cosPosY;
-    public static double cosBetaR;
+    public static float sinPosX;
+    public static float cosPosY;
+    public static float cosBetaR;
 
-    private static void countAngleRayProperties(double fi){
+    private static void countAngleRayProperties(float fi){
         val = Functions.getValue(fi);
         dval = Functions.getValue(RenderProcedure.angle-fi);
 

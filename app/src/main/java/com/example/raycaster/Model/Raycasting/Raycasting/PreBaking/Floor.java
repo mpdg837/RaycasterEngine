@@ -1,5 +1,7 @@
 package com.example.raycaster.Model.Raycasting.Raycasting.PreBaking;
 
+import com.example.raycaster.Model.Raycasting.Raycasting.Analyse.Entities.InPoint;
+import com.example.raycaster.Model.Raycasting.Raycasting.Analyse.Entities.Sight;
 import com.example.raycaster.Model.Resources.Map.Map;
 import com.example.raycaster.Model.Raycasting.Raycasting.Analyse.Entities.Ray;
 import com.example.raycaster.Model.Raycasting.Raycasting.PreBaking.Ray.PointOnRay;
@@ -11,9 +13,9 @@ import com.example.raycaster.View.Raycasting.BasicElements.FloorRender;
 
 public final class Floor {
 
-    static double heightBuffer = 0;
+    static float heightBuffer = 0;
 
-    private static int getHei(double r){
+    private static int getHei(float r){
         int hei = (int)(PreColumn.lheightpos - PreColumn.height);
 
         if(hei == 0){
@@ -25,11 +27,11 @@ public final class Floor {
         }else{
             heightBuffer = 0;
         }
-        return hei + 1;
+        return hei+2;
     }
 
-    public static void renderFloor(int posX, int posY, boolean renderFloor, int posScreenX, double deltaPosY
-            , double deltaPosX, double r, boolean half, boolean oneheight, boolean halfupx, int maxhh, int minhh){
+    public static void renderFloor(int posX, int posY, boolean renderFloor, int posScreenX, float deltaPosY
+            , float deltaPosX, float r, boolean half, boolean oneheight, boolean halfupx, int maxhh, int minhh){
 
         posScreenX += (RenderProcedure.SCREEN_STEP>>1);
 
@@ -37,7 +39,7 @@ public final class Floor {
 
             int hei = getHei(r);
             if(hei > 0) {
-                final double heightx = PreColumn.height;
+                final float heightx = PreColumn.height;
 
                 if (RenderProcedure.cameraY + heightx < (RenderProcedure.canvasHeight << 1) - 1) {
                     final int ceil = Map.ceiling[posX][posY];
@@ -65,14 +67,16 @@ public final class Floor {
                                 }
 
                                 if (ceil == 1) {
-                                    if (!halfupx) PreColumn.maxh = posstart;
+                                    if (!halfupx ||  !Ray.outside) {
+                                        PreColumn.maxh = posstart;
+                                    }
 
                                 }
 
                             }
 
 
-                            if (!half) {
+                            if (!half && !Ray.oneheight) {
 
                                 FloorRender.renderFloorDown(r,ceil,hei,poslX,poslY,posScreenX,posfinish);
 

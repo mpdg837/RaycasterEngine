@@ -18,20 +18,20 @@ public final class Sprites {
 
 
 
-    public static void renderHalf(double heights){
+    public static void renderHalf(float heights){
         Ray.sprite = true;
         if (Sight.obj == 4) {
             Half.renderHalfBlock(heights);
         } else {
 
-            final int fun = (int) (-Sight.tan * (double) PointOnRay.intdeltaPosX + Sight.tan * (double) Sight.spritePosX + (double) Sight.spritePosY);
+            final int fun = (int) (-Sight.tan * (float) PointOnRay.intdeltaPosX + Sight.tan * (float) Sight.spritePosX + (float) Sight.spritePosY);
 
             DynamicSprite.statusofangle = PointOnRay.intdeltaPosY > fun;
         }
     }
 
 
-    public static void renderSprites(double r){
+    public static void renderSprites(float r){
         if (!Ray.oneheight) {
 
             int shadows = getShadowValue();
@@ -40,7 +40,7 @@ public final class Sprites {
 
             if (SpriteDetector.isSprite()) {
 
-                final double heights =  PreColumn.height;
+                final float heights =  PreColumn.height;
 
 
                 if(Sight.obj == 12){

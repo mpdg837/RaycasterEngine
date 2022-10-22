@@ -29,7 +29,7 @@ public final class InPoint {
         Ray.halfupx = Map.halfup[(int)PointOnRay.posX][(int)PointOnRay.posY];
 
         if(Ray.lhalfupx == 1){
-            final double height =  PreColumn.height;
+            final float height =  PreColumn.height;
             PreColumn.maxhh = RenderProcedure.cameraY - (int)height;
         }
 
@@ -49,7 +49,7 @@ public final class InPoint {
     private static int countLocalPos(){
        return (((int) PointOnRay.posX - (int) RenderProcedure.pos.x+16) << 5) +((int)PointOnRay.posY-(int)RenderProcedure.pos.y+16);
     }
-    public static void analysePoint(double r){
+    public static void analysePoint(float r){
         countPos = countLocalPos();
 
         if((int)PointOnRay.posX != (int)RenderProcedure.pos.x || (int)PointOnRay.posY != (int)RenderProcedure.pos.y)
@@ -107,7 +107,7 @@ public final class InPoint {
         }
     }
 
-    private static void renderFloor(double r,boolean oneheight,boolean halfupx){
+    private static void renderFloor(float r,boolean oneheight,boolean halfupx){
         Floor.renderFloor((int) PointOnRay.posX, (int) PointOnRay.posY, Ray.renderFloor, Sight.posScreenX, PointOnRay.deltaPosY, PointOnRay.deltaPosX, r,
                 Ray.half, oneheight,halfupx, PreColumn.maxhh, PreColumn.minhh);
     }

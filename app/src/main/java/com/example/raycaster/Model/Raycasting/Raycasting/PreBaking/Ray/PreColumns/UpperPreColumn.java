@@ -12,8 +12,8 @@ import com.example.raycaster.View.Raycasting.BasicElements.Column;
 public final class UpperPreColumn {
 
 
-    public static double getLastUpperBuildingHeight(double height){
-        double lhaa = RenderInfoBuffer.lhhheight[InPoint.countPos];
+    public static float getLastUpperBuildingHeight(float height){
+        float lhaa = RenderInfoBuffer.lhhheight[InPoint.countPos];
 
         if (Map.isNeighbourhood((int) PointOnRay.posX, (int) PointOnRay.posY, RenderInfoBuffer.llluposX[PreColumn.uppernumh],RenderInfoBuffer.llluposY[ PreColumn.uppernumh])) {
             lhaa = height;
@@ -24,14 +24,14 @@ public final class UpperPreColumn {
             lhaa = RenderInfoBuffer.lllhheight[PreColumn.uppernumh];
             if(lhaa == 0) lhaa = height;
 
-            double taa = height / lhaa;
+            float taa = height / lhaa;
             if (taa > 4 || taa < 0.25) lhaa = height;
         }
 
         return lhaa;
     }
 
-    public static void bufferUpperBuildingColumn(double height){
+    public static void bufferUpperBuildingColumn(float height){
         RenderInfoBuffer.llluposX[PreColumn.uppernumh] = (int) PointOnRay.posX;
         RenderInfoBuffer.llluposY[PreColumn.uppernumh] = (int) PointOnRay.posY;
 

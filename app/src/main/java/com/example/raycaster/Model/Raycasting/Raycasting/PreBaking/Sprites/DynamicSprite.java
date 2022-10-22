@@ -10,13 +10,13 @@ public final class DynamicSprite {
 
     public static boolean statusofangle = false;
 
-    public static void renderDynamicSprite(double heights,int shadows){
+    public static void renderDynamicSprite(float heights,int shadows){
 
 
-        final double fun = (double) (-Sight.tan * (double) PointOnRay.intdeltaPosX + Sight.tan * (double) Sight.spritePosX + (double) Sight.spritePosY);
+        final float fun = (float) (-Sight.tan * (float) PointOnRay.intdeltaPosX + Sight.tan * (float) Sight.spritePosX + (float) Sight.spritePosY);
 
 
-        final double posTexX = Functions.getSqrt(SpriteDetector.eq) + 1;
+        final float posTexX = Functions.getSqrt(SpriteDetector.eq) + 1;
         statusofangle = PointOnRay.intdeltaPosY > fun;
 
         if (statusofangle != Ray.lstatusofAngle) {

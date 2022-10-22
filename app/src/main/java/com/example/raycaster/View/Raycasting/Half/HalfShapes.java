@@ -45,7 +45,7 @@ public final class HalfShapes {
         }
     }
 
-    private static void renderWall(double height,int intdeltaPosX,int shadow,double lheight){
+    private static void renderWall(float height,int intdeltaPosX,int shadow,float lheight){
         Column.drawLine((short) (Sight.posScreenX - RenderProcedure.D_SCREEN_STEP), (int) height, (int) lheight,
                 intdeltaPosX, Sight.lcolumnhalf, shadow, false, false, 0, 400
                 , false, Ray.lceili, false, true);
@@ -57,21 +57,24 @@ public final class HalfShapes {
         if(ShapeHit.isInShape()) {
             Ray.sprite = true;
 
-            final double height =  PreColumn.height;
+            final float height =  PreColumn.height;
 
             int shadow = 0;
 
             if (!Ray.half && Sight.renderwall) {
 
-                double lheight = RenderInfoBuffer.lhhsheight[InPoint.countPos];
+                float lheight = RenderInfoBuffer.lhhsheight[InPoint.countPos];
 
                 if(lheight == 0) lheight = height;
+
+                if(Ray.ceili == 1){
+                    shadow +=3;
+                }
 
                 if (PointOnRay.lintdeltaPosX <=16 || PointOnRay.lintdeltaPosX>=48) {
 
                     ignoreBigDiffrence(intdeltaPosY);
 
-                    shadow = countShadowX(intdeltaPosY, shadow);
                     renderWall(height,intdeltaPosY,shadow,lheight);
 
                     Sight.lcolumnhalf = intdeltaPosY;
@@ -80,7 +83,6 @@ public final class HalfShapes {
 
                     ignoreBigDiffrence(intdeltaPosX);
 
-                    shadow = countShadowY(intdeltaPosX, shadow);
                     renderWall(height,intdeltaPosX,shadow,lheight);
 
 

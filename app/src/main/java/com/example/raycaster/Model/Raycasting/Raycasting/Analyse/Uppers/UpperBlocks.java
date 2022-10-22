@@ -14,15 +14,14 @@ public final class UpperBlocks {
     public static void renderUpperBlocks(){
         if((Ray.ceili == 1 && Ray.lceili != 1) || (Ray.upperbuildingx&& !Ray.lupperbuildingx)){
 
-            final double height = PreColumn.fakeHeight / PreColumn.z;
-            final double lha = PreColumn.getLastUpperHeight(height);
-            final double lhaa = UpperPreColumn.getLastUpperBuildingHeight(height);
+            final float height = PreColumn.fakeHeight / PreColumn.z;
+            final float lha = PreColumn.getLastUpperHeight(height);
+            final float lhaa = UpperPreColumn.getLastUpperBuildingHeight(height);
+
+            UpperBuildingBlocks.analyse(height,0,lha,lhaa);
+
 
             int shadow = 0;
-
-            UpperBuildingBlocks.analyse(height,shadow,lha,lhaa);
-
-            shadow = 0;
 
             if((int)PointOnRay.posX != (int) RenderProcedure.pos.x || (int)PointOnRay.posY != (int)RenderProcedure.pos.y)
                 if(Ray.ceili == 1 && Ray.lceiling!=1){

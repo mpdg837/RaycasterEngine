@@ -67,9 +67,9 @@ class MovingStickDetect implements View.OnTouchListener {
                 Moving.trnsY = 0;
             } else {
                 if (height > 0) {
-                    Moving.trnsY = -0.02;
+                    Moving.trnsY = -0.02f;
                 } else {
-                    Moving.trnsY = 0.02;
+                    Moving.trnsY = 0.02f;
                 }
             }
         }else{
@@ -81,9 +81,9 @@ class MovingStickDetect implements View.OnTouchListener {
                 Moving.dAngle = 0;
             } else {
                 if (width > 0) {
-                    Moving.dAngle = 0.03;
+                    Moving.dAngle = 0.03f;
                 } else {
-                    Moving.dAngle = -0.03;
+                    Moving.dAngle = -0.03f;
                 }
             }
         }else{
@@ -95,7 +95,7 @@ class MovingStickDetect implements View.OnTouchListener {
 }
 public class VirtualSticks {
 
-    double power = 0.4;
+    float power = 0.4f;
 
     protected MainActivity app;
     protected Button butt;

@@ -17,29 +17,29 @@ public final class StaticSprite {
         start = false;
         texM = false;
 
-        if ((Sight.obj == 8) && (PointOnRay.intdeltaPosY>>1 == 16)) {
-            if(Ray.spriteStableCounter>2) {
+        if ((Sight.obj == 8) && (PointOnRay.intdeltaPosY>>2 == 8)) {
+            if(Ray.spriteStableCounter>1) {
                 start = true;
                 tex = (byte) PointOnRay.intdeltaPosX;
             }
             Ray.spriteStableCounter = 0;
         }else
-        if ((Sight.obj == 9) && (PointOnRay.intdeltaPosX>>1) == 16) {
-            if(Ray.spriteStableCounter>2) {
+        if ((Sight.obj == 9) && (PointOnRay.intdeltaPosX>>2) == 8) {
+            if(Ray.spriteStableCounter>1) {
                 start = true;
                 tex = (byte) PointOnRay.intdeltaPosY;
 
                 Ray.spriteStableCounter = 0;
             }
         }else
-        if ((Sight.obj == 10) && ((PointOnRay.intdeltaPosX>>1) == 16 || (PointOnRay.intdeltaPosY>>1) == 16)) {
+        if ((Sight.obj == 10) && ((PointOnRay.intdeltaPosX>>2) == 8 || (PointOnRay.intdeltaPosY>>2) ==8)) {
 
-            boolean centerX = ((PointOnRay.intdeltaPosX>>1) < 18) && ((PointOnRay.intdeltaPosX>>1) > 14);
-            boolean centerY = ((PointOnRay.intdeltaPosY>>1) < 18) && ((PointOnRay.intdeltaPosY>>1) > 14);
+            boolean centerX = PointOnRay.intdeltaPosX >> 2 == 8;
+            boolean centerY = PointOnRay.intdeltaPosY >> 2 == 8;
 
-            if(Ray.spriteStableCounter>2 || (centerX && centerY)) {
+            if(Ray.spriteStableCounter>1 || (centerX && centerY)) {
                 start = true;
-                texM = (PointOnRay.intdeltaPosX >> 1) == 16;
+                texM = (PointOnRay.intdeltaPosX >> 2) == 8;
                 if (texM) {
                     tex = (byte) PointOnRay.intdeltaPosY;
 
@@ -56,7 +56,7 @@ public final class StaticSprite {
         }
     }
 
-    public static void renderStaticSprite(double heights, int shadows){
+    public static void renderStaticSprite(float heights, int shadows){
         detectTypeOfStaticSprite();
 
         if (start) {

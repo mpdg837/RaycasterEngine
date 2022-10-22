@@ -12,13 +12,13 @@ import com.example.raycaster.Model.Raycasting.Raycasting.RenderInfoBuffer;
 
 public final class UpperShapes{
 
-    private static void  renderYWall(double height,double lha){
+    private static void  renderYWall(float height,float lha){
         Column.drawLine((short) (Sight.posScreenX - RenderProcedure.D_SCREEN_STEP), (int) height, (int) lha, PointOnRay.intdeltaPosY, RenderInfoBuffer.lcolumnh[InPoint.countPos],
                 0, Ray.half, true,  PreColumn.llminh,  PreColumn.llmaxh, false, 0, false, false);
 
     }
 
-    private static void  renderXWall(double height,double lha){
+    private static void  renderXWall(float height,float lha){
         Column.drawLine((short) (Sight.posScreenX - RenderProcedure.D_SCREEN_STEP), (int) height, (int) lha, PointOnRay.intdeltaPosX, RenderInfoBuffer.lcolumnh[InPoint.countPos],
                 0, Ray.half, true,  PreColumn.llminh,  PreColumn.llmaxh, false, 0, false, false);
 
@@ -30,8 +30,8 @@ public final class UpperShapes{
             ShapeHit.analyse();
             if (Sight.renderwall && !Ray.luppershape) {
 
-                final double height =  PreColumn.fakeHeight/PreColumn.z;
-                double lha = PreColumn.getLastUpperHeight(height);
+                final float height =  PreColumn.fakeHeight/PreColumn.z;
+                float lha = PreColumn.getLastUpperHeight(height);
 
                 if(PointOnRay.lintdeltaPosX <=16 || PointOnRay.lintdeltaPosX>=48){
 

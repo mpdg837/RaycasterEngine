@@ -18,8 +18,8 @@ public final class PreColumn {
     public static int maxhh;
     public static int minhh;
 
-    public static double fakeHeight;
-    public static double z;
+    public static float fakeHeight;
+    public static float z;
 
     public static int uppernum;
     public static int uppernumh;
@@ -28,14 +28,16 @@ public final class PreColumn {
 
     public static int maxh = 0;
     public static int minh = 0;
+    public static int mminh = 0;
 
-    public static double height = 0;
-    public static double lheightpos  =0;
+    public static float height = 0;
+    public static float lheightpos  =0;
 
     public static void start(){
 
         maxh = 0;
         minh = 0;
+        mminh = 0;
 
         maxh = 0;
         minh = 400;
@@ -59,8 +61,8 @@ public final class PreColumn {
     public static void countHeight(){
         height = fakeHeight / z;
     }
-    public static double getLastUpperHeight(double height){
-        double lha = RenderInfoBuffer.lhheight[InPoint.countPos];
+    public static float getLastUpperHeight(float height){
+        float lha = RenderInfoBuffer.lhheight[InPoint.countPos];
 
         if (Map.isNeighbourhood((int) PointOnRay.posX, (int) PointOnRay.posY, RenderInfoBuffer.lluposX[PreColumn.uppernum], RenderInfoBuffer.lluposY[ PreColumn.uppernum])) {
             lha = height;
@@ -71,14 +73,14 @@ public final class PreColumn {
             lha = RenderInfoBuffer.llhheight[PreColumn.uppernum];
             if(lha == 0) lha = height;
 
-            double ta = height / lha;
+            float ta = height / lha;
             if(ta>4|| ta<0.25) lha = height;
         }
 
         return lha;
     }
 
-    public static void bufferUpperColumn(double height){
+    public static void bufferUpperColumn(float height){
 
         RenderInfoBuffer.llhheight[ PreColumn.uppernum] = height;
 

@@ -16,8 +16,8 @@ public final class WallHit {
         pX = (PointOnRay.lposX == (int) PointOnRay.posX);
         pY = (PointOnRay.lposY == (int) PointOnRay.posY);
 
-        pY1 = (PointOnRay.lposY == (int) PointOnRay.posY - 1) && pX;
-        pY2 = (PointOnRay.lposY == (int) PointOnRay.posY + 1) && pX;
+        pY1 = (PointOnRay.lposY == (int) PointOnRay.posY - 1);
+        pY2 = (PointOnRay.lposY == (int) PointOnRay.posY + 1);
         pX1 = (PointOnRay.lposX == (int) PointOnRay.posX - 1) && pY;
     }
 }

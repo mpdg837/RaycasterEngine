@@ -10,22 +10,22 @@ import com.example.raycaster.Model.Resources.Map.Map;
 
 public final class Moving {
 
-    public static double trnsX;
-    public static double trnsY;
+    public static float trnsX;
+    public static float trnsY;
 
-    public static double dAngle;
+    public static float dAngle;
 
     public static Point startMousePos = new Point(0,0);
     public static boolean walking(){
 
-        double step = 1.75f;
+        float step = 1.75f;
 
-        if(RenderLoopTask.delay>RenderLoopTask.FRAME_DELAY) step *= (double) RenderLoopTask.delay/(double) RenderLoopTask.FRAME_DELAY;
-        final double sinX = (double) Math.sin(RenderProcedure.angle) * step;
-        final double cosY = (double) Math.cos(RenderProcedure.angle) * step;
+        if(RenderLoopTask.delay>RenderLoopTask.FRAME_DELAY) step *= (float) RenderLoopTask.delay/(float) RenderLoopTask.FRAME_DELAY;
+        final float sinX = (float) Math.sin(RenderProcedure.angle) * step;
+        final float cosY = (float) Math.cos(RenderProcedure.angle) * step;
 
-        final double sinXl = (double) Math.sin(RenderProcedure.angle-Math.PI/2) * (step/2);
-        final double cosYl = (double) Math.cos(RenderProcedure.angle-Math.PI/2) * (step/2);
+        final float sinXl = (float) Math.sin(RenderProcedure.angle-Math.PI/2) * (step/2);
+        final float cosYl = (float) Math.cos(RenderProcedure.angle-Math.PI/2) * (step/2);
 
         Point mousePos = getMousePosition();
 

@@ -1,7 +1,7 @@
 package com.example.raycaster.View.Raycasting.UpperBlocks;
 
 public class Upper {
-    public static void analyse(double height,int shadow,double lha,double lhaa){
+    public static void analyse(float height,int shadow,float lha,float lhaa){
 
     }
 }

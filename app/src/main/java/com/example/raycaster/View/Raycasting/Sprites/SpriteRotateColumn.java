@@ -11,17 +11,17 @@ import com.example.raycaster.Model.Raycasting.Raycasting.Textures.TextureContain
 
 public final class SpriteRotateColumn extends SpriteRenderer{
 
-    private static double ys;
-    private static double yf;
+    private static float ys;
+    private static float yf;
 
-    private static  double delta;
+    private static  float delta;
 
-    private static double posTexY;
+    private static float posTexY;
 
-    private static double ltexX;
-    private static double texX;
+    private static float ltexX;
+    private static float texX;
 
-    private static  double dtexX;
+    private static  float dtexX;
 
     private static void startPointOfSprite(){
 
@@ -49,13 +49,13 @@ public final class SpriteRotateColumn extends SpriteRenderer{
         }
     }
 
-    private static void prepare(double heights, double tex){
+    private static void prepare(float heights, float tex){
         ys = RenderProcedure.cameraY - heights;
         yf = RenderProcedure.cameraY + heights;
 
         if (Ray.half) yf = RenderProcedure.cameraY;
 
-        delta = (double) 128 / ((double) 2 * heights);
+        delta = (float) 128 / ((float) 2 * heights);
 
         posTexY = 0;
 
@@ -63,7 +63,7 @@ public final class SpriteRotateColumn extends SpriteRenderer{
         int texXX = (byte) (((64 - (int)tex) & 0x3f));
 
         if(ltexX != 0){
-            texX = ltexX + (double) (32*RenderProcedure.SCREEN_STEP)/ heights;
+            texX = ltexX + (float) (32*RenderProcedure.SCREEN_STEP)/ heights;
 
             if (texX > 127) {
                 texX = 127;
@@ -82,9 +82,9 @@ public final class SpriteRotateColumn extends SpriteRenderer{
 
             startPointOfSprite();
         }
-        dtexX = (texX - ltexX) / (double) RenderProcedure.SCREEN_STEP;
+        dtexX = (texX - ltexX) / (float) RenderProcedure.SCREEN_STEP;
     }
-    public static void render(double heights,double tex,int shadows){
+    public static void render(float heights,float tex,int shadows){
 
 
         prepare(heights,tex);
@@ -93,7 +93,7 @@ public final class SpriteRotateColumn extends SpriteRenderer{
         for (int n = (int) ys; n < yf; n++) {
             if (n >= PreColumn.minY && n >= 0 && n < RenderProcedure.SCREEN_HEIGHT) {
 
-                double ttexX = ltexX;
+                float ttexX = ltexX;
 
                 for (int k = 0; k < RenderProcedure.SCREEN_STEP; k++) {
                     final int count = Ray.countPosBuffer(k, n);

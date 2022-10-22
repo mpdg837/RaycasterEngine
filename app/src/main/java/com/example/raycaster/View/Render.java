@@ -41,7 +41,7 @@ public class Render {
     protected static void convertToImage() {
         if(app!= null) {
             if(app.img != null) {
-                synchronized (app.img) {
+
                     final ByteBuffer raster = ByteBuffer.wrap(pixels);
                     screen.copyPixelsFromBuffer(raster);
 
@@ -51,7 +51,7 @@ public class Render {
                         app.img.invalidate();
                     }
                 }
-            }
+
         }
     }
 

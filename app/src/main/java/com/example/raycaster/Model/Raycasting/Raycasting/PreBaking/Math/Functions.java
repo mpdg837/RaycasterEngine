@@ -2,63 +2,63 @@ package com.example.raycaster.Model.Raycasting.Raycasting.PreBaking.Math;
 
 public final class Functions {
 
-    final static  int length = 62832 * 2;
-    final static  double[] sinDeltaX = new double[length];
-    final static  double[] cosDeltaY = new double[length];
+    final static  int length = 6283 * 2;
+    final static  float[] sinDeltaX = new float[length];
+    final static  float[] cosDeltaY = new float[length];
 
-    final static  double[] sinPosX = new double[length];
-    final static  double[] cosPosY = new double[length];
+    final static  float[] sinPosX = new float[length];
+    final static  float[] cosPosY = new float[length];
 
-    final static  double[] cosBetaR = new double[length];
+    final static  float[] cosBetaR = new float[length];
 
-    final static  double[] tan = new double[length];
+    final static  float[] tan = new float[length];
 
     final static  int[] sqrt = new int[32*32*1000];
-    public static void precount(double deltaRaycasterStep, double raycasterStep) {
-        for (double fi = -6.2832f; fi < 6.2832; fi+=0.0001) {
+    public static void precount(float deltaRaycasterStep, float raycasterStep) {
+        for (double fi = -6.283; fi < 6.283; fi+=0.001) {
             int n=getValue(fi);
 
-            sinDeltaX[n] = (double) Math.sin(fi) * deltaRaycasterStep;
-            cosDeltaY[n] = (double)Math.cos(fi) * deltaRaycasterStep;
+            sinDeltaX[n] = (float) ((double)Math.sin(fi) *  (double)deltaRaycasterStep);
+            cosDeltaY[n] = (float) ((double)Math.cos(fi) *  (double)deltaRaycasterStep);
 
-            sinPosX[n] = (double)Math.sin(fi) * raycasterStep;
-            cosPosY[n] =(double) Math.cos(fi) * raycasterStep;
-            cosBetaR[n] = (double)Math.cos(fi) * raycasterStep;
+            sinPosX[n] = (float) ((double)Math.sin(fi) *  (double)raycasterStep);
+            cosPosY[n] =(float)  ((double)Math.cos(fi) *  (double)raycasterStep);
+            cosBetaR[n] = (float) ((double)Math.cos(fi) *  (double)raycasterStep);
 
-            tan[n] = (double)Math.tan(fi);
+            tan[n] = (float) ((double)Math.tan(fi));
         }
 
-        for (double fi = 0; fi < 32*32; fi+=0.001) {
-            int n=(int)(fi*(double) 1000);
-            sqrt[n] = (int)(Math.sqrt(fi)/(double)22*(double) 31);
+        for (float fi = 0; fi < 32*32; fi+=0.001) {
+            int n=(int)(fi*(float) 1000);
+            sqrt[n] = (int)(Math.sqrt(fi)/(float)22*(float) 31);
         }
     }
     public static int getValue(double val){
-        return (int)((val + 6.2832)*(double) 10000);
+        return (int)((val + 6.283)*(double) 1000);
     }
-    public static double getSinDeltaX(int angle){
+    public static float getSinDeltaX(int angle){
         return sinDeltaX[(angle)];
     }
 
-    public static  int getSqrt(double val){
+    public static  int getSqrt(float val){
         return sqrt[(int)(val*1000)];
     }
 
-    public static double getCosDeltaY(int angle){
+    public static float getCosDeltaY(int angle){
         return cosDeltaY[angle];
     }
 
-    public static  double getSinPosX(int angle){
+    public static  float getSinPosX(int angle){
         return sinPosX[angle];
     }
 
-    public static  double getCosPosY(int angle){
+    public static  float getCosPosY(int angle){
         return cosPosY[angle];
     }
 
-    public static  double getCosBetaR(int angle){
+    public static  float getCosBetaR(int angle){
         return cosBetaR[angle];
     }
 
-    public static  double getTan(int angle){return tan[angle];}
+    public static  float getTan(int angle){return tan[angle];}
 }

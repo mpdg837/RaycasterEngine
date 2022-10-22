@@ -12,31 +12,31 @@ import com.example.raycaster.Model.Raycasting.Raycasting.Textures.TextureContain
 
 public final class SpriteColumn extends SpriteRenderer{
 
-    private static double ys;
-    private static double yf;
+    private static float ys;
+    private static float yf;
 
-    private static  double delta;
+    private static  float delta;
 
-    private static double posTexY;
+    private static float posTexY;
 
     private static byte ltexX;
     private static byte texX;
 
-    private static  double dtexX;
+    private static  float dtexX;
 
-    public static void renderFloor(double r){
+    public static void renderFloor(float r){
         Floor.renderFloor((int) PointOnRay.posX, (int) PointOnRay.posY, Ray.renderFloor, Sight.posScreenX, PointOnRay.deltaPosY, PointOnRay.deltaPosX, r,
                 Ray.half, Ray.oneheight,Ray.halfupx == 1 || Ray.halfupx == 2, PreColumn.maxhh, PreColumn.minhh);
 
     }
 
-    public static void prepare(double heights, int tex,boolean texM){
+    public static void prepare(float heights, int tex,boolean texM){
         ys = RenderProcedure.cameraY - heights;
         yf = RenderProcedure.cameraY + heights;
 
         if (Ray.half) yf = RenderProcedure.cameraY;
 
-        delta = (double) 128 / ((double) 2 * heights);
+        delta = (float) 128 / ((float) 2 * heights);
 
         posTexY = 0;
 
@@ -45,10 +45,10 @@ public final class SpriteColumn extends SpriteRenderer{
         if (texM) ltexX = RenderInfoBuffer.mapsprite2[InPoint.countPos];
         if (ltexX == 0) ltexX = (byte)tex;
 
-        dtexX = ((double) tex - (double) ltexX) / (double) RenderProcedure.SCREEN_STEP;
+        dtexX = ((float) tex - (float) ltexX) / (float) RenderProcedure.SCREEN_STEP;
 
     }
-    public static void render(double heights,boolean texM,byte tex,int shadows){
+    public static void render(float heights,boolean texM,byte tex,int shadows){
 
         prepare(heights,tex,texM);
         int range = RenderProcedure.SCREEN_HEIGHT;
@@ -57,7 +57,7 @@ public final class SpriteColumn extends SpriteRenderer{
 
             if (n >= PreColumn.minY && n >= 0 && n < range) {
 
-                double ttexX = ltexX;
+                float ttexX = ltexX;
 
                 for (int k = 0; k < RenderProcedure.SCREEN_STEP; k++) {
                     final int count = Ray.countPosBuffer(k, n);

@@ -102,7 +102,7 @@ public final class Ray {
 
         outside = Map.ceiling[(int)  PointOnRay.posX][(int)  PointOnRay.posY] == 0;
     }
-    public static void analyseRay(double fi){
+    public static void analyseRay(float fi){
 
         new AngleRay(fi);
         new PointOnRay();
@@ -111,8 +111,8 @@ public final class Ray {
         initRay();
         analyseAreaNearPlayer();
 
-        double actRaycastStep = RenderProcedure.raycasterStep;
-        for (double r = 0; r < 10; r += actRaycastStep) {
+        float actRaycastStep = RenderProcedure.raycasterStep;
+        for (float r = 0; r < 10; r += actRaycastStep) {
 
             if(Map.ceiling[(int)  PointOnRay.posX][(int)  PointOnRay.posY] == 0) outside = true;
 

@@ -22,38 +22,26 @@ public final class Shpaes {
         }
     }
 
-    private static void renderYWall(double height, int shadow){
+    private static void renderYWall(float height, int shadow){
         Column.drawLine((short) (Sight.posScreenX - RenderProcedure.D_SCREEN_STEP), (int) height, (int) Sight.lheighte,
                 PointOnRay.intdeltaPosY, Sight.lcolumn, shadow, Ray.half, false, 0, 400
                 , false, Ray.lceili, false, false);
 
     }
 
-    private static void renderXWall(double height, int shadow){
+    private static void renderXWall(float height, int shadow){
         Column.drawLine((short) (Sight.posScreenX - RenderProcedure.D_SCREEN_STEP), (int) height, (int) Sight.lheighte,
-                PointOnRay.intdeltaPosX, Sight.lcolumn, 0, Ray.half, false, 0, 400
+                PointOnRay.intdeltaPosX, Sight.lcolumn, shadow, Ray.half, false, 0, 400
                 , false, Ray.lceili, false, false);
 
     }
-    private static int countShadow(int value, int shadow){
-        if(value < 19){
-            shadow = 1;
-        }else{
-            shadow = 2;
-        }
 
-        if(Ray.ceili == 1){
-            shadow +=3;
-        }
-
-        return shadow;
-    }
-    public static void renderShapes(double r){
+    public static void renderShapes(float r){
 
         if(ShapeHit.isInShape()) {
             Ray.finish = true;
 
-            final double height =  PreColumn.height;
+            final float height =  PreColumn.height;
             PreColumn.minh = RenderProcedure.cameraY - (int) height;
 
             if (Map.isNeighbourhood((int) PointOnRay.posX, (int) PointOnRay.posY, Sight.llcposX, Sight.llcposY)) {
@@ -65,6 +53,7 @@ public final class Shpaes {
 
             int shadow = 0;
 
+
             if(Sight.renderwall) {
 
                 if (!Sight.wallinitized)
@@ -74,11 +63,13 @@ public final class Shpaes {
 
                 Sight.wallinitized = true;
 
+                if(Ray.ceili == 1){
+                    shadow +=3;
+                }
                 if(PointOnRay.lintdeltaPosX <=16 || PointOnRay.lintdeltaPosX>=48){
 
                     ignoreBigDiffrence(PointOnRay.intdeltaPosY);
 
-                    shadow = countShadow(PointOnRay.intdeltaPosY,shadow);
                     renderYWall(height,shadow);
 
                     Sight.lcolumn = PointOnRay.intdeltaPosY;
@@ -88,7 +79,6 @@ public final class Shpaes {
 
                     ignoreBigDiffrence(PointOnRay.intdeltaPosX);
 
-                    shadow = countShadow(PointOnRay.intdeltaPosX,shadow);
                     renderXWall(height,shadow);
 
                     Sight.lcolumn = PointOnRay.intdeltaPosX;
@@ -111,7 +101,7 @@ public final class Shpaes {
 
     }
 
-    private static void bufferInfoAboutShape(double height){
+    private static void bufferInfoAboutShape(float height){
         PreColumn.llmaxh = RenderProcedure.cameraY - (int) height;
         Sight.lheighte = height;
 
@@ -122,7 +112,7 @@ public final class Shpaes {
         Sight.llcposY = (int) PointOnRay.posY;
     }
 
-    private static void renderFloor(double r){
+    private static void renderFloor(float r){
         Floor.renderFloor((int) PointOnRay.posX, (int) PointOnRay.posY, Ray.renderFloor, Sight.posScreenX, PointOnRay.deltaPosY, PointOnRay.deltaPosX, r,
                 Ray.half, Ray.oneheight, Ray.halfupx == 1 || Ray.halfupx == 2, PreColumn.maxhh, PreColumn.minhh);
     }

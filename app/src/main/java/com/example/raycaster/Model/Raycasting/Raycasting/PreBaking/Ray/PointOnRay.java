@@ -8,15 +8,15 @@ import com.example.raycaster.Model.Raycasting.RenderProcedure;
 public final class PointOnRay {
 
 
-    public static double posX;
-    public static double posY;
+    public static float posX;
+    public static float posY;
 
     public static int lposY = 0;
     public static int lposX = 0;
-    public static double deltaPosX;
-    public static double deltaPosY;
+    public static float deltaPosX;
+    public static float deltaPosY;
 
-    static double dr = 0;
+    static float dr = 0;
     static int step = 0;
     static int nstep = 0;
 
@@ -69,7 +69,7 @@ public final class PointOnRay {
         if (Sight.posScreenX != 0) {
             dr += RenderProcedure.raycasterStep;
 
-            if (dr > 7) { // Sqrt 3
+            if (dr > 5) { // Sqrt 3
                 dr = 0;
                 step++;
                 Ray.renderFloor = true;

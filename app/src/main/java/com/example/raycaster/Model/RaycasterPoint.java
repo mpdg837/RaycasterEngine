@@ -1,10 +1,10 @@
 package com.example.raycaster.Model;
 
 public class RaycasterPoint {
-    public double x;
-    public double y;
+    public float x;
+    public float y;
 
-    public RaycasterPoint(double x, double y){
+    public RaycasterPoint(float x, float y){
         this.x =x;
         this.y =y;
     }

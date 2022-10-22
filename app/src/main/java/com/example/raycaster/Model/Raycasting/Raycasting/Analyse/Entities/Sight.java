@@ -8,21 +8,21 @@ public final class Sight {
     public static int spritePosX = 32;
     public static int spritePosY = 24;
 
-    public static double deltaPosXc;
-    public static double deltaPosYc;
+    public static float deltaPosXc;
+    public static float deltaPosYc;
 
     public static boolean renderwall = false;
     public static boolean lastWall = false;
 
     public static int posScreenX;
 
-    public static double lheight;
-    public static double lheighte;
-    public static double luheight ;
+    public static float lheight;
+    public static float lheighte;
+    public static float luheight ;
 
     public static int lcolumn;
 
-    public static double tan;
+    public static float tan;
     public static int obj;
     public static int lcountPos;
 
@@ -47,11 +47,11 @@ public final class Sight {
     public static int halflposX;
     public static int halflposY;
 
-    public static double halflheight = 0;
+    public static float halflheight = 0;
 
 
-    private static double countTan(){
-        double tan = (double) Math.tan(RenderProcedure.angle);
+    private static float countTan(){
+        float tan = (float) Math.tan(RenderProcedure.angle);
 
         if(tan>10){
             tan = 10;
@@ -64,8 +64,8 @@ public final class Sight {
 
     private static void countRelativePos(){
 
-        deltaPosXc = ((RenderProcedure.pos.x-((double) (int)RenderProcedure.pos.x))*(double) RenderProcedure.textureResolution);
-        deltaPosYc = ((RenderProcedure.pos.y-((double) (int)RenderProcedure.pos.y))*(double) RenderProcedure.textureResolution);
+        deltaPosXc = ((RenderProcedure.pos.x-((float) (int)RenderProcedure.pos.x))*(float) RenderProcedure.textureResolution);
+        deltaPosYc = ((RenderProcedure.pos.y-((float) (int)RenderProcedure.pos.y))*(float) RenderProcedure.textureResolution);
 
     }
 
@@ -115,7 +115,7 @@ public final class Sight {
        initSight();
        countRelativePos();
 
-        for(double fi = RenderProcedure.angle - RenderProcedure.pi/6 ;fi<RenderProcedure.angle + RenderProcedure.pi/6; fi+=RenderProcedure.deltaFi) {
+        for(float fi = RenderProcedure.angle - RenderProcedure.pi/6 ;fi<RenderProcedure.angle + RenderProcedure.pi/6; fi+=RenderProcedure.deltaFi) {
             Ray.analyseRay(fi);
 
         }

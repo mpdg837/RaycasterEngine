@@ -118,6 +118,7 @@ public final class Map {
         map[66][61] = 2;
         map[66][60] = 1;
 
+        ceiling[61][67]=1;
         map[63][64] = 1;
 
         map[64][60] = 1;

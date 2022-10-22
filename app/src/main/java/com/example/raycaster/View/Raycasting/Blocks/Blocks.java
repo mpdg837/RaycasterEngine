@@ -13,25 +13,25 @@ import com.example.raycaster.View.Raycasting.BasicElements.Column;
 
 public final class Blocks {
 
-    private static void renderXWall(double height,int shadow){
+    private static void renderXWall(float height,int shadow){
         Column.drawLine((short) (Sight.posScreenX - RenderProcedure.D_SCREEN_STEP), (int) height, (int) Sight.lheight,
                 PointOnRay.intdeltaPosX, Sight.lcolumn, shadow, Ray.half, false, 0, 400
                 , false, Ray.lceili, false, false);
     }
 
-    private static void renderYWall(double height,int shadow){
+    private static void renderYWall(float height,int shadow){
         Column.drawLine((short) (Sight.posScreenX - RenderProcedure.D_SCREEN_STEP), (int) height, (int) Sight.lheight,
                 PointOnRay.intdeltaPosY, Sight.lcolumn, shadow, Ray.half, false, 0, 400
                 , false, Ray.lceili, false, false);
     }
 
-    private static void renderNWall(double height){
+    private static void renderNWall(float height){
         Column.drawLine((short) (Sight.posScreenX - RenderProcedure.D_SCREEN_STEP), (int) height, (int) Sight.lheight,
                 Sight.lcolumn, Sight.lcolumn, Sight.lshadow, Ray.half, false, 0, 400
                 , false, Ray.lceili, false, false);
     }
 
-    public static void renderBlocks(double r){
+    public static void renderBlocks(float r){
 
         if((int) PointOnRay.posX != (int) RenderProcedure.pos.x || (int)PointOnRay.posY != (int)RenderProcedure.pos.y) {
 
@@ -40,7 +40,7 @@ public final class Blocks {
             } else {
                 Ray.finish = true;
 
-                final double height = PreColumn.height;
+                final float height = PreColumn.height;
                 PreColumn.minh = RenderProcedure.cameraY - (int) height;
 
                 if (Sight.renderwall) {
@@ -67,7 +67,6 @@ public final class Blocks {
                                 }
 
 
-                                if (WallHit.pY1) shadow += 2;
 
                                 renderXWall(height,shadow);
 
@@ -78,9 +77,6 @@ public final class Blocks {
                                 if (Sight.lastWall) {
                                     Sight.lcolumn = 0;
                                 }
-
-                                shadow = 2;
-                                if (WallHit.pX1) shadow += 2;
 
                                 renderYWall(height,shadow);
 
@@ -106,7 +102,7 @@ public final class Blocks {
         }
     }
 
-    public static void bufferInfo(double height){
+    public static void bufferInfo(float height){
         PreColumn.llmaxh = RenderProcedure.cameraY - (int) height;
         Sight.lheight = height;
 

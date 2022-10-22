@@ -18,22 +18,22 @@ public final class RenderProcedure extends Render {
     public final  static int canvasHeight= 200;
     public final  static byte distance = 16;
     public final  static int deltaPosMask = 0x3f;
-    public final  static double raycasterStep = 0.032f;
-    public final static double lineHeightStep = (double) canvasHeight/(double) distance * raycasterStep;
+    public final  static float raycasterStep = 0.064f;
+    public final static float lineHeightStep = (float) canvasHeight/(float) distance * raycasterStep;
     public final  static byte textureResolution = 64;
 
-    public final  static double deltaRaycasterStep = raycasterStep * textureResolution;
-    public static final  double pi = 3.14f;
+    public final  static float deltaRaycasterStep = raycasterStep * textureResolution;
+    public static final  float pi = (float) Math.PI;
     public static int SCREEN_STEP;
     public static int D_SCREEN_STEP;
-    public static double realWidth;
-    public static double deltaFi;
+    public static float realWidth;
+    public static float deltaFi;
 
     public static RaycasterPoint pos = new RaycasterPoint(61.5f,64.5f);
-    public static double angle = 0;
+    public static float angle = 0;
 
-    public static final int SCREEN_STEP_STAND = 5;
-    public static final int SCREEN_STEP_WALK = 6;
+    public static final int SCREEN_STEP_STAND =6;
+    public static final int SCREEN_STEP_WALK = 7;
     public static final int cameraY = 200;
 
 
@@ -62,7 +62,7 @@ public final class RenderProcedure extends Render {
         D_SCREEN_STEP = SCREEN_STEP << 1;
         realWidth = SCREEN_WIDTH << Render.shiftPixelWidth;
 
-        deltaFi = pi/((double) 1920/(double) SCREEN_STEP);
+        deltaFi = pi/((float) 1920/(float) SCREEN_STEP);
     }
 
 

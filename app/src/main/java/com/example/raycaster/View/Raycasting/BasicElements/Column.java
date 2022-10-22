@@ -13,11 +13,11 @@ import com.example.raycaster.Model.Raycasting.Raycasting.Textures.TextureContain
 
 public final class Column {
 
-    public static double ys;
-    public static double yf;
+    public static float ys;
+    public static float yf;
 
     public static int lheight;
-    public static double height;
+    public static float height;
 
     public static int posStart;
     public static int posFinal;
@@ -27,19 +27,19 @@ public final class Column {
     public static int len;
     public static int cdiff;
 
-    public static double delta;
-    public static double deltacolor;
+    public static float delta;
+    public static float deltacolor;
 
-    public static double dh = 0;
-    public static double dc;
+    public static float dh = 0;
+    public static float dc;
     public static byte trnsx = 0;
 
-    public static boolean noTrapeze(double deltaPosY,int val){
+    public static boolean noTrapeze(float deltaPosY,int val){
         boolean decision = true;
 
         final int intdeltaPosXX = (int) deltaPosY & RenderProcedure.deltaPosMask;
 
-        double tanx = Functions.getTan(val);
+        float tanx = Functions.getTan(val);
         if (intdeltaPosXX == 0 || intdeltaPosXX == 63) {
             if (tanx > 10 || tanx < -10) {
                 decision = false;
@@ -103,8 +103,8 @@ public final class Column {
             len = RenderProcedure.D_SCREEN_STEP+ 1;
         }
 
-        delta = (double) (diff)/(double) len;
-        deltacolor = (double) ( column-lcolumn)/(double) RenderProcedure.D_SCREEN_STEP;
+        delta = (float) (diff)/(float) len;
+        deltacolor = (float) ( column-lcolumn)/(float) RenderProcedure.D_SCREEN_STEP;
 
         dh = 0;
         dc = lcolumn;
@@ -113,23 +113,26 @@ public final class Column {
 
     private static void makeSmoothBorders(boolean upperb,boolean upper,boolean half,int x,boolean renderHalf,boolean upperhalf){
         if(upperb){
-            posStart = (int)(((int)((double)ys-3*dh) * (double)RenderProcedure.SCREEN_WIDTH + (double)x)) << Render.shiftPixelWidth;
-            posFinal = (int)(((int)((double)yf-2*dh) * (double)RenderProcedure.SCREEN_WIDTH + (double)x)) << Render.shiftPixelWidth;
+            posStart = (int)(((int)((float)ys-3*dh) * (float)RenderProcedure.SCREEN_WIDTH + (float)x)) << Render.shiftPixelWidth;
+            posFinal = (int)(((int)((float)yf-2*dh) * (float)RenderProcedure.SCREEN_WIDTH + (float)x)) << Render.shiftPixelWidth;
         }else
         if(upper){
 
-            if(upperhalf)posStart = (int)(((int)((double)ys-1.5*dh) * (double)RenderProcedure.SCREEN_WIDTH + (double)x)) << Render.shiftPixelWidth;
-            else posStart = (int)(((int)((double)ys-2*dh) * (double)RenderProcedure.SCREEN_WIDTH + (double)x)) << Render.shiftPixelWidth;
-            posFinal = (int)(((int)((double)yf-dh) * (double)RenderProcedure.SCREEN_WIDTH + (double)x)) << Render.shiftPixelWidth;
+            if(upperhalf)posStart = (int)(((int)((float)ys-dh) * (float)RenderProcedure.SCREEN_WIDTH + (float)x)) << Render.shiftPixelWidth;
+            else posStart = (int)(((int)((float)ys-2*dh) * (float)RenderProcedure.SCREEN_WIDTH + (float)x)) << Render.shiftPixelWidth;
+
+
+            if(upperhalf) posFinal = (int)(((int)((float)yf) * (float)RenderProcedure.SCREEN_WIDTH + (float)x)) << Render.shiftPixelWidth;
+            else posFinal = (int)(((int)((float)yf-dh) * (float)RenderProcedure.SCREEN_WIDTH + (float)x)) << Render.shiftPixelWidth;
 
         }else{
 
-            if(renderHalf) posStart = (int)(((int)((double)ys) * (double)RenderProcedure.SCREEN_WIDTH + (double)x)) << Render.shiftPixelWidth;
-            else posStart = (int)(((int)((double)ys-dh) * (double)RenderProcedure.SCREEN_WIDTH + (double)x)) << Render.shiftPixelWidth;
+            if(renderHalf) posStart = (int)(((int)((float)ys) * (float)RenderProcedure.SCREEN_WIDTH + (float)x)) << Render.shiftPixelWidth;
+            else posStart = (int)(((int)((float)ys-dh) * (float)RenderProcedure.SCREEN_WIDTH + (float)x)) << Render.shiftPixelWidth;
 
-            if(half) posFinal = (int)(((int)((double)yf) * (double)RenderProcedure.SCREEN_WIDTH + (double)x)) << Render.shiftPixelWidth;
+            if(half) posFinal = (int)(((int)((float)yf) * (float)RenderProcedure.SCREEN_WIDTH + (float)x)) << Render.shiftPixelWidth;
             else {
-                posFinal = (int)(((int)((double)yf+dh) * (double)RenderProcedure.SCREEN_WIDTH + (double)x)) << Render.shiftPixelWidth;
+                posFinal = (int)(((int)((float)yf+dh) * (float)RenderProcedure.SCREEN_WIDTH + (float)x)) << Render.shiftPixelWidth;
             }
         }
     }
@@ -139,7 +142,7 @@ public final class Column {
         Column.lheight = lheight;
         Column.height = height;
 
-        if(lceili == 1) shadow +=2;
+        if(lceili == 1 && !upperb) shadow +=2;
 
         if(shadow>7) shadow = 7;
 

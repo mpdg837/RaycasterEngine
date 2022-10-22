@@ -22,8 +22,8 @@ import com.example.raycaster.View.Render;
 public class MainActivity extends AppCompatActivity {
 
 
-    public double width = 0;
-    public double height = 0;
+    public float width = 0;
+    public float height = 0;
     public boolean initized = false;
 
     public int value;
