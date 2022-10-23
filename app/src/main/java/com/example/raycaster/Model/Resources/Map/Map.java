@@ -92,7 +92,7 @@ public final class Map {
         ceiling[66][70]=2;
         upperbuilding[66][69] = true;
         ceiling[66][69]=2;
-        uppershape[66][69] = 1;
+        uppershape[66][69] =2;
         map[66][69] = 11;
 
         upperbuilding[66][68] = true;

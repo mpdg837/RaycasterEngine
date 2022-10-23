@@ -136,18 +136,24 @@ public final class Column {
             }
         }
     }
+
+    private static boolean darkerMode(int lceili, boolean upperb){
+        return (lceili == 1) && !upperb;
+    }
     public static void drawLine(short x, int height,int lheight,int column,int lcolumn,int shadow,boolean half,boolean upper,
                                 int llminh,int llmaxh,boolean halfup,int lceili,boolean upperb,boolean dhalf){
 
         Column.lheight = lheight;
         Column.height = height;
 
-        if(lceili == 1 && !upperb) shadow +=2;
+
 
         if(shadow>7) shadow = 7;
 
         selectTypeOfColumn(halfup, upper, upperb, half, dhalf);
         Texture tex = selectTexture(halfup, upper, upperb);
+
+        if(darkerMode(lceili,upperb)) shadow +=2;
 
         prepare(column,lcolumn);
 

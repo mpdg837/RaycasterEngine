@@ -74,7 +74,7 @@ public final class Ray {
 
             oneheight = false;
 
-            ceili = 0;
+            ceili = Map.ceiling[(int) PointOnRay.posX][(int) PointOnRay.posY];
 
             lceiling = Map.ceiling[(int) PointOnRay.posX][(int) PointOnRay.posY];
 
@@ -85,7 +85,7 @@ public final class Ray {
 
             spriterendered = false;
 
-            lceili = 0;
+            lceili = Map.ceiling[(int)  PointOnRay.posX][(int)  PointOnRay.posY];
 
             spriteStableCounter = 0;
 
@@ -112,7 +112,9 @@ public final class Ray {
         analyseAreaNearPlayer();
 
         float actRaycastStep = RenderProcedure.raycasterStep;
-        for (float r = 0; r < 10; r += actRaycastStep) {
+
+
+        for (float r = 0; r < 12; r += actRaycastStep) {
 
             if(Map.ceiling[(int)  PointOnRay.posX][(int)  PointOnRay.posY] == 0) outside = true;
 

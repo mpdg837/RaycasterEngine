@@ -23,7 +23,7 @@ public final class StartGame {
 
             RenderLoop.run(app);
 
-            app.img = RenderProcedure.app.findViewById(R.id.imageView);
+            app.img = app.findViewById(R.id.imageView);
             app.img.setWillNotDraw(true);
             app.img.setImageBitmap(Render.screen);
 

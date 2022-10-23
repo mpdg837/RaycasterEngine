@@ -33,7 +33,7 @@ public final class UpperHalfBlock extends Upper {
     public static void analyse(float height,int shadow,float lha,float lhaa){
 
         shadow = 0;
-        if(Sight.renderwall) {
+        if(Sight.renderwall && !Ray.luppershapeR) {
 
             Sight.luheight = height;
 
@@ -53,7 +53,5 @@ public final class UpperHalfBlock extends Upper {
 
 
         }
-
-        HalfPreColumn.bufferHalfUpperColumn(height);
     }
 }

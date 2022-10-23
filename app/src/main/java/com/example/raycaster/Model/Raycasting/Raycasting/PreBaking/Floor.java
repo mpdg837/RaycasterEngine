@@ -38,7 +38,7 @@ public final class Floor {
         if (posScreenX != 0 && renderFloor) {
 
             int hei = getHei(r);
-            if(hei > 0) {
+            if(hei != 0) {
                 final float heightx = PreColumn.height;
 
                 if (RenderProcedure.cameraY + heightx < (RenderProcedure.canvasHeight << 1) - 1) {

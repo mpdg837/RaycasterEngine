@@ -110,12 +110,15 @@ public final class Sight {
 
         halflheight = 0;
     }
+
     public static void renderSight(){
 
        initSight();
        countRelativePos();
 
-        for(float fi = RenderProcedure.angle - RenderProcedure.pi/6 ;fi<RenderProcedure.angle + RenderProcedure.pi/6; fi+=RenderProcedure.deltaFi) {
+
+
+        for(float fi = RenderProcedure.angle - RenderProcedure.pi/12 ;fi<RenderProcedure.angle+RenderProcedure.pi/12; fi+=RenderProcedure.deltaFi) {
             Ray.analyseRay(fi);
 
         }

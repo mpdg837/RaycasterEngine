@@ -55,7 +55,7 @@ public final class Blocks {
                     if (Sight.lheight == 0) Sight.lheight = height;
                     if (!Sight.wallinitized)
                         Sight.lheight = height;
-                    if (RenderProcedure.pos.x != PointOnRay.posX || RenderProcedure.pos.y != PointOnRay.posY) {
+
                         if (Sight.posScreenX != 0) {
 
                             int shadow = 0;
@@ -65,8 +65,6 @@ public final class Blocks {
                                 if (!Sight.lastWall) {
                                     Sight.lcolumn = 0;
                                 }
-
-
 
                                 renderXWall(height,shadow);
 
@@ -91,7 +89,7 @@ public final class Blocks {
 
                         }
 
-                    }
+
                 }
 
 

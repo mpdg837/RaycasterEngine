@@ -32,8 +32,8 @@ public final class RenderProcedure extends Render {
     public static RaycasterPoint pos = new RaycasterPoint(61.5f,64.5f);
     public static float angle = 0;
 
-    public static final int SCREEN_STEP_STAND =6;
-    public static final int SCREEN_STEP_WALK = 7;
+    public static final int SCREEN_STEP_STAND =4;
+    public static final int SCREEN_STEP_WALK = 5;
     public static final int cameraY = 200;
 
 

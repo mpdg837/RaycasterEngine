@@ -14,12 +14,12 @@ public class Render {
     public static MainActivity app;
 
     protected static RenderLoopTask context;
-    public static int SCREEN_WIDTH = 640;
+    public static int SCREEN_WIDTH = 320;
     public static int SCREEN_HEIGHT = 400;
 
     public static final int pixelWidth = 4;
     public static final int shiftPixelWidth = 2;
-    public static final int maxLen = 256000 << shiftPixelWidth;
+    public static final int maxLen = 256000 << shiftPixelWidth>>1;
 
     public static int lenScreen = (SCREEN_WIDTH*SCREEN_HEIGHT) << shiftPixelWidth;
     public static byte[] pixels = new byte[lenScreen];
@@ -42,6 +42,7 @@ public class Render {
         if(app!= null) {
             if(app.img != null) {
 
+                synchronized (app.img) {
                     final ByteBuffer raster = ByteBuffer.wrap(pixels);
                     screen.copyPixelsFromBuffer(raster);
 
@@ -51,7 +52,7 @@ public class Render {
                         app.img.invalidate();
                     }
                 }
-
+            }
         }
     }
 

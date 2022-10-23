@@ -34,7 +34,7 @@ public final class UpperBlock extends Upper {
     public static void analyse(float height,int shadow,float lha,float lhaa){
 
         Ray.upperXa = true;
-        if (Sight.renderwall) {
+        if (Sight.renderwall&& !Ray.luppershapeR) {
 
             if ((WallHit.pY1 || WallHit.pY2)) {
 
