@@ -1,6 +1,7 @@
 package com.example.raycaster.View.Raycasting.BasicElements;
 
 import com.example.raycaster.Model.Raycasting.Raycasting.Analyse.Entities.Ray;
+import com.example.raycaster.Model.Raycasting.Raycasting.PreBaking.Floor;
 import com.example.raycaster.Model.Raycasting.Raycasting.PreBaking.Ray.PreColumns.PreColumn;
 import com.example.raycaster.Model.Raycasting.RenderProcedure;
 import com.example.raycaster.Model.Resources.Textures.Texture;
@@ -37,9 +38,11 @@ public final class ColumnPixel {
         final int minimal =  llminh*(int)RenderProcedure.realWidth;
         final int maximal = llmaxh*(int)RenderProcedure.realWidth;
         final int minimalY =  PreColumn.maxh*(int)RenderProcedure.realWidth;
+        int minY = Floor.lposY *(int)RenderProcedure.realWidth;
+        if(minY == 0) minY = RenderProcedure.cameraY*2 *(int)RenderProcedure.realWidth;
 
         for(int y=Column.posStart;y<Column.posFinal;y+=RenderProcedure.realWidth) {
-            if ((y >= minimal && y < maximal && y>minimalY) || upperb) {
+            if ((y >= minimal && y < maximal && y>minimalY &&y<minY ) || upperb) {
 
                 final int acolumn = ((int) Column.dc & RenderProcedure.deltaPosMask);
                 setPixelColumn(y + Column.trnsx, acolumn, (int) texPos & 0x7f, shadow,tex);

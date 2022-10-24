@@ -1,10 +1,12 @@
 package com.example.raycaster.Model.Raycasting.Raycasting.Analyse.Entities;
 
+import com.example.raycaster.Model.Raycasting.Raycasting.PreBaking.Floor;
 import com.example.raycaster.Model.Raycasting.Raycasting.PreBaking.Ray.AngleRay;
 import com.example.raycaster.Model.Raycasting.Raycasting.PreBaking.Ray.PointOnRay;
 import com.example.raycaster.Model.Raycasting.Raycasting.PreBaking.Ray.PreColumns.PreColumn;
 import com.example.raycaster.Model.Raycasting.RenderProcedure;
 import com.example.raycaster.Model.Resources.Map.Map;
+import com.example.raycaster.View.Raycasting.BasicElements.FloorRender;
 import com.example.raycaster.View.Raycasting.BasicElements.SpriteBufferRender;
 
 public final class Ray {
@@ -34,8 +36,6 @@ public final class Ray {
 
     public static int lceili;
 
-    public static int spriteStableCounter;
-
     public static boolean upperbuildingx;
     public static boolean lupperbuildingx;
     public static byte lhalfupx;
@@ -49,6 +49,9 @@ public final class Ray {
 
     public static boolean outside;
 
+    public static int lfloorH = 0;
+    public static int floorH = 0;
+
     public static int countPosBuffer(int x, int y){
         int count = (y << 3) + (x);
         if(count>=6400) count = 0;
@@ -59,6 +62,7 @@ public final class Ray {
 
     private static void initRay(){
 
+            Floor.lposY  =0;
             halfupx = 0;
             lhalfupx = 0;
 
@@ -87,11 +91,13 @@ public final class Ray {
 
             lceili = Map.ceiling[(int)  PointOnRay.posX][(int)  PointOnRay.posY];
 
-            spriteStableCounter = 0;
 
             upperbuildingXa = false;
             upperXa = false;
             luppershapeR = false;
+
+            lfloorH = Map.floorH[(int)  PointOnRay.posX][(int)  PointOnRay.posY];
+            floorH = Map.floorH[(int)  PointOnRay.posX][(int)  PointOnRay.posY];
 
     }
 
@@ -114,42 +120,44 @@ public final class Ray {
         float actRaycastStep = RenderProcedure.raycasterStep;
 
 
-        for (float r = 0; r < 12; r += actRaycastStep) {
+        if(Sight.posScreenX>5 && Sight.posScreenX<330) {
+            for (float r = 0; r < 12; r += actRaycastStep) {
 
-            if(Map.ceiling[(int)  PointOnRay.posX][(int)  PointOnRay.posY] == 0) outside = true;
+                if (Map.ceiling[(int) PointOnRay.posX][(int) PointOnRay.posY] == 0) outside = true;
 
-            InPoint.analysePoint(r);
+                InPoint.analysePoint(r);
 
 
-            if(Map.map[(int)  PointOnRay.posX][(int)  PointOnRay.posY] == 5 ){
-                    PreColumn.minY = RenderProcedure.cameraY - (int)( PreColumn.height);
+                if (Map.map[(int) PointOnRay.posX][(int) PointOnRay.posY] == 5) {
+                    PreColumn.minY = RenderProcedure.cameraY - (int) (PreColumn.height);
                 }
 
-            PointOnRay.nextStep();
-            PointOnRay.reductionAmountOfRaycastStep();
+                PointOnRay.nextStep();
+                PointOnRay.reductionAmountOfRaycastStep();
+            }
+
+            if (!half) {
+                Sight.halflheight = 0;
+            }
+            if (Sight.renderwall) {
+                Sight.lupperbuildingXa = upperbuildingXa;
+                Sight.lupperXa = upperXa;
+            }
+
+            if (!finish && !oneheight) {
+                Sight.lheight = 0;
+                Sight.lcolumn = 0;
+            }
+
+
+            if (spriterendered) {
+
+                SpriteBufferRender.renderBufferedColumn();
+
+            }
         }
-
-        if(!half){
-            Sight.halflheight = 0;
-        }
-        if(Sight.renderwall) {
-            Sight.lupperbuildingXa = upperbuildingXa;
-            Sight.lupperXa = upperXa;
-        }
-
-        if(!finish && !oneheight){
-            Sight.lheight = 0;
-            Sight.lcolumn = 0;
-        }
-
-
-        if(spriterendered) {
-
-            SpriteBufferRender.renderBufferedColumn();
-
-        }
-
         Sight.posScreenX += RenderProcedure.SCREEN_STEP;
         Sight.renderwall = !Sight.renderwall;
+
     }
 }

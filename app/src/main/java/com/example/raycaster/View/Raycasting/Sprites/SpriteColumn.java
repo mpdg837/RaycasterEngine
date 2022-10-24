@@ -53,9 +53,13 @@ public final class SpriteColumn extends SpriteRenderer{
         prepare(heights,tex,texM);
         int range = RenderProcedure.SCREEN_HEIGHT;
 
+
+        int minY = Floor.lposY ;
+        if(minY == 0) minY = RenderProcedure.cameraY*2 ;
+
         for (int n = (int) ys; n < yf; n++) {
 
-            if (n >= PreColumn.minY && n >= 0 && n < range) {
+            if (n >= PreColumn.minY && n >= 0 && n < range && n<minY) {
 
                 float ttexX = ltexX;
 

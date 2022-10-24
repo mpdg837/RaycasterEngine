@@ -3,6 +3,7 @@ package com.example.raycaster.View.Raycasting.BasicElements;
 import android.graphics.Point;
 
 import com.example.raycaster.Model.Raycasting.Raycasting.Analyse.Entities.Ray;
+import com.example.raycaster.Model.Raycasting.Raycasting.PreBaking.Floor;
 import com.example.raycaster.Model.Raycasting.Raycasting.PreBaking.Math.Functions;
 import com.example.raycaster.Model.Raycasting.Raycasting.PreBaking.Ray.PointOnRay;
 import com.example.raycaster.Model.Raycasting.Raycasting.PreBaking.Ray.PreColumns.PreColumn;
@@ -52,7 +53,7 @@ public final class Column {
         return decision;
     }
 
-    public static void selectTypeOfColumn(boolean halfup,boolean upper,boolean upperb,boolean half,boolean dhalf){
+    public static void selectTypeOfColumn(boolean halfup,boolean upper,boolean upperb,boolean half,boolean dhalf,boolean downstair){
         ys = RenderProcedure.cameraY-lheight;
         yf = RenderProcedure.cameraY+lheight;
 
@@ -75,6 +76,21 @@ public final class Column {
         if(upperb){
             ys = RenderProcedure.cameraY-lheight - (lheight<<2);
             yf = RenderProcedure.cameraY-lheight - (lheight<<1);
+        }
+
+        if(downstair){
+
+            if(Ray.lfloorH == -1) {
+                ys = RenderProcedure.cameraY + lheight + 5;
+                yf = RenderProcedure.cameraY + lheight + (lheight >> 1);
+            }else{
+
+                ys = RenderProcedure.cameraY + lheight - (lheight >> 1)+5;
+                yf = RenderProcedure.cameraY + lheight;
+            }
+            if(yf>= Floor.lposY){
+                yf = Floor.lposY;
+            }
         }
     }
 
@@ -111,19 +127,24 @@ public final class Column {
         trnsx = 0;
     }
 
-    private static void makeSmoothBorders(boolean upperb,boolean upper,boolean half,int x,boolean renderHalf,boolean upperhalf){
+    private static void makeSmoothBorders(boolean upperb,boolean upper,boolean half,int x,boolean renderHalf,boolean upperhalf,boolean downstair){
+
+        if(downstair){
+            posStart = (int)(((int)((float)ys) * (float)RenderProcedure.SCREEN_WIDTH + (float)x)) << Render.shiftPixelWidth;
+            posFinal = (int)(((int)((float)yf) * (float)RenderProcedure.SCREEN_WIDTH + (float)x)) << Render.shiftPixelWidth;
+        }else
+        if(upperhalf){
+            posStart = (int)(((int)((float)ys-2*dh) * (float)RenderProcedure.SCREEN_WIDTH + (float)x)) << Render.shiftPixelWidth;
+            posFinal = (int)(((int)((float)yf-dh) * (float)RenderProcedure.SCREEN_WIDTH + (float)x)) << Render.shiftPixelWidth;
+        }else
         if(upperb){
             posStart = (int)(((int)((float)ys-3*dh) * (float)RenderProcedure.SCREEN_WIDTH + (float)x)) << Render.shiftPixelWidth;
             posFinal = (int)(((int)((float)yf-2*dh) * (float)RenderProcedure.SCREEN_WIDTH + (float)x)) << Render.shiftPixelWidth;
         }else
         if(upper){
 
-            if(upperhalf)posStart = (int)(((int)((float)ys-dh) * (float)RenderProcedure.SCREEN_WIDTH + (float)x)) << Render.shiftPixelWidth;
-            else posStart = (int)(((int)((float)ys-2*dh) * (float)RenderProcedure.SCREEN_WIDTH + (float)x)) << Render.shiftPixelWidth;
-
-
-            if(upperhalf) posFinal = (int)(((int)((float)yf) * (float)RenderProcedure.SCREEN_WIDTH + (float)x)) << Render.shiftPixelWidth;
-            else posFinal = (int)(((int)((float)yf-dh) * (float)RenderProcedure.SCREEN_WIDTH + (float)x)) << Render.shiftPixelWidth;
+            posStart = (int)(((int)((float)ys-2*dh) * (float)RenderProcedure.SCREEN_WIDTH + (float)x)) << Render.shiftPixelWidth;
+            posFinal = (int)(((int)((float)yf-dh) * (float)RenderProcedure.SCREEN_WIDTH + (float)x)) << Render.shiftPixelWidth;
 
         }else{
 
@@ -141,7 +162,7 @@ public final class Column {
         return (lceili == 1) && !upperb;
     }
     public static void drawLine(short x, int height,int lheight,int column,int lcolumn,int shadow,boolean half,boolean upper,
-                                int llminh,int llmaxh,boolean halfup,int lceili,boolean upperb,boolean dhalf){
+                                int llminh,int llmaxh,boolean halfup,int lceili,boolean upperb,boolean dhalf,boolean downstair){
 
         Column.lheight = lheight;
         Column.height = height;
@@ -150,7 +171,7 @@ public final class Column {
 
         if(shadow>7) shadow = 7;
 
-        selectTypeOfColumn(halfup, upper, upperb, half, dhalf);
+        selectTypeOfColumn(halfup, upper, upperb, half, dhalf,downstair);
         Texture tex = selectTexture(halfup, upper, upperb);
 
         if(darkerMode(lceili,upperb)) shadow +=2;
@@ -160,7 +181,7 @@ public final class Column {
         if(yf>0)
             for(int n=0;n<len ;n++) {
 
-                makeSmoothBorders(upperb,upper,half,x,dhalf,halfup);
+                makeSmoothBorders(upperb,upper,half,x,dhalf,halfup,downstair);
                 ColumnPixel.drawSmallColumn(llminh,llmaxh,upperb,shadow,tex);
 
             }

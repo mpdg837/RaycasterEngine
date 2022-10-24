@@ -48,7 +48,7 @@ public final class HalfShapes {
     private static void renderWall(float height,int intdeltaPosX,int shadow,float lheight){
         Column.drawLine((short) (Sight.posScreenX - RenderProcedure.D_SCREEN_STEP), (int) height, (int) lheight,
                 intdeltaPosX, Sight.lcolumnhalf, shadow, false, false, 0, 400
-                , false, Ray.lceili, false, true);
+                , false, Ray.lceili, false, true,false);
 
     }
 

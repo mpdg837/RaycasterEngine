@@ -14,13 +14,13 @@ public final class UpperShapes{
 
     private static void  renderYWall(float height,float lha){
         Column.drawLine((short) (Sight.posScreenX - RenderProcedure.D_SCREEN_STEP), (int) height, (int) lha, PointOnRay.intdeltaPosY, RenderInfoBuffer.lcolumnh[InPoint.countPos],
-                0, Ray.half, true,  PreColumn.llminh,  PreColumn.llmaxh, false, 0, false, false);
+                0, Ray.half, true,  PreColumn.llminh,  PreColumn.llmaxh, false, 0, false, false,false);
 
     }
 
     private static void  renderXWall(float height,float lha){
         Column.drawLine((short) (Sight.posScreenX - RenderProcedure.D_SCREEN_STEP), (int) height, (int) lha, PointOnRay.intdeltaPosX, RenderInfoBuffer.lcolumnh[InPoint.countPos],
-                0, Ray.half, true,  PreColumn.llminh,  PreColumn.llmaxh, false, 0, false, false);
+                0, Ray.half, true,  PreColumn.llminh,  PreColumn.llmaxh, false, 0, false, false,false);
 
     }
     public static void renderUpperShapes(){

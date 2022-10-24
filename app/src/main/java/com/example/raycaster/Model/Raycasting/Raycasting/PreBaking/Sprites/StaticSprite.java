@@ -12,34 +12,29 @@ public final class StaticSprite {
     private static boolean start = false;
     private static boolean texM = false;
 
+    public static boolean crossed(int value,int lvalue){
+        return ((value >=32 && lvalue<32) ||(value <= 32 && lvalue>32) ) && (value >16 && value<48);
+    }
     public static void detectTypeOfStaticSprite(){
         tex = 0;
         start = false;
         texM = false;
 
-        if ((Sight.obj == 8) && (PointOnRay.intdeltaPosY>>2 == 8)) {
-            if(Ray.spriteStableCounter>1) {
-                start = true;
-                tex = (byte) PointOnRay.intdeltaPosX;
-            }
-            Ray.spriteStableCounter = 0;
-        }else
-        if ((Sight.obj == 9) && (PointOnRay.intdeltaPosX>>2) == 8) {
-            if(Ray.spriteStableCounter>1) {
+        if ((Sight.obj == 8) && crossed(PointOnRay.intdeltaPosX,PointOnRay.lintdeltaPosX)) {
                 start = true;
                 tex = (byte) PointOnRay.intdeltaPosY;
 
-                Ray.spriteStableCounter = 0;
-            }
         }else
-        if ((Sight.obj == 10) && ((PointOnRay.intdeltaPosX>>2) == 8 || (PointOnRay.intdeltaPosY>>2) ==8)) {
-
-            boolean centerX = PointOnRay.intdeltaPosX >> 2 == 8;
-            boolean centerY = PointOnRay.intdeltaPosY >> 2 == 8;
-
-            if(Ray.spriteStableCounter>1 || (centerX && centerY)) {
+        if ((Sight.obj == 9)  && crossed(PointOnRay.intdeltaPosY,PointOnRay.lintdeltaPosY)) {
                 start = true;
-                texM = (PointOnRay.intdeltaPosX >> 2) == 8;
+                tex = (byte) PointOnRay.intdeltaPosX;
+
+        }else
+        if ((Sight.obj == 10) && (crossed(PointOnRay.intdeltaPosX,PointOnRay.lintdeltaPosX) ||
+                crossed(PointOnRay.intdeltaPosY,PointOnRay.lintdeltaPosY))) {
+
+                start = true;
+                texM = crossed(PointOnRay.intdeltaPosX,PointOnRay.lintdeltaPosX);
                 if (texM) {
                     tex = (byte) PointOnRay.intdeltaPosY;
 
@@ -49,10 +44,8 @@ public final class StaticSprite {
 
 
                 }
-            }
 
-        }else{
-            Ray.spriteStableCounter ++;
+
         }
     }
 

@@ -16,19 +16,19 @@ public final class Blocks {
     private static void renderXWall(float height,int shadow){
         Column.drawLine((short) (Sight.posScreenX - RenderProcedure.D_SCREEN_STEP), (int) height, (int) Sight.lheight,
                 PointOnRay.intdeltaPosX, Sight.lcolumn, shadow, Ray.half, false, 0, 400
-                , false, Ray.lceili, false, false);
+                , false, Ray.lceili, false, false,false);
     }
 
     private static void renderYWall(float height,int shadow){
         Column.drawLine((short) (Sight.posScreenX - RenderProcedure.D_SCREEN_STEP), (int) height, (int) Sight.lheight,
                 PointOnRay.intdeltaPosY, Sight.lcolumn, shadow, Ray.half, false, 0, 400
-                , false, Ray.lceili, false, false);
+                , false, Ray.lceili, false, false,false);
     }
 
     private static void renderNWall(float height){
         Column.drawLine((short) (Sight.posScreenX - RenderProcedure.D_SCREEN_STEP), (int) height, (int) Sight.lheight,
                 Sight.lcolumn, Sight.lcolumn, Sight.lshadow, Ray.half, false, 0, 400
-                , false, Ray.lceili, false, false);
+                , false, Ray.lceili, false, false,false);
     }
 
     public static void renderBlocks(float r){

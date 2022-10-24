@@ -14,27 +14,27 @@ public final class UpperBlock extends Upper {
 
     private static void renderXWall(float height,float lha,int shadow){
         Column.drawLine((short) (Sight.posScreenX - RenderProcedure.D_SCREEN_STEP), (int) height, (int)lha, PointOnRay.intdeltaPosX, RenderInfoBuffer.lcolumnh[InPoint.countPos],
-                shadow, Ray.half, true,  PreColumn.llminh,  PreColumn.llmaxh,false,0,false,false);
+                shadow, Ray.half, true,  PreColumn.llminh,  PreColumn.llmaxh,false,0,false,false,false);
 
     }
 
     private static void renderYWall(float height, float lha, int shadow){
         Column.drawLine((short) (Sight.posScreenX - RenderProcedure.D_SCREEN_STEP), (int) height, (int)lha, PointOnRay.intdeltaPosY, RenderInfoBuffer.lcolumnh[InPoint.countPos],
-                shadow, Ray.half, true,  PreColumn.llminh,  PreColumn.llmaxh,false,0,false,false);
+                shadow, Ray.half, true,  PreColumn.llminh,  PreColumn.llmaxh,false,0,false,false,false);
 
     }
 
     private static void renderNWall(float lha){
 
         Column.drawLine((short) (Sight.posScreenX - RenderProcedure.D_SCREEN_STEP), (int)lha, (int) lha, Sight.lcolumnhx, Sight.lcolumnhx, Sight.lshadowu,
-                Ray.half, true,  PreColumn.llminh,  PreColumn.llmaxh,false,0,false,false);
+                Ray.half, true,  PreColumn.llminh,  PreColumn.llmaxh,false,0,false,false,false);
     }
 
 
     public static void analyse(float height,int shadow,float lha,float lhaa){
 
         Ray.upperXa = true;
-        if (Sight.renderwall&& !Ray.luppershapeR) {
+        if (Sight.renderwall) {
 
             if ((WallHit.pY1 || WallHit.pY2)) {
 
