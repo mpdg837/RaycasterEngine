@@ -15,21 +15,19 @@ public final class UpperHalfBlock extends Upper {
 
     private static void renderXWall(float height,float lha,int shadow){
         Column.drawLine((short) (Sight.posScreenX - RenderProcedure.D_SCREEN_STEP), (int) height, (int) Sight.luheight, PointOnRay.intdeltaPosX,
-                RenderInfoBuffer.lcolumnh[InPoint.countPos], shadow, Ray.half, false,  PreColumn.llminh,  PreColumn.llmaxh,true,0,false,
-                false,false);
+                RenderInfoBuffer.lcolumnh[InPoint.countPos], shadow, Ray.half, false,  PreColumn.llminh,  PreColumn.llmaxh,true,0,false,false);
 
     }
 
     private static void renderYWall(float height, float lha, int shadow){
         Column.drawLine((short) (Sight.posScreenX - RenderProcedure.D_SCREEN_STEP), (int) height, (int) Sight.luheight, PointOnRay.intdeltaPosY,
-                RenderInfoBuffer.lcolumnh[InPoint.countPos], shadow, Ray.half, false, PreColumn.llminh, PreColumn.llmaxh,true,0,false,
-                false,false);
+                RenderInfoBuffer.lcolumnh[InPoint.countPos], shadow, Ray.half, false, PreColumn.llminh, PreColumn.llmaxh,true,0,false,false);
     }
 
     private static void renderNWall(float height,float lha, int shadow){
 
         Column.drawLine((short) (Sight.posScreenX - RenderProcedure.D_SCREEN_STEP), (int) height, (int) Sight.luheight, Sight.lcolumnhx,
-                Sight.lcolumnhx, shadow, Ray.half, false,  PreColumn.llminh,  PreColumn.llmaxh,true,0,false,false,false);
+                Sight.lcolumnhx, shadow, Ray.half, false,  PreColumn.llminh,  PreColumn.llmaxh,true,0,false,false);
     }
 
     public static void analyse(float height,int shadow,float lha,float lhaa){
@@ -37,7 +35,7 @@ public final class UpperHalfBlock extends Upper {
         shadow = 0;
         if(Sight.renderwall && !Ray.luppershapeR) {
 
-            Sight.luheight = lha;
+            Sight.luheight = height;
 
             if ((WallHit.pY1 || WallHit.pY2)) {
 
@@ -53,7 +51,7 @@ public final class UpperHalfBlock extends Upper {
                 renderNWall(height,lha,shadow);
             }
 
-            PreColumn.bufferUpperColumn(height);
+
         }
     }
 }

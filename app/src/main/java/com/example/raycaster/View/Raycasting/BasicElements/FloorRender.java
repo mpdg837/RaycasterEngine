@@ -1,12 +1,7 @@
 package com.example.raycaster.View.Raycasting.BasicElements;
 
-import com.example.raycaster.Model.Raycasting.Raycasting.Analyse.Entities.Sight;
-import com.example.raycaster.Model.Raycasting.Raycasting.PreBaking.Ray.PointOnRay;
-import com.example.raycaster.Model.Raycasting.Raycasting.PreBaking.Ray.PreColumns.PreColumn;
-import com.example.raycaster.Model.Raycasting.Raycasting.RenderInfoBuffer;
 import com.example.raycaster.Model.Raycasting.Raycasting.Textures.TextureContainer;
 import com.example.raycaster.Model.Raycasting.RenderProcedure;
-import com.example.raycaster.Model.Resources.Map.Map;
 
 public final class FloorRender {
 
@@ -26,17 +21,14 @@ public final class FloorRender {
 
 
         FloorPixel.setCPixel(posScreenX - delta,
-                posstart, color, hei*ceil+(ceil-1)*2, false);
+                posstart, color, hei*ceil, false);
     }
 
     public static void renderFloorDown(float r, int ceil, int hei, int poslX, int poslY, int posScreenX, int posfinish){
         int intensity = 2;
         if (ceil == 1) intensity = 7;
 
-        int scolor;
-
-        if(Map.floorH[(int)PointOnRay.posX][(int)PointOnRay.posY] == 0)  scolor = TextureContainer.floor.getPixel((int) poslX, (int) poslY, intensity);
-            else  scolor = TextureContainer.floor1.getPixel((int) poslX, (int) poslY, intensity);
+        int scolor = TextureContainer.floor.getPixel((int) poslX, (int) poslY, intensity);
         FloorPixel.setCPixel(posScreenX - delta, posfinish, scolor, hei, true);
     }
 }

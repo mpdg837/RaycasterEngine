@@ -15,11 +15,11 @@ public class Render {
 
     protected static RenderLoopTask context;
     public static int SCREEN_WIDTH = 320;
-    public static int SCREEN_HEIGHT = 300;
+    public static int SCREEN_HEIGHT = 400;
 
     public static final int pixelWidth = 4;
     public static final int shiftPixelWidth = 2;
-    public static final int maxLen = 192000 << shiftPixelWidth>>1;
+    public static final int maxLen = 256000 << shiftPixelWidth>>1;
 
     public static int lenScreen = (SCREEN_WIDTH*SCREEN_HEIGHT) << shiftPixelWidth;
     public static byte[] pixels = new byte[lenScreen];
@@ -30,7 +30,6 @@ public class Render {
         Render.app = app;
 
         screen = Bitmap.createBitmap(SCREEN_WIDTH,SCREEN_HEIGHT, Bitmap.Config.ARGB_8888);
-
     }
     public static void initscreen(){
 

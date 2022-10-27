@@ -21,21 +21,21 @@ public final class Half {
     private static void renderXWall(float heights,int shadow,float lheight){
         Column.drawLine((short) (Sight.posScreenX - RenderProcedure.D_SCREEN_STEP), (int) heights, (int) lheight,
                 PointOnRay.intdeltaPosX, Sight.lcolumnhalf, shadow, Ray.half, false, 0, 400
-                , false, Ray.lceili, false, true,false);
+                , false, Ray.lceili, false, true);
 
     }
 
     private static void renderYWall(float heights,int shadow,float lheight){
         Column.drawLine((short) (Sight.posScreenX - RenderProcedure.D_SCREEN_STEP), (int) heights, (int) lheight,
                 PointOnRay.intdeltaPosY, Sight.lcolumnhalf, shadow, Ray.half, false, 0, 400
-                , false, Ray.lceili, false, true,false);
+                , false, Ray.lceili, false, true);
 
     }
 
     private static void renderNWall(float heights,float lheight){
         Column.drawLine((short) (Sight.posScreenX - RenderProcedure.D_SCREEN_STEP), (int) heights, (int) lheight,
                 Sight.lcolumnhalf, Sight.lcolumnhalf, Sight.lshadowh, Ray.half, false, 0, 400
-                , false, Ray.lceili, false, true,false);
+                , false, Ray.lceili, false, true);
     }
 
     public static void renderHalfBlock(float heights){

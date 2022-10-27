@@ -44,16 +44,13 @@ public final class Moving {
         char key = 0;
 
         if(trnsX !=0 || trnsY!=0) {
-
-            float dx = trnsY * step *sinX;
-            float dy = trnsY * step *cosY;
-            RaycasterPoint npoint1 = new RaycasterPoint(RenderProcedure.pos.x + dx, RenderProcedure.pos.y + dy);
+            RaycasterPoint npoint1 = new RaycasterPoint(RenderProcedure.pos.x + trnsX, RenderProcedure.pos.y + trnsY);
             if (Map.map[(int) npoint1.x][(int) npoint1.y] == 0 || Map.map[(int) npoint1.x][(int) npoint1.y] == 5) {
-                RenderProcedure.pos.x += dx;
-                RenderProcedure.pos.y += dy;
+                RenderProcedure.pos.x += trnsY * step *sinX;
+                RenderProcedure.pos.y += trnsY * step * cosY;
             } else {
-                RenderProcedure.pos.x -= dx;
-                RenderProcedure.pos.y -= dy;
+                RenderProcedure.pos.x -= trnsY * step * sinX;
+                RenderProcedure.pos.y -= trnsY * step* cosY;
             }
             return true;
         }else{

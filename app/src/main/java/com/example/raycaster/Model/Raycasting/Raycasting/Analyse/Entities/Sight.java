@@ -6,7 +6,7 @@ public final class Sight {
 
 
     public static int spritePosX = 32;
-    public static int spritePosY = 32;
+    public static int spritePosY = 24;
 
     public static float deltaPosXc;
     public static float deltaPosYc;
@@ -118,7 +118,7 @@ public final class Sight {
 
 
 
-        for(float fi = RenderProcedure.angle - RenderProcedure.pi/8 ;fi<RenderProcedure.angle+RenderProcedure.pi/8; fi+=RenderProcedure.deltaFi*1.5) {
+        for(float fi = RenderProcedure.angle - RenderProcedure.pi/12 ;fi<RenderProcedure.angle+RenderProcedure.pi/12; fi+=RenderProcedure.deltaFi) {
             Ray.analyseRay(fi);
 
         }

@@ -46,15 +46,16 @@ public final class Map {
             }
         }
 
+
         ceiling[64][67] = 1;
         halfup[64][67] = 1;
         map[64][67] = 5;
 
         floorH[66][68] = -1;
         floorH[65][68] = -1;
-        floorH[64][68] = 0;
-        floorH[63][68] = 1;
-        floorH[62][68] = 0;
+        floorH[64][68] = -1;
+        floorH[63][68] = -1;
+        floorH[62][68] = -1;
         floorH[61][68] = -1;
         floorH[59][68] = 1;
 

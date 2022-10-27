@@ -15,7 +15,7 @@ public final class RenderProcedure extends Render {
 
     static int startcycles = 0;
 
-    public final  static int canvasHeight= 150;
+    public final  static int canvasHeight= 200;
     public final  static byte distance = 16;
     public final  static int deltaPosMask = 0x3f;
     public final  static float raycasterStep = 0.064f;
@@ -32,9 +32,9 @@ public final class RenderProcedure extends Render {
     public static RaycasterPoint pos = new RaycasterPoint(61.5f,64.5f);
     public static float angle = 0;
 
-    public static final int SCREEN_STEP_STAND =3;
-    public static final int SCREEN_STEP_WALK = 4;
-    public static final int cameraY = 150;
+    public static final int SCREEN_STEP_STAND =4;
+    public static final int SCREEN_STEP_WALK = 5;
+    public static final int cameraY = 200;
 
 
     public static MainActivity app;

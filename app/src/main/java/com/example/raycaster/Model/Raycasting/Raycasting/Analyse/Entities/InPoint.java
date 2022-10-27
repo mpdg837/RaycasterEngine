@@ -1,6 +1,5 @@
 package com.example.raycaster.Model.Raycasting.Raycasting.Analyse.Entities;
 
-import com.example.raycaster.View.Raycasting.BasicElements.Column;
 import com.example.raycaster.View.Raycasting.Blocks.Blocks;
 import com.example.raycaster.Model.Raycasting.Raycasting.Analyse.Uppers.UpperBlocks;
 import com.example.raycaster.View.Raycasting.UpperBlocks.UpperShapes;
@@ -37,26 +36,11 @@ public final class InPoint {
         Ray.lupperbuildingx = Ray.upperbuildingx;
         Ray.upperbuildingx = Map.upperbuilding[(int) PointOnRay.posX][(int) PointOnRay.posY];
 
-        Ray.lfloorH = Ray.floorH;
-        Ray.floorH = Map.floorH[(int)  PointOnRay.posX][(int)  PointOnRay.posY];
 
-        if((int)PointOnRay.posX != (int)RenderProcedure.pos.x || (int)PointOnRay.posY != (int)RenderProcedure.pos.y) {
+
+        if((int)PointOnRay.posX != (int)RenderProcedure.pos.x || (int)PointOnRay.posY != (int)RenderProcedure.pos.y)
             UpperBlocks.renderUpperBlocks();
 
-            if(Ray.lfloorH < Ray.floorH && !Ray.oneheight && !Ray.half) {
-
-
-                if (Sight.renderwall) {
-
-
-                    double height = PreColumn.fakeHeight / PreColumn.z;
-
-                    Column.drawLine((short) (Sight.posScreenX - RenderProcedure.D_SCREEN_STEP), (int) height, (int) height,
-                            PointOnRay.intdeltaPosX,PointOnRay.intdeltaPosX, 0, Ray.half, false, 0, 400
-                            , false, Ray.lceili, false, false,true);
-                }
-            }
-        }
         if(Ray.halfupx == 0) Ray.lceiling = Ray.ceili;
 
         Ray.uppershapeX = Map.uppershape[(int) PointOnRay.posX][(int) PointOnRay.posY];
@@ -74,10 +58,7 @@ public final class InPoint {
 
             collectInfoAboutActualBlock();
 
-
         }
-
-
 
         if(Ray.uppershapeX != 0) {
             UpperShapes.renderUpperShapes();
@@ -98,8 +79,6 @@ public final class InPoint {
                 if (Ray.ceili == 1) Ray.finalrender = true;
             }
         }else{
-
-
             switch (Sight.obj) {
 
                 case 1:

@@ -25,14 +25,14 @@ public final class Shpaes {
     private static void renderYWall(float height, int shadow){
         Column.drawLine((short) (Sight.posScreenX - RenderProcedure.D_SCREEN_STEP), (int) height, (int) Sight.lheighte,
                 PointOnRay.intdeltaPosY, Sight.lcolumn, shadow, Ray.half, false, 0, 400
-                , false, Ray.lceili, false, false,false);
+                , false, Ray.lceili, false, false);
 
     }
 
     private static void renderXWall(float height, int shadow){
         Column.drawLine((short) (Sight.posScreenX - RenderProcedure.D_SCREEN_STEP), (int) height, (int) Sight.lheighte,
                 PointOnRay.intdeltaPosX, Sight.lcolumn, shadow, Ray.half, false, 0, 400
-                , false, Ray.lceili, false, false,false);
+                , false, Ray.lceili, false, false);
 
     }
 

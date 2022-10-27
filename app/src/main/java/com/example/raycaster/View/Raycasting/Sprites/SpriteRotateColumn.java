@@ -3,7 +3,6 @@ package com.example.raycaster.View.Raycasting.Sprites;
 import com.example.raycaster.Model.Raycasting.Raycasting.Analyse.Entities.InPoint;
 import com.example.raycaster.Model.Raycasting.Raycasting.Analyse.Entities.Ray;
 import com.example.raycaster.Model.Raycasting.Raycasting.Analyse.Entities.Sight;
-import com.example.raycaster.Model.Raycasting.Raycasting.PreBaking.Floor;
 import com.example.raycaster.Model.Raycasting.Raycasting.PreBaking.Ray.PointOnRay;
 import com.example.raycaster.Model.Raycasting.Raycasting.PreBaking.Ray.PreColumns.PreColumn;
 import com.example.raycaster.Model.Raycasting.Raycasting.RenderInfoBuffer;
@@ -91,11 +90,8 @@ public final class SpriteRotateColumn extends SpriteRenderer{
         prepare(heights,tex);
 
 
-        int minY = Floor.lposY ;
-        if(minY == 0) minY = RenderProcedure.cameraY*2;
-
         for (int n = (int) ys; n < yf; n++) {
-            if (n >= PreColumn.minY && n >= 0 && n < RenderProcedure.SCREEN_HEIGHT && n<minY) {
+            if (n >= PreColumn.minY && n >= 0 && n < RenderProcedure.SCREEN_HEIGHT) {
 
                 float ttexX = ltexX;
 
