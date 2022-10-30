@@ -1,8 +1,7 @@
 package com.example.raycaster.View.Raycasting.BasicElements.PixelSet;
 
-import com.example.raycaster.Model.Raycasting.Raycasting.Analyse.Entities.Ray;
+import com.example.raycaster.Model.Raycasting.Quality;
 import com.example.raycaster.Model.Raycasting.RenderProcedure;
-import com.example.raycaster.Model.Resources.Map.Map;
 import com.example.raycaster.View.Render;
 
 public final class FloorPixel {
@@ -14,7 +13,7 @@ public final class FloorPixel {
         if(pos < Render.maxLen && pos >= 0){
                 for (int k = 0; k < RenderProcedure.realWidth * hei; k += RenderProcedure.realWidth) {
 
-                    for (int d = 0; d < RenderProcedure.SCREEN_STEP << Render.shiftPixelWidth; d += Render.pixelWidth) {
+                    for (int d = 0; d < Quality.SCREEN_STEP << Render.shiftPixelWidth; d += Render.pixelWidth) {
                         final int bt = pos + d + k;
                         if (bt < Render.maxLen && bt >= 0) {
 

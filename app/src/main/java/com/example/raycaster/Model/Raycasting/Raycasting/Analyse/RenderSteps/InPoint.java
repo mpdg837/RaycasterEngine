@@ -1,4 +1,4 @@
-package com.example.raycaster.Model.Raycasting.Raycasting.Analyse.Entities;
+package com.example.raycaster.Model.Raycasting.Raycasting.Analyse.RenderSteps;
 
 import com.example.raycaster.View.Raycasting.Blocks.Blocks;
 import com.example.raycaster.Model.Raycasting.Raycasting.Analyse.Uppers.UpperBlocks;
@@ -18,19 +18,6 @@ public final class InPoint {
     public static boolean inPlayerArea(){
         return (int)PointOnRay.posX != (int)RenderProcedure.pos.x || (int)PointOnRay.posY != (int)RenderProcedure.pos.y;
     }
-    private static void analyseUpper(){
-        Ray.lhalfupx = Ray.halfupx;
-        Ray.halfupx = Map.halfup[(int)PointOnRay.posX][(int)PointOnRay.posY];
-
-        if(Ray.halfupx == 1 && Ray.lhalfupx != 1){
-            final float height =  PreColumn.height;
-
-            if(PreColumn.mminh < RenderProcedure.cameraY - ((int)height<<1))
-                PreColumn.minhh = RenderProcedure.cameraY - ((int)height<<1);
-        }else if(Ray.ceili == 1 && Ray.lceili != 1){
-            PreColumn.minhh = 0;
-        }
-    }
 
     public static void collectInfoAboutActualBlock(){
         Ray.luppershape = false;
@@ -43,8 +30,9 @@ public final class InPoint {
         Ray.ceili = Map.ceiling[(int) PointOnRay.posX][(int) PointOnRay.posY];
 
 
-
-        analyseUpper();
+        Ray.lhalfupx = Ray.halfupx;
+        Ray.halfupx = Map.halfup[(int)PointOnRay.posX][(int)PointOnRay.posY];
+        UpperBlocks.analyseUpperBlocking();
 
 
         Ray.lupperbuildingx = Ray.upperbuildingx;
@@ -68,7 +56,7 @@ public final class InPoint {
 
         if(inPlayerArea())
         if(Sight.lcountPos != countPos) {
-            WallHit.analysePotentionalHit();
+            WallHit.analyse();
 
             collectInfoAboutActualBlock();
 

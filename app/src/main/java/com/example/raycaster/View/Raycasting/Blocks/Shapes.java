@@ -2,8 +2,8 @@ package com.example.raycaster.View.Raycasting.Blocks;
 
 import com.example.raycaster.Model.Raycasting.Raycasting.Analyse.ShapeHit;
 import com.example.raycaster.Model.Resources.Map.Map;
-import com.example.raycaster.Model.Raycasting.Raycasting.Analyse.Entities.Ray;
-import com.example.raycaster.Model.Raycasting.Raycasting.Analyse.Entities.Sight;
+import com.example.raycaster.Model.Raycasting.Raycasting.Analyse.RenderSteps.Ray;
+import com.example.raycaster.Model.Raycasting.Raycasting.Analyse.RenderSteps.Sight;
 import com.example.raycaster.Model.Raycasting.Raycasting.PreBaking.Ray.PointOnRay;
 import com.example.raycaster.Model.Raycasting.Raycasting.PreBaking.Ray.Buffers.PreColumn;
 import com.example.raycaster.Model.Raycasting.RenderProcedure;

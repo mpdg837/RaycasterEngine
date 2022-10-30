@@ -1,12 +1,12 @@
 package com.example.raycaster.View.Raycasting.Half;
 
-import com.example.raycaster.Model.Raycasting.Raycasting.Analyse.Entities.InPoint;
-import com.example.raycaster.Model.Raycasting.Raycasting.Analyse.Entities.Ray;
-import com.example.raycaster.Model.Raycasting.Raycasting.Analyse.Entities.Sight;
+import com.example.raycaster.Model.Raycasting.Raycasting.Analyse.RenderSteps.InPoint;
+import com.example.raycaster.Model.Raycasting.Raycasting.Analyse.RenderSteps.Ray;
+import com.example.raycaster.Model.Raycasting.Raycasting.Analyse.RenderSteps.Sight;
 import com.example.raycaster.Model.Raycasting.Raycasting.Analyse.ShapeHit;
-import com.example.raycaster.Model.Raycasting.Raycasting.PreBaking.Ray.PointOnRay;
+import com.example.raycaster.Model.Raycasting.Raycasting.MatrixBuffers.UpperInfoBuffer;
 import com.example.raycaster.Model.Raycasting.Raycasting.PreBaking.Ray.Buffers.PreColumn;
-import com.example.raycaster.Model.Raycasting.Raycasting.RenderInfoBuffer;
+import com.example.raycaster.Model.Raycasting.Raycasting.PreBaking.Ray.PointOnRay;
 
 public final class HalfShapes extends RenderHalf{
 
@@ -33,7 +33,7 @@ public final class HalfShapes extends RenderHalf{
 
             if (!Ray.half && Sight.renderwall) {
 
-                float lheight = RenderInfoBuffer.lhhsheight[InPoint.countPos];
+                float lheight = UpperInfoBuffer.lhhsheight[InPoint.countPos];
 
                 if(lheight == 0) lheight = height;
 
@@ -44,7 +44,6 @@ public final class HalfShapes extends RenderHalf{
                 if (PointOnRay.lintdeltaPosX <=16 || PointOnRay.lintdeltaPosX>=48) {
 
                     ignoreBigDiffrence(intdeltaPosY);
-
                     renderWall(height,intdeltaPosY,shadow,lheight);
 
                     Sight.lcolumnhalf = intdeltaPosY;
@@ -52,14 +51,12 @@ public final class HalfShapes extends RenderHalf{
                 } else {
 
                     ignoreBigDiffrence(intdeltaPosX);
-
                     renderWall(height,intdeltaPosX,shadow,lheight);
-
 
                     Sight.lcolumnhalf = intdeltaPosX;
                 }
 
-                RenderInfoBuffer.lhhsheight[InPoint.countPos] = height;
+                UpperInfoBuffer.lhhsheight[InPoint.countPos] = height;
             }
 
 

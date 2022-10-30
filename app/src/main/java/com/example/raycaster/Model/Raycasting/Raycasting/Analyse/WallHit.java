@@ -2,7 +2,7 @@ package com.example.raycaster.Model.Raycasting.Raycasting.Analyse;
 
 import com.example.raycaster.Model.Raycasting.Raycasting.PreBaking.Ray.PointOnRay;
 
-public final class WallHit {
+public final class WallHit extends Hit{
 
     public static boolean pX;
     public static boolean pY;
@@ -14,7 +14,7 @@ public final class WallHit {
     private WallHit(){
 
     }
-    public static void analysePotentionalHit(){
+    public static void analyse(){
         pX = (PointOnRay.lposX == (int) PointOnRay.posX);
         pY = (PointOnRay.lposY == (int) PointOnRay.posY);
 

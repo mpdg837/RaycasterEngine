@@ -1,6 +1,7 @@
 package com.example.raycaster.View.Raycasting.BasicElements;
 
-import com.example.raycaster.Model.Raycasting.Raycasting.Analyse.Entities.Ray;
+import com.example.raycaster.Model.Raycasting.Quality;
+import com.example.raycaster.Model.Raycasting.Raycasting.Analyse.RenderSteps.Ray;
 import com.example.raycaster.Model.Raycasting.Raycasting.PreBaking.Math.Functions;
 import com.example.raycaster.View.Raycasting.BasicElements.PixelSet.ColumnPixel;
 import com.example.raycaster.View.Render;
@@ -90,18 +91,18 @@ public final class Column {
     private static void prepare(int column,int lcolumn){
         diff = (int)(height-lheight);
 
-        len = RenderProcedure.D_SCREEN_STEP;
+        len = Quality.D_SCREEN_STEP;
 
         cdiff = column - lcolumn;
         if (cdiff < 0) cdiff = -cdiff;
 
         if (cdiff > 32) {
             column = lcolumn + 4;
-            len = RenderProcedure.D_SCREEN_STEP+ 1;
+            len = Quality.D_SCREEN_STEP+ 1;
         }
 
         delta = (float) (diff)/(float) len;
-        deltacolor = (float) ( column-lcolumn)/(float) RenderProcedure.D_SCREEN_STEP;
+        deltacolor = (float) ( column-lcolumn)/(float) Quality.D_SCREEN_STEP;
 
         dh = 0;
         dc = lcolumn;

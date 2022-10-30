@@ -1,5 +1,6 @@
-package com.example.raycaster.Model.Raycasting.Raycasting.Analyse.Entities;
+package com.example.raycaster.Model.Raycasting.Raycasting.Analyse.RenderSteps;
 
+import com.example.raycaster.Model.Raycasting.Quality;
 import com.example.raycaster.Model.Raycasting.Raycasting.PreBaking.Ray.AngleRay;
 import com.example.raycaster.Model.Raycasting.Raycasting.PreBaking.Ray.PointOnRay;
 import com.example.raycaster.Model.Raycasting.Raycasting.PreBaking.Ray.Buffers.PreColumn;
@@ -122,7 +123,7 @@ public final class Ray {
         initRay();
         analyseAreaNearPlayer();
 
-        float actRaycastStep = RenderProcedure.raycasterStep;
+        float actRaycastStep = Quality.raycasterStep;
 
 
         for (float r = 0; r < 12; r += actRaycastStep) {
@@ -160,7 +161,7 @@ public final class Ray {
 
         }
 
-        Sight.posScreenX += RenderProcedure.SCREEN_STEP;
+        Sight.posScreenX += Quality.SCREEN_STEP;
         Sight.renderwall = !Sight.renderwall;
     }
 }

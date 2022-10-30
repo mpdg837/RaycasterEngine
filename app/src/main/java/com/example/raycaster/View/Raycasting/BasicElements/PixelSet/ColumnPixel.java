@@ -1,6 +1,7 @@
 package com.example.raycaster.View.Raycasting.BasicElements.PixelSet;
 
-import com.example.raycaster.Model.Raycasting.Raycasting.Analyse.Entities.Ray;
+import com.example.raycaster.Model.Raycasting.Quality;
+import com.example.raycaster.Model.Raycasting.Raycasting.Analyse.RenderSteps.Ray;
 import com.example.raycaster.Model.Raycasting.Raycasting.PreBaking.Floor;
 import com.example.raycaster.Model.Raycasting.Raycasting.PreBaking.Ray.Buffers.PreColumn;
 import com.example.raycaster.Model.Raycasting.RenderProcedure;
@@ -33,7 +34,7 @@ public final class ColumnPixel {
 
 
     public static void drawSmallColumn(int llminh,int llmaxh,boolean upperb,int shadow,Texture tex){
-        final float deltaPos = ((float) Column.lheight + (Column.dh) )/(float) RenderProcedure.textureResolution;
+        final float deltaPos = ((float) Column.lheight + (Column.dh) )/(float) Quality.textureResolution;
 
         float texPos = 0;
         float deltaP = 0;

@@ -1,19 +1,14 @@
 package com.example.raycaster.View.Raycasting.Half;
 
-import com.example.raycaster.Model.Raycasting.Raycasting.Analyse.Entities.InPoint;
-import com.example.raycaster.Model.Raycasting.Raycasting.Analyse.Entities.Ray;
-import com.example.raycaster.Model.Raycasting.Raycasting.Analyse.Entities.Sight;
+import com.example.raycaster.Model.Raycasting.Raycasting.Analyse.RenderSteps.InPoint;
+import com.example.raycaster.Model.Raycasting.Raycasting.Analyse.RenderSteps.Ray;
+import com.example.raycaster.Model.Raycasting.Raycasting.Analyse.RenderSteps.Sight;
 import com.example.raycaster.Model.Raycasting.Raycasting.Analyse.WallHit;
+import com.example.raycaster.Model.Raycasting.Raycasting.MatrixBuffers.UpperInfoBuffer;
 import com.example.raycaster.Model.Raycasting.Raycasting.PreBaking.Ray.AngleRay;
 import com.example.raycaster.Model.Raycasting.Raycasting.PreBaking.Ray.PointOnRay;
-import com.example.raycaster.Model.Raycasting.Raycasting.RenderInfoBuffer;
-import com.example.raycaster.Model.Raycasting.RenderProcedure;
 import com.example.raycaster.Model.Resources.Map.Map;
 import com.example.raycaster.View.Raycasting.BasicElements.Column;
-import com.example.raycaster.View.Raycasting.Blocks.Blocks;
-import com.example.raycaster.View.Render;
-
-import java.beans.IndexedPropertyChangeEvent;
 
 public final class Half extends RenderHalf{
 
@@ -24,7 +19,7 @@ public final class Half extends RenderHalf{
     public static void renderHalfBlock(float heights){
         if(!Ray.half && Sight.renderwall) {
 
-            float lheight = RenderInfoBuffer.lhhsheight[InPoint.countPos];
+            float lheight = UpperInfoBuffer.lhhsheight[InPoint.countPos];
 
             if(lheight == 0) {
                 if(Sight.halflheight ==0) {
@@ -73,7 +68,7 @@ public final class Half extends RenderHalf{
     public static void bufferInfo(float heights){
 
         Sight.halflheight = heights;
-        RenderInfoBuffer.lhhsheight[InPoint.countPos] = heights;
+        UpperInfoBuffer.lhhsheight[InPoint.countPos] = heights;
 
         Sight.halflposX = (int)PointOnRay.posX;
         Sight.halflposY = (int)PointOnRay.posY;

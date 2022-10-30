@@ -1,11 +1,12 @@
 package com.example.raycaster.View.Raycasting.Sprites;
 
-import com.example.raycaster.Model.Raycasting.Raycasting.Analyse.Entities.InPoint;
-import com.example.raycaster.Model.Raycasting.Raycasting.Analyse.Entities.Ray;
-import com.example.raycaster.Model.Raycasting.Raycasting.Analyse.Entities.Sight;
+import com.example.raycaster.Model.Raycasting.Quality;
+import com.example.raycaster.Model.Raycasting.Raycasting.Analyse.RenderSteps.InPoint;
+import com.example.raycaster.Model.Raycasting.Raycasting.Analyse.RenderSteps.Ray;
+import com.example.raycaster.Model.Raycasting.Raycasting.Analyse.RenderSteps.Sight;
+import com.example.raycaster.Model.Raycasting.Raycasting.MatrixBuffers.SpriteInfoBuffer;
 import com.example.raycaster.Model.Raycasting.Raycasting.PreBaking.Ray.PointOnRay;
 import com.example.raycaster.Model.Raycasting.Raycasting.PreBaking.Ray.Buffers.PreColumn;
-import com.example.raycaster.Model.Raycasting.Raycasting.RenderInfoBuffer;
 import com.example.raycaster.Model.Raycasting.RenderProcedure;
 import com.example.raycaster.Model.Raycasting.Raycasting.Textures.TextureContainer;
 
@@ -63,11 +64,11 @@ public final class SpriteRotateColumn extends SpriteRenderer{
 
         posTexY = 0;
 
-        ltexX = RenderInfoBuffer.mapsprite[InPoint.countPos];
-        int texXX = (byte) (((64 - (int)tex) & 0x3f));
+        ltexX = SpriteInfoBuffer.mapsprite[InPoint.countPos];
+        int texXX = (byte) (((Quality.textureResolution - (int)tex) & RenderProcedure.deltaPosMask));
 
         if(ltexX != 0){
-            texX = ltexX + (float) (32*RenderProcedure.SCREEN_STEP)/ heights;
+            texX = ltexX + (float) ((Quality.textureResolution>>1)* Quality.SCREEN_STEP)/ heights;
 
             if (texX > 127) {
                 texX = 127;
@@ -86,7 +87,7 @@ public final class SpriteRotateColumn extends SpriteRenderer{
 
             startPointOfSprite();
         }
-        dtexX = (texX - ltexX) / (float) RenderProcedure.SCREEN_STEP;
+        dtexX = (texX - ltexX) / (float) Quality.SCREEN_STEP;
     }
     public static void render(float heights,float tex,int shadows){
 
@@ -99,15 +100,15 @@ public final class SpriteRotateColumn extends SpriteRenderer{
 
                 float ttexX = ltexX;
 
-                for (int k = 0; k < RenderProcedure.SCREEN_STEP; k++) {
+                for (int k = 0; k < Quality.SCREEN_STEP; k++) {
                     final int count = Ray.countPosBuffer(k, n);
 
-                    if (RenderInfoBuffer.reservedSpritePixels[count] == 0) {
+                    if (SpriteInfoBuffer.reservedSpritePixels[count] == 0) {
                         int col;
 
                         col = TextureContainer.spriteTex.getPixel((int) (ttexX), (int) posTexY & 0x7f,shadows) & 0xFFFFFF;
 
-                        RenderInfoBuffer.reservedSpritePixels[count] = col;
+                        SpriteInfoBuffer.reservedSpritePixels[count] = col;
                     }
 
                     ttexX += dtexX;
@@ -116,6 +117,6 @@ public final class SpriteRotateColumn extends SpriteRenderer{
             }
             posTexY += delta;
         }
-        RenderInfoBuffer.mapsprite[InPoint.countPos] = texX;
+        SpriteInfoBuffer.mapsprite[InPoint.countPos] = texX;
     }
 }

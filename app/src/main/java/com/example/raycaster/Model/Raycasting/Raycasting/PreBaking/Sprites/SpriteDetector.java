@@ -1,6 +1,6 @@
 package com.example.raycaster.Model.Raycasting.Raycasting.PreBaking.Sprites;
 
-import com.example.raycaster.Model.Raycasting.Raycasting.Analyse.Entities.Sight;
+import com.example.raycaster.Model.Raycasting.Raycasting.Analyse.RenderSteps.Sight;
 import com.example.raycaster.Model.Raycasting.Raycasting.PreBaking.Ray.PointOnRay;
 import com.example.raycaster.Model.Raycasting.RenderProcedure;
 

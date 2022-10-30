@@ -1,12 +1,12 @@
 package com.example.raycaster.View.Raycasting.UpperBlocks.Full;
 
-import com.example.raycaster.Model.Raycasting.Raycasting.Analyse.Entities.InPoint;
-import com.example.raycaster.Model.Raycasting.Raycasting.Analyse.Entities.Ray;
-import com.example.raycaster.Model.Raycasting.Raycasting.Analyse.Entities.Sight;
+import com.example.raycaster.Model.Raycasting.Raycasting.Analyse.RenderSteps.InPoint;
+import com.example.raycaster.Model.Raycasting.Raycasting.Analyse.RenderSteps.Ray;
+import com.example.raycaster.Model.Raycasting.Raycasting.Analyse.RenderSteps.Sight;
 import com.example.raycaster.Model.Raycasting.Raycasting.Analyse.WallHit;
 import com.example.raycaster.Model.Raycasting.Raycasting.PreBaking.Ray.PointOnRay;
 import com.example.raycaster.Model.Raycasting.Raycasting.PreBaking.Ray.Buffers.PreColumn;
-import com.example.raycaster.Model.Raycasting.Raycasting.RenderInfoBuffer;
+import com.example.raycaster.Model.Raycasting.Raycasting.MatrixBuffers.RenderInfoBuffer;
 
 public final class UpperBlock extends UpperFull {
 

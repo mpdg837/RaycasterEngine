@@ -1,19 +1,32 @@
 package com.example.raycaster.Model.Raycasting.Raycasting.Analyse.Uppers;
 
-import com.example.raycaster.Model.Raycasting.Raycasting.Analyse.Entities.Ray;
+import com.example.raycaster.Model.Raycasting.Raycasting.Analyse.RenderSteps.Ray;
 import com.example.raycaster.Model.Raycasting.Raycasting.PreBaking.Ray.Buffers.BufferUpperColumn;
+import com.example.raycaster.Model.Raycasting.Raycasting.PreBaking.Ray.Buffers.PreColumn;
+import com.example.raycaster.Model.Raycasting.Raycasting.PreBaking.Ray.PointOnRay;
+import com.example.raycaster.Model.Raycasting.RenderProcedure;
 import com.example.raycaster.View.Raycasting.UpperBlocks.Full.UpperBlock;
 import com.example.raycaster.View.Raycasting.UpperBlocks.Other.UpperBuildingBlocks;
 import com.example.raycaster.View.Raycasting.UpperBlocks.Other.UpperHalfBlock;
-import com.example.raycaster.Model.Raycasting.Raycasting.PreBaking.Ray.PointOnRay;
-import com.example.raycaster.Model.Raycasting.Raycasting.PreBaking.Ray.Buffers.PreColumn;
-import com.example.raycaster.Model.Raycasting.RenderProcedure;
 
 public final class UpperBlocks {
 
     private UpperBlocks(){
 
     }
+
+    public static void analyseUpperBlocking(){
+
+        if(Ray.halfupx == 1 && Ray.lhalfupx != 1){
+            final float height =  PreColumn.height;
+
+            if(PreColumn.mminh < RenderProcedure.cameraY - ((int)height<<1))
+                PreColumn.minhh = RenderProcedure.cameraY - ((int)height<<1);
+        }else if(Ray.ceili == 1 && Ray.lceili != 1){
+            PreColumn.minhh = 0;
+        }
+    }
+
 
     public static void renderUpperBlocks(){
         if((Ray.ceili == 1 && Ray.lceili != 1) || (Ray.upperbuildingx&& !Ray.lupperbuildingx)){

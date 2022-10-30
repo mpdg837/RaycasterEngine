@@ -1,5 +1,6 @@
-package com.example.raycaster.Model.Raycasting.Raycasting.Analyse.Entities;
+package com.example.raycaster.Model.Raycasting.Raycasting.Analyse.RenderSteps;
 
+import com.example.raycaster.Model.Raycasting.Quality;
 import com.example.raycaster.Model.Raycasting.RenderProcedure;
 
 public final class Sight {
@@ -67,8 +68,8 @@ public final class Sight {
 
     private static void countRelativePos(){
 
-        deltaPosXc = ((RenderProcedure.pos.x-((float) (int)RenderProcedure.pos.x))*(float) RenderProcedure.textureResolution);
-        deltaPosYc = ((RenderProcedure.pos.y-((float) (int)RenderProcedure.pos.y))*(float) RenderProcedure.textureResolution);
+        deltaPosXc = ((RenderProcedure.pos.x-((float) (int)RenderProcedure.pos.x))*(float) Quality.textureResolution);
+        deltaPosYc = ((RenderProcedure.pos.y-((float) (int)RenderProcedure.pos.y))*(float) Quality.textureResolution);
 
     }
 
@@ -121,7 +122,7 @@ public final class Sight {
 
 
 
-        for(float fi = RenderProcedure.angle - RenderProcedure.pi/6 ;fi<RenderProcedure.angle+RenderProcedure.pi/6; fi+=RenderProcedure.deltaFi) {
+        for(float fi = RenderProcedure.angle - RenderProcedure.pi/6 ;fi<RenderProcedure.angle+RenderProcedure.pi/6; fi+=Quality.deltaFi) {
             Ray.analyseRay(fi);
 
         }

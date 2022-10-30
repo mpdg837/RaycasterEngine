@@ -1,7 +1,8 @@
 package com.example.raycaster.Model.Raycasting.Raycasting.PreBaking.Ray;
 
-import com.example.raycaster.Model.Raycasting.Raycasting.Analyse.Entities.Ray;
-import com.example.raycaster.Model.Raycasting.Raycasting.Analyse.Entities.Sight;
+import com.example.raycaster.Model.Raycasting.Quality;
+import com.example.raycaster.Model.Raycasting.Raycasting.Analyse.RenderSteps.Ray;
+import com.example.raycaster.Model.Raycasting.Raycasting.Analyse.RenderSteps.Sight;
 import com.example.raycaster.Model.Raycasting.Raycasting.PreBaking.Ray.Buffers.PreColumn;
 import com.example.raycaster.Model.Raycasting.RenderProcedure;
 
@@ -51,7 +52,7 @@ public final class PointOnRay {
         lintdeltaPosX = intdeltaPosX;
 
         PreColumn.z += AngleRay.cosBetaR;
-        PreColumn.fakeHeight -= RenderProcedure.lineHeightStep;
+        PreColumn.fakeHeight -= Quality.lineHeightStep;
 
         PointOnRay.deltaPosY += AngleRay.cosDeltaY;
         PointOnRay.deltaPosX += AngleRay.sinDeltaX;
@@ -71,7 +72,7 @@ public final class PointOnRay {
     public static void reductionAmountOfRaycastStep(){
 
         if (Sight.posScreenX != 0) {
-            dr += RenderProcedure.raycasterStep;
+            dr += Quality.raycasterStep;
 
             if (dr > 5) { // Sqrt 3
                 dr = 0;

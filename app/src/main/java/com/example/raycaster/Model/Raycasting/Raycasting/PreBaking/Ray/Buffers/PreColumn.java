@@ -1,10 +1,10 @@
 package com.example.raycaster.Model.Raycasting.Raycasting.PreBaking.Ray.Buffers;
 
+import com.example.raycaster.Model.Raycasting.Raycasting.MatrixBuffers.UpperInfoBuffer;
 import com.example.raycaster.Model.Raycasting.Raycasting.PreBaking.Ray.PointOnRay;
 import com.example.raycaster.Model.Resources.Map.Map;
-import com.example.raycaster.Model.Raycasting.Raycasting.Analyse.Entities.InPoint;
-import com.example.raycaster.Model.Raycasting.Raycasting.Analyse.Entities.Ray;
-import com.example.raycaster.Model.Raycasting.Raycasting.RenderInfoBuffer;
+import com.example.raycaster.Model.Raycasting.Raycasting.Analyse.RenderSteps.InPoint;
+import com.example.raycaster.Model.Raycasting.Raycasting.Analyse.RenderSteps.Ray;
 import com.example.raycaster.Model.Raycasting.RenderProcedure;
 
 public final class PreColumn {
@@ -78,33 +78,33 @@ public final class PreColumn {
     }
 
     public static float getLastUpperHeight(float height){
-        float lha = RenderInfoBuffer.lhheight[InPoint.countPos];
+        float lha = UpperInfoBuffer.lhheight[InPoint.countPos];
 
-        if (Map.isNeighbourhood((int) PointOnRay.posX, (int) PointOnRay.posY, RenderInfoBuffer.lluposX[PreColumn.uppernum], RenderInfoBuffer.lluposY[ PreColumn.uppernum])) {
+        if (Map.isNeighbourhood((int) PointOnRay.posX, (int) PointOnRay.posY, UpperInfoBuffer.lluposX[PreColumn.uppernum], UpperInfoBuffer.lluposY[ PreColumn.uppernum])) {
             lha = height;
 
         }
 
-        lha = whenZero(lha,height,RenderInfoBuffer.llhheight[PreColumn.uppernum]);
+        lha = whenZero(lha,height,UpperInfoBuffer.llhheight[PreColumn.uppernum]);
 
         return lha;
     }
 
     public static void bufferUpperColumn(float height){
 
-        RenderInfoBuffer.llhheight[ PreColumn.uppernum] = height;
+        UpperInfoBuffer.llhheight[ PreColumn.uppernum] = height;
 
 
-        RenderInfoBuffer.lluposX[ PreColumn.uppernum] = (int) PointOnRay.posX;
-        RenderInfoBuffer.lluposY[ PreColumn.uppernum] = (int) PointOnRay.posY;
+        UpperInfoBuffer.lluposX[ PreColumn.uppernum] = (int) PointOnRay.posX;
+        UpperInfoBuffer.lluposY[ PreColumn.uppernum] = (int) PointOnRay.posY;
 
 
-        RenderInfoBuffer.lhheight[InPoint.countPos] = height;
+        UpperInfoBuffer.lhheight[InPoint.countPos] = height;
 
         Ray.upper = true;
 
 
-        if ( PreColumn.uppernum < RenderInfoBuffer.lhheight.length - 1)  PreColumn.uppernum++;
+        if ( PreColumn.uppernum < UpperInfoBuffer.lhheight.length - 1)  PreColumn.uppernum++;
     }
 
 

@@ -1,9 +1,10 @@
 package com.example.raycaster.View.Raycasting.Sprites;
 
-import com.example.raycaster.Model.Raycasting.Raycasting.Analyse.Entities.Ray;
-import com.example.raycaster.Model.Raycasting.Raycasting.Analyse.Entities.Sight;
+import com.example.raycaster.Model.Raycasting.Quality;
+import com.example.raycaster.Model.Raycasting.Raycasting.Analyse.RenderSteps.Ray;
+import com.example.raycaster.Model.Raycasting.Raycasting.Analyse.RenderSteps.Sight;
+import com.example.raycaster.Model.Raycasting.Raycasting.MatrixBuffers.SpriteInfoBuffer;
 import com.example.raycaster.View.Render;
-import com.example.raycaster.Model.Raycasting.Raycasting.RenderInfoBuffer;
 import com.example.raycaster.Model.Raycasting.RenderProcedure;
 
 public final class SpriteBufferRender {
@@ -13,8 +14,8 @@ public final class SpriteBufferRender {
     }
 
     public static void renderBufferedColumn(){
-        int width = RenderProcedure.SCREEN_STEP << Render.shiftPixelWidth;
-        int trns =  RenderProcedure.SCREEN_STEP << Render.shiftPixelWidth << 1;
+        int width = Quality.SCREEN_STEP << Render.shiftPixelWidth;
+        int trns =  Quality.SCREEN_STEP << Render.shiftPixelWidth << 1;
 
         int mpos = (Sight.posScreenX << Render.shiftPixelWidth) - trns;
 
@@ -28,11 +29,11 @@ public final class SpriteBufferRender {
 
                 count = Ray.countPosBuffer(xx, p);
 
-                int readed = RenderInfoBuffer.reservedSpritePixels[count];
+                int readed = SpriteInfoBuffer.reservedSpritePixels[count];
 
                 if (readed != 0 && mpos + x > 0) {
                     RenderProcedure.setPixel(mpos + x, readed);
-                    RenderInfoBuffer.reservedSpritePixels[count] = 0;
+                    SpriteInfoBuffer.reservedSpritePixels[count] = 0;
                 }
 
                 xx++;

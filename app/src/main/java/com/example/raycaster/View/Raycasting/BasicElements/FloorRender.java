@@ -1,5 +1,6 @@
 package com.example.raycaster.View.Raycasting.BasicElements;
 
+import com.example.raycaster.Model.Raycasting.Quality;
 import com.example.raycaster.Model.Raycasting.Raycasting.Textures.TextureContainer;
 import com.example.raycaster.Model.Raycasting.RenderProcedure;
 import com.example.raycaster.View.Raycasting.BasicElements.PixelSet.FloorPixel;
@@ -9,7 +10,7 @@ public final class FloorRender {
     public static int posllY;
     public static int posllX;
 
-    private static final int delta = (RenderProcedure.D_SCREEN_STEP);
+    private static final int delta = (Quality.D_SCREEN_STEP);
 
     public static void renderCeiling(float r, int ceil, int hei, int poslX, int poslY, int posScreenX, int posstart){
 

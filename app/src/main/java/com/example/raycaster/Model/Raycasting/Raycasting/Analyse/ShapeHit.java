@@ -1,8 +1,9 @@
 package com.example.raycaster.Model.Raycasting.Raycasting.Analyse;
 
+import com.example.raycaster.Model.Raycasting.Raycasting.Analyse.ShapeType.Types.Column;
 import com.example.raycaster.Model.Raycasting.Raycasting.PreBaking.Ray.PointOnRay;
 
-public final class ShapeHit {
+public final class ShapeHit extends Hit{
 
     public static boolean inX1;
     public static boolean inX2;
@@ -18,17 +19,7 @@ public final class ShapeHit {
     }
 
     public static boolean isInShape(){
-        boolean inX = PointOnRay.intdeltaPosX > min && PointOnRay.intdeltaPosX < max;
-        boolean inY = PointOnRay.intdeltaPosY > min && PointOnRay.intdeltaPosY < max;
-
-        int aintX = PointOnRay.intdeltaPosX - 32;
-        int aintY = PointOnRay.intdeltaPosY - 32;
-
-        int fun = aintX * aintX + aintY * aintY;
-
-        boolean inZ = fun < 256;
-
-        return inX && inY && inZ;
+        return Column.isInShape();
     }
 
     public static void analyse(){

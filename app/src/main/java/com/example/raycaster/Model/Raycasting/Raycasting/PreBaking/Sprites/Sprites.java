@@ -1,7 +1,7 @@
 package com.example.raycaster.Model.Raycasting.Raycasting.PreBaking.Sprites;
 
-import com.example.raycaster.Model.Raycasting.Raycasting.Analyse.Entities.Ray;
-import com.example.raycaster.Model.Raycasting.Raycasting.Analyse.Entities.Sight;
+import com.example.raycaster.Model.Raycasting.Raycasting.Analyse.RenderSteps.Ray;
+import com.example.raycaster.Model.Raycasting.Raycasting.Analyse.RenderSteps.Sight;
 import com.example.raycaster.Model.Raycasting.Raycasting.PreBaking.Sprites.Models.DynamicSprite;
 import com.example.raycaster.Model.Raycasting.Raycasting.PreBaking.Sprites.Models.StaticSprite;
 import com.example.raycaster.View.Raycasting.Half.Half;

@@ -1,7 +1,6 @@
 package com.example.raycaster.Model.Raycasting.Raycasting.PreBaking.Sprites.Models;
 
-import com.example.raycaster.Model.Raycasting.Raycasting.Analyse.Entities.Ray;
-import com.example.raycaster.Model.Raycasting.Raycasting.Analyse.Entities.Sight;
+import com.example.raycaster.Model.Raycasting.Raycasting.Analyse.RenderSteps.Sight;
 import com.example.raycaster.Model.Raycasting.Raycasting.PreBaking.Ray.PointOnRay;
 import com.example.raycaster.View.Raycasting.Sprites.SpriteColumn;
 
@@ -12,12 +11,12 @@ public final class StaticSprite {
     private static boolean start = false;
     private static boolean texM = false;
 
-    private static boolean inrange(int value){
-        return value > 16 && value < 48;
-    }
-
     private StaticSprite(){
 
+    }
+
+    private static boolean inrange(int value){
+        return value > 16 && value < 48;
     }
 
     public static boolean crossed(int value, int lvalue) {
@@ -26,7 +25,7 @@ public final class StaticSprite {
         else
             return false;
     }
-    public static void detectTypeOfStaticSprite(){
+    private static void detectTypeOfStaticSprite(){
         tex = 0;
         start = false;
         texM = false;

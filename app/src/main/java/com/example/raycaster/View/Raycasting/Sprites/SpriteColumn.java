@@ -1,12 +1,13 @@
 package com.example.raycaster.View.Raycasting.Sprites;
 
-import com.example.raycaster.Model.Raycasting.Raycasting.Analyse.Entities.InPoint;
-import com.example.raycaster.Model.Raycasting.Raycasting.Analyse.Entities.Ray;
-import com.example.raycaster.Model.Raycasting.Raycasting.Analyse.Entities.Sight;
+import com.example.raycaster.Model.Raycasting.Quality;
+import com.example.raycaster.Model.Raycasting.Raycasting.Analyse.RenderSteps.InPoint;
+import com.example.raycaster.Model.Raycasting.Raycasting.Analyse.RenderSteps.Ray;
+import com.example.raycaster.Model.Raycasting.Raycasting.Analyse.RenderSteps.Sight;
+import com.example.raycaster.Model.Raycasting.Raycasting.MatrixBuffers.SpriteInfoBuffer;
 import com.example.raycaster.Model.Raycasting.Raycasting.PreBaking.Floor;
 import com.example.raycaster.Model.Raycasting.Raycasting.PreBaking.Ray.PointOnRay;
 import com.example.raycaster.Model.Raycasting.Raycasting.PreBaking.Ray.Buffers.PreColumn;
-import com.example.raycaster.Model.Raycasting.Raycasting.RenderInfoBuffer;
 import com.example.raycaster.Model.Raycasting.RenderProcedure;
 import com.example.raycaster.Model.Raycasting.Raycasting.Textures.TextureContainer;
 
@@ -43,12 +44,12 @@ public final class SpriteColumn extends SpriteRenderer{
 
         posTexY = 0;
 
-        ltexX = (byte)RenderInfoBuffer.mapsprite[InPoint.countPos];
+        ltexX = (byte) SpriteInfoBuffer.mapsprite[InPoint.countPos];
 
-        if (texM) ltexX = RenderInfoBuffer.mapsprite2[InPoint.countPos];
+        if (texM) ltexX = SpriteInfoBuffer.mapsprite2[InPoint.countPos];
         if (ltexX == 0) ltexX = (byte)tex;
 
-        dtexX = ((float) tex - (float) ltexX) / (float) RenderProcedure.SCREEN_STEP;
+        dtexX = ((float) tex - (float) ltexX) / (float) Quality.SCREEN_STEP;
 
     }
     public static void render(float heights,boolean texM,byte tex,int shadows){
@@ -62,17 +63,17 @@ public final class SpriteColumn extends SpriteRenderer{
 
                 float ttexX = ltexX;
 
-                for (int k = 0; k < RenderProcedure.SCREEN_STEP; k++) {
+                for (int k = 0; k < Quality.SCREEN_STEP; k++) {
                     final int count = Ray.countPosBuffer(k, n);
 
-                    if (RenderInfoBuffer.reservedSpritePixels[count] == 0) {
+                    if (SpriteInfoBuffer.reservedSpritePixels[count] == 0) {
                         int col;
 
                         if (Sight.obj == 10)
                             col =  TextureContainer.high.getPixel((int) (ttexX) << 1, (int) posTexY & 0x7f,shadows) & 0xFFFFFF;
                         else
                             col = TextureContainer.fence.getPixel((int) (ttexX) << 1, (int) posTexY & 0x7f,shadows) & 0xFFFFFF;
-                        RenderInfoBuffer.reservedSpritePixels[count] = col;
+                        SpriteInfoBuffer.reservedSpritePixels[count] = col;
                         ttexX += dtexX;
                     }
                 }
@@ -80,8 +81,8 @@ public final class SpriteColumn extends SpriteRenderer{
             }
             posTexY += delta;
         }
-        if (!texM) RenderInfoBuffer.mapsprite[InPoint.countPos] = tex;
-        else RenderInfoBuffer.mapsprite2[InPoint.countPos] = tex;
+        if (!texM) SpriteInfoBuffer.mapsprite[InPoint.countPos] = tex;
+        else SpriteInfoBuffer.mapsprite2[InPoint.countPos] = tex;
 
 
     }

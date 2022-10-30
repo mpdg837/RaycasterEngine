@@ -1,7 +1,8 @@
 package com.example.raycaster.Model.Raycasting.Raycasting.PreBaking;
 
+import com.example.raycaster.Model.Raycasting.Quality;
 import com.example.raycaster.Model.Resources.Map.Map;
-import com.example.raycaster.Model.Raycasting.Raycasting.Analyse.Entities.Ray;
+import com.example.raycaster.Model.Raycasting.Raycasting.Analyse.RenderSteps.Ray;
 import com.example.raycaster.Model.Raycasting.Raycasting.PreBaking.Ray.PointOnRay;
 import com.example.raycaster.Model.Raycasting.Raycasting.PreBaking.Ray.Buffers.PreColumn;
 import com.example.raycaster.Model.Raycasting.RenderProcedure;
@@ -34,7 +35,7 @@ public final class Floor {
     public static void renderFloor(int posX, int posY, boolean renderFloor, int posScreenX, float deltaPosY
             , float deltaPosX, float r, boolean half, boolean oneheight, boolean halfupx, int maxhh, int minhh){
 
-        posScreenX += (RenderProcedure.SCREEN_STEP>>1);
+        posScreenX += (Quality.SCREEN_STEP>>1);
 
         if (posScreenX != 0 && renderFloor) {
 
