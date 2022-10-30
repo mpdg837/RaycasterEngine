@@ -1,12 +1,15 @@
-package com.example.raycaster.Model.Raycasting.Raycasting.PreBaking.Ray.PreColumns;
+package com.example.raycaster.Model.Raycasting.Raycasting.PreBaking.Ray.Buffers;
 
 import com.example.raycaster.Model.Raycasting.Raycasting.Analyse.Entities.InPoint;
 import com.example.raycaster.Model.Raycasting.Raycasting.Analyse.Entities.Ray;
 import com.example.raycaster.Model.Raycasting.Raycasting.PreBaking.Ray.PointOnRay;
 import com.example.raycaster.Model.Raycasting.Raycasting.RenderInfoBuffer;
 
-public final class HalfPreColumn {
+public final class BufferHalfColumn {
 
+    private BufferHalfColumn(){
+
+    }
     public static void bufferHalfUpperColumn(float height){
 
         RenderInfoBuffer.llhheight[ PreColumn.uppernum] = height;

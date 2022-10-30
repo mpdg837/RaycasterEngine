@@ -49,6 +49,9 @@ public final class Sight {
 
     public static float halflheight = 0;
 
+    private Sight(){
+
+    }
 
     private static float countTan(){
         float tan = (float) Math.tan(RenderProcedure.angle);
@@ -118,7 +121,7 @@ public final class Sight {
 
 
 
-        for(float fi = RenderProcedure.angle - RenderProcedure.pi/12 ;fi<RenderProcedure.angle+RenderProcedure.pi/12; fi+=RenderProcedure.deltaFi) {
+        for(float fi = RenderProcedure.angle - RenderProcedure.pi/6 ;fi<RenderProcedure.angle+RenderProcedure.pi/6; fi+=RenderProcedure.deltaFi) {
             Ray.analyseRay(fi);
 
         }

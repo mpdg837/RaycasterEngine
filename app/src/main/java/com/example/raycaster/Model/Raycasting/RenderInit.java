@@ -9,6 +9,11 @@ public final class RenderInit {
     public static RenderLoopTask context;
     public static RenderProcedure render;
 
+
+    public RenderInit(){
+
+    }
+
     public static void start(MainActivity app){
 
         try {

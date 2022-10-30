@@ -1,4 +1,4 @@
-package com.example.raycaster.View.Raycasting.BasicElements;
+package com.example.raycaster.View.Raycasting.BasicElements.PixelSet;
 
 import com.example.raycaster.Model.Raycasting.Raycasting.Analyse.Entities.Ray;
 import com.example.raycaster.Model.Raycasting.RenderProcedure;

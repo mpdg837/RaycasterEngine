@@ -1,19 +1,20 @@
 package com.example.raycaster.View.Raycasting.Blocks;
 
 import com.example.raycaster.Model.Raycasting.Raycasting.Analyse.ShapeHit;
-import com.example.raycaster.Model.Raycasting.Raycasting.Analyse.WallHit;
 import com.example.raycaster.Model.Resources.Map.Map;
 import com.example.raycaster.Model.Raycasting.Raycasting.Analyse.Entities.Ray;
 import com.example.raycaster.Model.Raycasting.Raycasting.Analyse.Entities.Sight;
-import com.example.raycaster.Model.Raycasting.Raycasting.PreBaking.Ray.AngleRay;
 import com.example.raycaster.Model.Raycasting.Raycasting.PreBaking.Ray.PointOnRay;
-import com.example.raycaster.Model.Raycasting.Raycasting.PreBaking.Ray.PreColumns.PreColumn;
+import com.example.raycaster.Model.Raycasting.Raycasting.PreBaking.Ray.Buffers.PreColumn;
 import com.example.raycaster.Model.Raycasting.RenderProcedure;
-import com.example.raycaster.View.Raycasting.BasicElements.Column;
 import com.example.raycaster.Model.Raycasting.Raycasting.PreBaking.Floor;
 
-public final class Shpaes {
+public final class Shapes extends RenderObject{
 
+
+    private Shapes(){
+
+    }
 
     private static void ignoreBigDiffrence(int value){
         int diff = value- Sight.lcolumn;
@@ -22,19 +23,6 @@ public final class Shpaes {
         }
     }
 
-    private static void renderYWall(float height, int shadow){
-        Column.drawLine((short) (Sight.posScreenX - RenderProcedure.D_SCREEN_STEP), (int) height, (int) Sight.lheighte,
-                PointOnRay.intdeltaPosY, Sight.lcolumn, shadow, Ray.half, false, 0, 400
-                , false, Ray.lceili, false, false);
-
-    }
-
-    private static void renderXWall(float height, int shadow){
-        Column.drawLine((short) (Sight.posScreenX - RenderProcedure.D_SCREEN_STEP), (int) height, (int) Sight.lheighte,
-                PointOnRay.intdeltaPosX, Sight.lcolumn, shadow, Ray.half, false, 0, 400
-                , false, Ray.lceili, false, false);
-
-    }
 
     public static void renderShapes(float r){
 
@@ -70,7 +58,7 @@ public final class Shpaes {
 
                     ignoreBigDiffrence(PointOnRay.intdeltaPosY);
 
-                    renderYWall(height,shadow);
+                    renderYWall(height,shadow,(int)Sight.lheighte);
 
                     Sight.lcolumn = PointOnRay.intdeltaPosY;
 
@@ -79,7 +67,7 @@ public final class Shpaes {
 
                     ignoreBigDiffrence(PointOnRay.intdeltaPosX);
 
-                    renderXWall(height,shadow);
+                    renderXWall(height,shadow,(int)Sight.lheighte);
 
                     Sight.lcolumn = PointOnRay.intdeltaPosX;
 

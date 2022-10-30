@@ -1,11 +1,8 @@
 package com.example.raycaster.View.Raycasting.BasicElements;
 
-import android.graphics.Point;
-
 import com.example.raycaster.Model.Raycasting.Raycasting.Analyse.Entities.Ray;
 import com.example.raycaster.Model.Raycasting.Raycasting.PreBaking.Math.Functions;
-import com.example.raycaster.Model.Raycasting.Raycasting.PreBaking.Ray.PointOnRay;
-import com.example.raycaster.Model.Raycasting.Raycasting.PreBaking.Ray.PreColumns.PreColumn;
+import com.example.raycaster.View.Raycasting.BasicElements.PixelSet.ColumnPixel;
 import com.example.raycaster.View.Render;
 import com.example.raycaster.Model.Resources.Textures.Texture;
 import com.example.raycaster.Model.Raycasting.RenderProcedure;
@@ -112,18 +109,19 @@ public final class Column {
     }
 
     private static void makeSmoothBorders(boolean upperb,boolean upper,boolean half,int x,boolean renderHalf,boolean upperhalf){
+        if(upperhalf){
+            posStart = (int)(((int)((float)ys-dh) * (float)RenderProcedure.SCREEN_WIDTH + (float)x)) << Render.shiftPixelWidth;
+            posFinal = (int)(((int)((float)yf-dh) * (float)RenderProcedure.SCREEN_WIDTH + (float)x)) << Render.shiftPixelWidth;
+        }else
         if(upperb){
             posStart = (int)(((int)((float)ys-3*dh) * (float)RenderProcedure.SCREEN_WIDTH + (float)x)) << Render.shiftPixelWidth;
             posFinal = (int)(((int)((float)yf-2*dh) * (float)RenderProcedure.SCREEN_WIDTH + (float)x)) << Render.shiftPixelWidth;
         }else
         if(upper){
 
-            if(upperhalf)posStart = (int)(((int)((float)ys-dh) * (float)RenderProcedure.SCREEN_WIDTH + (float)x)) << Render.shiftPixelWidth;
-            else posStart = (int)(((int)((float)ys-2*dh) * (float)RenderProcedure.SCREEN_WIDTH + (float)x)) << Render.shiftPixelWidth;
 
-
-            if(upperhalf) posFinal = (int)(((int)((float)yf) * (float)RenderProcedure.SCREEN_WIDTH + (float)x)) << Render.shiftPixelWidth;
-            else posFinal = (int)(((int)((float)yf-dh) * (float)RenderProcedure.SCREEN_WIDTH + (float)x)) << Render.shiftPixelWidth;
+            posStart = (int)(((int)((float)ys-2*dh) * (float)RenderProcedure.SCREEN_WIDTH + (float)x)) << Render.shiftPixelWidth;
+            posFinal = (int)(((int)((float)yf-dh) * (float)RenderProcedure.SCREEN_WIDTH + (float)x)) << Render.shiftPixelWidth;
 
         }else{
 
@@ -141,29 +139,30 @@ public final class Column {
         return (lceili == 1) && !upperb;
     }
     public static void drawLine(short x, int height,int lheight,int column,int lcolumn,int shadow,boolean half,boolean upper,
-                                int llminh,int llmaxh,boolean halfup,int lceili,boolean upperb,boolean dhalf){
+                                int llminh,int llmaxh,boolean halfup,int lceili,boolean upperb,boolean dhalf) {
 
-        Column.lheight = lheight;
-        Column.height = height;
+        if (!(Ray.finalrender) || upperb) {
+            Column.lheight = lheight;
+            Column.height = height;
 
 
+            if (shadow > 7) shadow = 7;
 
-        if(shadow>7) shadow = 7;
+            selectTypeOfColumn(halfup, upper, upperb, half, dhalf);
+            Texture tex = selectTexture(halfup, upper, upperb);
 
-        selectTypeOfColumn(halfup, upper, upperb, half, dhalf);
-        Texture tex = selectTexture(halfup, upper, upperb);
+            if (darkerMode(lceili, upperb)) shadow += 2;
 
-        if(darkerMode(lceili,upperb)) shadow +=2;
+            prepare(column, lcolumn);
 
-        prepare(column,lcolumn);
+            if (yf > 0)
+                for (int n = 0; n < len; n++) {
 
-        if(yf>0)
-            for(int n=0;n<len ;n++) {
+                    makeSmoothBorders(upperb, upper, half, x, dhalf, halfup);
+                    ColumnPixel.drawSmallColumn(llminh, llmaxh, upperb, shadow, tex);
 
-                makeSmoothBorders(upperb,upper,half,x,dhalf,halfup);
-                ColumnPixel.drawSmallColumn(llminh,llmaxh,upperb,shadow,tex);
-
-            }
+                }
+        }
     }
 
 

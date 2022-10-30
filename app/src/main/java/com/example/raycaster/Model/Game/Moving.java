@@ -16,6 +16,10 @@ public final class Moving {
     public static float dAngle;
 
     public static Point startMousePos = new Point(0,0);
+
+    private Moving(){
+
+    }
     public static boolean walking(){
 
         float step = 1.75f;
@@ -43,14 +47,13 @@ public final class Moving {
 
         char key = 0;
 
+        float nposX = RenderProcedure.pos.x + trnsY * step *sinX;
+        float nposY = RenderProcedure.pos.y + trnsY * step * cosY;
         if(trnsX !=0 || trnsY!=0) {
-            RaycasterPoint npoint1 = new RaycasterPoint(RenderProcedure.pos.x + trnsX, RenderProcedure.pos.y + trnsY);
+            RaycasterPoint npoint1 = new RaycasterPoint(nposX, nposY);
             if (Map.map[(int) npoint1.x][(int) npoint1.y] == 0 || Map.map[(int) npoint1.x][(int) npoint1.y] == 5) {
-                RenderProcedure.pos.x += trnsY * step *sinX;
-                RenderProcedure.pos.y += trnsY * step * cosY;
-            } else {
-                RenderProcedure.pos.x -= trnsY * step * sinX;
-                RenderProcedure.pos.y -= trnsY * step* cosY;
+                RenderProcedure.pos.x = nposX;
+                RenderProcedure.pos.y = nposY;
             }
             return true;
         }else{

@@ -27,6 +27,10 @@ public final class RenderInfoBuffer {
     public static boolean[] mapspritechange = new boolean[32<<5];
     public static int[] reservedSpritePixels = new int[RenderProcedure.canvasHeight<<6];
 
+    private RenderInfoBuffer(){
+
+    }
+
     public static void clearBuffers(){
 
 

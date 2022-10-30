@@ -1,5 +1,7 @@
 package com.example.raycaster.Model.Game;
 
+import android.graphics.drawable.BitmapDrawable;
+import android.graphics.drawable.Drawable;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.ImageView;
@@ -15,6 +17,10 @@ import com.example.raycaster.View.Render;
 
 public final class StartGame {
 
+    private StartGame(){
+
+    }
+
     public static void initGame(MainActivity app){
 
 
@@ -25,7 +31,10 @@ public final class StartGame {
 
             app.img = app.findViewById(R.id.imageView);
             app.img.setWillNotDraw(true);
-            app.img.setImageBitmap(Render.screen);
+
+            BitmapDrawable draw = new BitmapDrawable(Render.screen);
+            draw.setFilterBitmap(false);
+            app.img.setImageDrawable(draw);
 
             app.speedCounter = (TextView) app.findViewById(R.id.textView);
 

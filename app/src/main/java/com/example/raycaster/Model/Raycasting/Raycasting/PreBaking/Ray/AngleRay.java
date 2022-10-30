@@ -5,9 +5,7 @@ import com.example.raycaster.Model.Raycasting.RenderProcedure;
 
 public final class AngleRay {
 
-    public AngleRay(float fi){
-        countAngleRayProperties(fi);
-    }
+
     public static int val;
     public static int dval;
 
@@ -17,6 +15,13 @@ public final class AngleRay {
     public static float sinPosX;
     public static float cosPosY;
     public static float cosBetaR;
+
+    private AngleRay(){
+
+    }
+    public static void setNewAngle(float fi){
+        countAngleRayProperties(fi);
+    }
 
     private static void countAngleRayProperties(float fi){
         val = Functions.getValue(fi);

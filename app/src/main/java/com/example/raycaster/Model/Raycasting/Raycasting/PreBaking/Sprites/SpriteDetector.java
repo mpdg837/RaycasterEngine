@@ -8,6 +8,9 @@ public final class SpriteDetector {
 
     public static int eq;
 
+    private SpriteDetector(){
+
+    }
     public static boolean isSprite(){
         boolean decision;
 

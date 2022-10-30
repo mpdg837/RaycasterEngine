@@ -2,6 +2,7 @@ package com.example.raycaster.View.Raycasting.BasicElements;
 
 import com.example.raycaster.Model.Raycasting.Raycasting.Textures.TextureContainer;
 import com.example.raycaster.Model.Raycasting.RenderProcedure;
+import com.example.raycaster.View.Raycasting.BasicElements.PixelSet.FloorPixel;
 
 public final class FloorRender {
 

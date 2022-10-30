@@ -22,6 +22,10 @@ public final class TextureContainer {
     public static Texture high;
     public static SkyBox sky;
 
+    private TextureContainer(){
+
+    }
+
     public static void loadTextures(AppCompatActivity app){
         try {
 

@@ -1,25 +1,28 @@
-package com.example.raycaster.View.Raycasting.UpperBlocks;
+package com.example.raycaster.View.Raycasting.UpperBlocks.Other;
 
 import com.example.raycaster.Model.Raycasting.Raycasting.Analyse.Entities.InPoint;
 import com.example.raycaster.Model.Raycasting.Raycasting.Analyse.Entities.Ray;
 import com.example.raycaster.Model.Raycasting.Raycasting.Analyse.Entities.Sight;
 import com.example.raycaster.Model.Raycasting.Raycasting.Analyse.WallHit;
 import com.example.raycaster.Model.Raycasting.Raycasting.PreBaking.Ray.PointOnRay;
-import com.example.raycaster.Model.Raycasting.Raycasting.PreBaking.Ray.PreColumns.PreColumn;
-import com.example.raycaster.Model.Raycasting.Raycasting.PreBaking.Ray.PreColumns.UpperPreColumn;
+import com.example.raycaster.Model.Raycasting.Raycasting.PreBaking.Ray.Buffers.PreColumn;
+import com.example.raycaster.Model.Raycasting.Raycasting.PreBaking.Ray.Buffers.BufferUpperColumn;
 import com.example.raycaster.Model.Raycasting.Raycasting.RenderInfoBuffer;
 import com.example.raycaster.Model.Raycasting.RenderProcedure;
 import com.example.raycaster.View.Raycasting.BasicElements.Column;
+import com.example.raycaster.View.Raycasting.UpperBlocks.Upper;
 
 public final class UpperBuildingBlocks extends Upper {
 
-    private static void renderXWall(float height,float lhaa, int shadow){
+    public static int maxh;
+
+    protected static void renderXWall(float height,float lhaa, int shadow){
         Column.drawLine((short) (Sight.posScreenX - RenderProcedure.D_SCREEN_STEP), (int) height, (int)lhaa, PointOnRay.intdeltaPosX,  RenderInfoBuffer.lupperd[InPoint.countPos],
                 shadow,Ray.half, true,  PreColumn.llminh,  PreColumn.llmaxh, false,Ray.lceili,true,false);
 
     }
 
-    private static void renderYWall(float height,float lhaa,int shadow){
+    protected static void renderYWall(float height,float lhaa,int shadow){
         Column.drawLine((short) (Sight.posScreenX - RenderProcedure.D_SCREEN_STEP), (int) height, (int) lhaa, PointOnRay.intdeltaPosY,RenderInfoBuffer.lupperd[InPoint.countPos],
                 shadow, Ray.half, true,  PreColumn.llminh,  PreColumn.llmaxh, false,Ray.lceili,true,false);
 
@@ -28,7 +31,6 @@ public final class UpperBuildingBlocks extends Upper {
         if(Ray.upperbuildingx && !Ray.lupperbuildingx  && Ray.outside){
 
             if (Sight.renderwall ) {
-
 
                 if ((WallHit.pY1 || WallHit.pY2)) {
 
@@ -47,7 +49,7 @@ public final class UpperBuildingBlocks extends Upper {
                     Sight.lshadowu = shadow;
                 }
 
-                UpperPreColumn.bufferUpperBuildingColumn(height);
+                BufferUpperColumn.bufferUpperBuildingColumn(height);
             }
         }
     }

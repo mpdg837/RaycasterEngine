@@ -1,28 +1,19 @@
-package com.example.raycaster.View.Raycasting.UpperBlocks;
+package com.example.raycaster.View.Raycasting.UpperBlocks.Full;
 
 import com.example.raycaster.Model.Raycasting.Raycasting.Analyse.Entities.InPoint;
 import com.example.raycaster.Model.Raycasting.Raycasting.Analyse.Entities.Ray;
 import com.example.raycaster.Model.Raycasting.Raycasting.Analyse.Entities.Sight;
 import com.example.raycaster.Model.Raycasting.Raycasting.Analyse.ShapeHit;
 import com.example.raycaster.Model.Raycasting.Raycasting.PreBaking.Ray.PointOnRay;
-import com.example.raycaster.Model.Raycasting.Raycasting.PreBaking.Ray.PreColumns.PreColumn;
-import com.example.raycaster.Model.Raycasting.RenderProcedure;
-import com.example.raycaster.View.Raycasting.BasicElements.Column;
+import com.example.raycaster.Model.Raycasting.Raycasting.PreBaking.Ray.Buffers.PreColumn;
 import com.example.raycaster.Model.Raycasting.Raycasting.RenderInfoBuffer;
 
-public final class UpperShapes{
+public final class UpperShapes extends UpperFull{
 
-    private static void  renderYWall(float height,float lha){
-        Column.drawLine((short) (Sight.posScreenX - RenderProcedure.D_SCREEN_STEP), (int) height, (int) lha, PointOnRay.intdeltaPosY, RenderInfoBuffer.lcolumnh[InPoint.countPos],
-                0, Ray.half, true,  PreColumn.llminh,  PreColumn.llmaxh, false, 0, false, false);
+    private UpperShapes(){
 
     }
 
-    private static void  renderXWall(float height,float lha){
-        Column.drawLine((short) (Sight.posScreenX - RenderProcedure.D_SCREEN_STEP), (int) height, (int) lha, PointOnRay.intdeltaPosX, RenderInfoBuffer.lcolumnh[InPoint.countPos],
-                0, Ray.half, true,  PreColumn.llminh,  PreColumn.llmaxh, false, 0, false, false);
-
-    }
     public static void renderUpperShapes(){
 
         if (ShapeHit.isInShape()) {
@@ -35,11 +26,11 @@ public final class UpperShapes{
 
                 if(PointOnRay.lintdeltaPosX <=16 || PointOnRay.lintdeltaPosX>=48){
 
-                    renderYWall(height,lha);
+                    renderYWall(height,lha,0);
                     RenderInfoBuffer.lcolumnh[InPoint.countPos] = PointOnRay.intdeltaPosY;
 
                 }else{
-                    renderXWall(height,lha);
+                    renderXWall(height,lha,0);
                     RenderInfoBuffer.lcolumnh[InPoint.countPos] = PointOnRay.intdeltaPosX;
                 }
 

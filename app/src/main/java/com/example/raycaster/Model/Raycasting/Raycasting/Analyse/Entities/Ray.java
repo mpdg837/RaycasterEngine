@@ -2,10 +2,11 @@ package com.example.raycaster.Model.Raycasting.Raycasting.Analyse.Entities;
 
 import com.example.raycaster.Model.Raycasting.Raycasting.PreBaking.Ray.AngleRay;
 import com.example.raycaster.Model.Raycasting.Raycasting.PreBaking.Ray.PointOnRay;
-import com.example.raycaster.Model.Raycasting.Raycasting.PreBaking.Ray.PreColumns.PreColumn;
+import com.example.raycaster.Model.Raycasting.Raycasting.PreBaking.Ray.Buffers.PreColumn;
 import com.example.raycaster.Model.Raycasting.RenderProcedure;
 import com.example.raycaster.Model.Resources.Map.Map;
-import com.example.raycaster.View.Raycasting.BasicElements.SpriteBufferRender;
+import com.example.raycaster.View.Raycasting.Sprites.SpriteBufferRender;
+import com.example.raycaster.View.Raycasting.UpperBlocks.Other.UpperBuildingBlocks;
 
 public final class Ray {
 
@@ -49,6 +50,10 @@ public final class Ray {
 
     public static boolean outside;
 
+    private Ray(){
+
+    }
+
     public static int countPosBuffer(int x, int y){
         int count = (y << 3) + (x);
         if(count>=6400) count = 0;
@@ -58,6 +63,11 @@ public final class Ray {
 
 
     private static void initRay(){
+
+            UpperBuildingBlocks.maxh = 0;
+
+            PreColumn.minhh = 400;
+
 
             halfupx = 0;
             lhalfupx = 0;
@@ -75,6 +85,7 @@ public final class Ray {
             oneheight = false;
 
             ceili = Map.ceiling[(int) PointOnRay.posX][(int) PointOnRay.posY];
+
 
             lceiling = Map.ceiling[(int) PointOnRay.posX][(int) PointOnRay.posY];
 
@@ -104,8 +115,8 @@ public final class Ray {
     }
     public static void analyseRay(float fi){
 
-        new AngleRay(fi);
-        new PointOnRay();
+        AngleRay.setNewAngle(fi);
+        PointOnRay.resetRay();
 
         PreColumn.start();
         initRay();

@@ -5,37 +5,14 @@ import com.example.raycaster.Model.Raycasting.Raycasting.Analyse.Entities.Ray;
 import com.example.raycaster.Model.Raycasting.Raycasting.Analyse.Entities.Sight;
 import com.example.raycaster.Model.Raycasting.Raycasting.Analyse.ShapeHit;
 import com.example.raycaster.Model.Raycasting.Raycasting.PreBaking.Ray.PointOnRay;
-import com.example.raycaster.Model.Raycasting.Raycasting.PreBaking.Ray.PreColumns.PreColumn;
+import com.example.raycaster.Model.Raycasting.Raycasting.PreBaking.Ray.Buffers.PreColumn;
 import com.example.raycaster.Model.Raycasting.Raycasting.RenderInfoBuffer;
-import com.example.raycaster.Model.Raycasting.RenderProcedure;
-import com.example.raycaster.View.Raycasting.BasicElements.Column;
 
-public final class HalfShapes {
+public final class HalfShapes extends RenderHalf{
 
-    private static int countShadowX(int intdeltaPosX,int shadow){
-        if (intdeltaPosX < 19) {
-            shadow = 1;
-        } else {
-            shadow = 2;
-        }
 
-        if (Ray.ceili == 1) {
-            shadow += 3;
-        }
-        return shadow;
-    }
+    private HalfShapes(){
 
-    private static int countShadowY(int intdeltaPosY,int shadow){
-        if (intdeltaPosY < 19) {
-            shadow = 2;
-        } else {
-            shadow = 1;
-        }
-
-        if (Ray.ceili == 1) {
-            shadow += 3;
-        }
-        return shadow;
     }
 
     private static void ignoreBigDiffrence(int value){
@@ -43,13 +20,6 @@ public final class HalfShapes {
         if (diff > 32 || diff < -32) {
             Sight.lcolumnhalf = value;
         }
-    }
-
-    private static void renderWall(float height,int intdeltaPosX,int shadow,float lheight){
-        Column.drawLine((short) (Sight.posScreenX - RenderProcedure.D_SCREEN_STEP), (int) height, (int) lheight,
-                intdeltaPosX, Sight.lcolumnhalf, shadow, false, false, 0, 400
-                , false, Ray.lceili, false, true);
-
     }
 
     public static void renderHalfShapes(int intdeltaPosX,int intdeltaPosY){

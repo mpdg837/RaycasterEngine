@@ -1,19 +1,20 @@
 package com.example.raycaster.Model.Raycasting.Raycasting.PreBaking;
 
-import com.example.raycaster.Model.Raycasting.Raycasting.Analyse.Entities.InPoint;
-import com.example.raycaster.Model.Raycasting.Raycasting.Analyse.Entities.Sight;
 import com.example.raycaster.Model.Resources.Map.Map;
 import com.example.raycaster.Model.Raycasting.Raycasting.Analyse.Entities.Ray;
 import com.example.raycaster.Model.Raycasting.Raycasting.PreBaking.Ray.PointOnRay;
-import com.example.raycaster.Model.Raycasting.Raycasting.PreBaking.Ray.PreColumns.PreColumn;
+import com.example.raycaster.Model.Raycasting.Raycasting.PreBaking.Ray.Buffers.PreColumn;
 import com.example.raycaster.Model.Raycasting.RenderProcedure;
-import com.example.raycaster.Model.Raycasting.Raycasting.Textures.TextureContainer;
-import com.example.raycaster.View.Raycasting.BasicElements.FloorPixel;
 import com.example.raycaster.View.Raycasting.BasicElements.FloorRender;
 
 public final class Floor {
 
     static float heightBuffer = 0;
+    public static  int hei;
+
+    private Floor(){
+
+    }
 
     private static int getHei(float r){
         int hei = (int)(PreColumn.lheightpos - PreColumn.height);
@@ -37,7 +38,7 @@ public final class Floor {
 
         if (posScreenX != 0 && renderFloor) {
 
-            int hei = getHei(r);
+            hei = getHei(r);
             if(hei != 0) {
                 final float heightx = PreColumn.height;
 
@@ -54,6 +55,7 @@ public final class Floor {
                         int posfinish = (int) (RenderProcedure.cameraY + heightx);
 
 
+
                         if (!oneheight) {
                             if (ceil != 0 && !(ceil == 2 && Ray.luppershapeR)) {
 
@@ -67,11 +69,13 @@ public final class Floor {
                                 }
 
                                 if (ceil == 1) {
-                                    if (!halfupx ||  !Ray.outside) {
+
+                                    if(PreColumn.maxh < posstart)
                                         PreColumn.maxh = posstart;
-                                    }
 
                                 }
+
+
 
                             }
 

@@ -14,6 +14,11 @@ public final class Functions {
     final static  float[] tan = new float[length];
 
     final static  int[] sqrt = new int[32*32*1000];
+
+    private Functions(){
+
+    }
+
     public static void precount(float deltaRaycasterStep, float raycasterStep) {
         for (double fi = -6.283; fi < 6.283; fi+=0.001) {
             int n=getValue(fi);

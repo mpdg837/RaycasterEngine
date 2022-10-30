@@ -1,25 +1,25 @@
-package com.example.raycaster.View.Raycasting.UpperBlocks;
+package com.example.raycaster.View.Raycasting.UpperBlocks.Other;
 
 import com.example.raycaster.Model.Raycasting.Raycasting.Analyse.Entities.InPoint;
 import com.example.raycaster.Model.Raycasting.Raycasting.Analyse.Entities.Ray;
 import com.example.raycaster.Model.Raycasting.Raycasting.Analyse.Entities.Sight;
 import com.example.raycaster.Model.Raycasting.Raycasting.Analyse.WallHit;
-import com.example.raycaster.Model.Raycasting.Raycasting.PreBaking.Ray.PreColumns.HalfPreColumn;
 import com.example.raycaster.Model.Raycasting.Raycasting.PreBaking.Ray.PointOnRay;
-import com.example.raycaster.Model.Raycasting.Raycasting.PreBaking.Ray.PreColumns.PreColumn;
+import com.example.raycaster.Model.Raycasting.Raycasting.PreBaking.Ray.Buffers.PreColumn;
 import com.example.raycaster.Model.Raycasting.Raycasting.RenderInfoBuffer;
 import com.example.raycaster.Model.Raycasting.RenderProcedure;
 import com.example.raycaster.View.Raycasting.BasicElements.Column;
+import com.example.raycaster.View.Raycasting.UpperBlocks.Upper;
 
 public final class UpperHalfBlock extends Upper {
 
-    private static void renderXWall(float height,float lha,int shadow){
+    protected static void renderXWall(float height,float lha,int shadow){
         Column.drawLine((short) (Sight.posScreenX - RenderProcedure.D_SCREEN_STEP), (int) height, (int) Sight.luheight, PointOnRay.intdeltaPosX,
                 RenderInfoBuffer.lcolumnh[InPoint.countPos], shadow, Ray.half, false,  PreColumn.llminh,  PreColumn.llmaxh,true,0,false,false);
 
     }
 
-    private static void renderYWall(float height, float lha, int shadow){
+    protected static void renderYWall(float height, float lha, int shadow){
         Column.drawLine((short) (Sight.posScreenX - RenderProcedure.D_SCREEN_STEP), (int) height, (int) Sight.luheight, PointOnRay.intdeltaPosY,
                 RenderInfoBuffer.lcolumnh[InPoint.countPos], shadow, Ray.half, false, PreColumn.llminh, PreColumn.llmaxh,true,0,false,false);
     }
@@ -35,7 +35,8 @@ public final class UpperHalfBlock extends Upper {
         shadow = 0;
         if(Sight.renderwall && !Ray.luppershapeR) {
 
-            Sight.luheight = height;
+            Sight.luheight = lha;
+
 
             if ((WallHit.pY1 || WallHit.pY2)) {
 
@@ -50,6 +51,9 @@ public final class UpperHalfBlock extends Upper {
             }else{
                 renderNWall(height,lha,shadow);
             }
+
+            PreColumn.bufferUpperColumn(height);
+
 
 
         }

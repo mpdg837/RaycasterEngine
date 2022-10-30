@@ -8,6 +8,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import java.io.IOException;
 
 public class HighSprite extends Texture{
+
     public HighSprite(AppCompatActivity app, int obj) throws IOException {
             super(app,obj,true);
 

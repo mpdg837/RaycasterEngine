@@ -8,6 +8,10 @@ public final class Map {
     public static byte[][] ceiling = new byte[128][128];
     public static byte[][] uppershape = new byte[128][128];
 
+    private Map(){
+
+    }
+
     public static boolean isNeighbourhood(int posX, int posY, int lposX, int lposY){
 
         boolean up = (posX == lposX - 1) && (posY == lposY);

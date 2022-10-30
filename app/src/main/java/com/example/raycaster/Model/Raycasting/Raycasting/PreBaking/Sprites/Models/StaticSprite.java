@@ -1,4 +1,4 @@
-package com.example.raycaster.Model.Raycasting.Raycasting.PreBaking.Sprites;
+package com.example.raycaster.Model.Raycasting.Raycasting.PreBaking.Sprites.Models;
 
 import com.example.raycaster.Model.Raycasting.Raycasting.Analyse.Entities.Ray;
 import com.example.raycaster.Model.Raycasting.Raycasting.Analyse.Entities.Sight;
@@ -12,34 +12,45 @@ public final class StaticSprite {
     private static boolean start = false;
     private static boolean texM = false;
 
+    private static boolean inrange(int value){
+        return value > 16 && value < 48;
+    }
+
+    private StaticSprite(){
+
+    }
+
+    public static boolean crossed(int value, int lvalue) {
+        if (inrange(lvalue) && inrange(value))
+            return (value > 32 && lvalue <= 32) || (value < 32 && lvalue >= 32);
+        else
+            return false;
+    }
     public static void detectTypeOfStaticSprite(){
         tex = 0;
         start = false;
         texM = false;
 
-        if ((Sight.obj == 8) && (PointOnRay.intdeltaPosY>>2 == 8)) {
-            if(Ray.spriteStableCounter>1) {
+        if ((Sight.obj == 8) && crossed(PointOnRay.intdeltaPosY,PointOnRay.lintdeltaPosY)) {
+
                 start = true;
                 tex = (byte) PointOnRay.intdeltaPosX;
-            }
-            Ray.spriteStableCounter = 0;
+
         }else
-        if ((Sight.obj == 9) && (PointOnRay.intdeltaPosX>>2) == 8) {
-            if(Ray.spriteStableCounter>1) {
+        if ((Sight.obj == 9) && crossed(PointOnRay.intdeltaPosX,PointOnRay.lintdeltaPosX)) {
+
                 start = true;
                 tex = (byte) PointOnRay.intdeltaPosY;
 
-                Ray.spriteStableCounter = 0;
-            }
+
         }else
-        if ((Sight.obj == 10) && ((PointOnRay.intdeltaPosX>>2) == 8 || (PointOnRay.intdeltaPosY>>2) ==8)) {
+        if ((Sight.obj == 10) &&
+                (crossed(PointOnRay.intdeltaPosY,PointOnRay.lintdeltaPosY) ||
+                        crossed(PointOnRay.intdeltaPosX,PointOnRay.lintdeltaPosX))) {
 
-            boolean centerX = PointOnRay.intdeltaPosX >> 2 == 8;
-            boolean centerY = PointOnRay.intdeltaPosY >> 2 == 8;
-
-            if(Ray.spriteStableCounter>1 || (centerX && centerY)) {
                 start = true;
-                texM = (PointOnRay.intdeltaPosX >> 2) == 8;
+                texM = crossed(PointOnRay.intdeltaPosX,PointOnRay.lintdeltaPosX);
+
                 if (texM) {
                     tex = (byte) PointOnRay.intdeltaPosY;
 
@@ -49,10 +60,8 @@ public final class StaticSprite {
 
 
                 }
-            }
 
-        }else{
-            Ray.spriteStableCounter ++;
+
         }
     }
 

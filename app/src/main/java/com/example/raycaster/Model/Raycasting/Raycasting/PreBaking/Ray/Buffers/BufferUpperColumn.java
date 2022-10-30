@@ -1,15 +1,17 @@
-package com.example.raycaster.Model.Raycasting.Raycasting.PreBaking.Ray.PreColumns;
+package com.example.raycaster.Model.Raycasting.Raycasting.PreBaking.Ray.Buffers;
 
 import com.example.raycaster.Model.Raycasting.Raycasting.Analyse.Entities.InPoint;
 import com.example.raycaster.Model.Raycasting.Raycasting.Analyse.Entities.Ray;
-import com.example.raycaster.Model.Raycasting.Raycasting.Analyse.Entities.Sight;
-import com.example.raycaster.Model.Raycasting.Raycasting.PreBaking.Ray.AngleRay;
 import com.example.raycaster.Model.Raycasting.Raycasting.PreBaking.Ray.PointOnRay;
 import com.example.raycaster.Model.Raycasting.Raycasting.RenderInfoBuffer;
 import com.example.raycaster.Model.Resources.Map.Map;
-import com.example.raycaster.View.Raycasting.BasicElements.Column;
 
-public final class UpperPreColumn {
+public final class BufferUpperColumn {
+
+    private BufferUpperColumn(){
+
+    }
+
 
 
     public static float getLastUpperBuildingHeight(float height){
@@ -19,15 +21,7 @@ public final class UpperPreColumn {
             lhaa = height;
 
         }
-
-        if (lhaa == 0) {
-            lhaa = RenderInfoBuffer.lllhheight[PreColumn.uppernumh];
-            if(lhaa == 0) lhaa = height;
-
-            float taa = height / lhaa;
-            if (taa > 4 || taa < 0.25) lhaa = height;
-        }
-
+        lhaa = PreColumn.whenZero(lhaa,height,RenderInfoBuffer.lllhheight[PreColumn.uppernumh]);
         return lhaa;
     }
 

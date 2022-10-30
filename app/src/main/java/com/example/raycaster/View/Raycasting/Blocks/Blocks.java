@@ -4,31 +4,15 @@ import com.example.raycaster.Model.Raycasting.Raycasting.Analyse.WallHit;
 import com.example.raycaster.Model.Resources.Map.Map;
 import com.example.raycaster.Model.Raycasting.Raycasting.Analyse.Entities.Ray;
 import com.example.raycaster.Model.Raycasting.Raycasting.Analyse.Entities.Sight;
-import com.example.raycaster.Model.Raycasting.Raycasting.PreBaking.Ray.AngleRay;
 import com.example.raycaster.Model.Raycasting.Raycasting.PreBaking.Ray.PointOnRay;
-import com.example.raycaster.Model.Raycasting.Raycasting.PreBaking.Ray.PreColumns.PreColumn;
+import com.example.raycaster.Model.Raycasting.Raycasting.PreBaking.Ray.Buffers.PreColumn;
 import com.example.raycaster.Model.Raycasting.RenderProcedure;
-import com.example.raycaster.View.Raycasting.BasicElements.Column;
 
 
-public final class Blocks {
+public final class Blocks extends RenderObject{
 
-    private static void renderXWall(float height,int shadow){
-        Column.drawLine((short) (Sight.posScreenX - RenderProcedure.D_SCREEN_STEP), (int) height, (int) Sight.lheight,
-                PointOnRay.intdeltaPosX, Sight.lcolumn, shadow, Ray.half, false, 0, 400
-                , false, Ray.lceili, false, false);
-    }
+    private Blocks(){
 
-    private static void renderYWall(float height,int shadow){
-        Column.drawLine((short) (Sight.posScreenX - RenderProcedure.D_SCREEN_STEP), (int) height, (int) Sight.lheight,
-                PointOnRay.intdeltaPosY, Sight.lcolumn, shadow, Ray.half, false, 0, 400
-                , false, Ray.lceili, false, false);
-    }
-
-    private static void renderNWall(float height){
-        Column.drawLine((short) (Sight.posScreenX - RenderProcedure.D_SCREEN_STEP), (int) height, (int) Sight.lheight,
-                Sight.lcolumn, Sight.lcolumn, Sight.lshadow, Ray.half, false, 0, 400
-                , false, Ray.lceili, false, false);
     }
 
     public static void renderBlocks(float r){
@@ -36,7 +20,7 @@ public final class Blocks {
         if((int) PointOnRay.posX != (int) RenderProcedure.pos.x || (int)PointOnRay.posY != (int)RenderProcedure.pos.y) {
 
             if (Sight.obj == 11) {
-                Shpaes.renderShapes(r);
+                Shapes.renderShapes(r);
             } else {
                 Ray.finish = true;
 
@@ -66,7 +50,7 @@ public final class Blocks {
                                     Sight.lcolumn = 0;
                                 }
 
-                                renderXWall(height,shadow);
+                                renderXWall(height,shadow,(int)Sight.lheight);
 
                                 Sight.lcolumn = PointOnRay.intdeltaPosX;
                                 Sight.lastWall = true;
@@ -76,13 +60,13 @@ public final class Blocks {
                                     Sight.lcolumn = 0;
                                 }
 
-                                renderYWall(height,shadow);
+                                renderYWall(height,shadow,(int)Sight.lheight);
 
                                 Sight.lcolumn = PointOnRay.intdeltaPosY;
                                 Sight.lastWall = false;
                                 Sight.lshadow = shadow;
                             } else {
-                                renderNWall(height);
+                                renderNWall(height,(int)Sight.lheight);
 
                             }
                             Sight.wallinitized = true;

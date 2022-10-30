@@ -11,7 +11,9 @@ public final class WallHit {
     public static boolean pY2;
     public static boolean pX1;
 
+    private WallHit(){
 
+    }
     public static void analysePotentionalHit(){
         pX = (PointOnRay.lposX == (int) PointOnRay.posX);
         pY = (PointOnRay.lposY == (int) PointOnRay.posY);

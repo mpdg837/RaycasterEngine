@@ -1,4 +1,4 @@
-package com.example.raycaster.View.Raycasting.BasicElements;
+package com.example.raycaster.View.Raycasting.Sprites;
 
 import com.example.raycaster.Model.Raycasting.Raycasting.Analyse.Entities.Ray;
 import com.example.raycaster.Model.Raycasting.Raycasting.Analyse.Entities.Sight;
@@ -7,6 +7,10 @@ import com.example.raycaster.Model.Raycasting.Raycasting.RenderInfoBuffer;
 import com.example.raycaster.Model.Raycasting.RenderProcedure;
 
 public final class SpriteBufferRender {
+
+    private SpriteBufferRender(){
+
+    }
 
     public static void renderBufferedColumn(){
         int width = RenderProcedure.SCREEN_STEP << Render.shiftPixelWidth;

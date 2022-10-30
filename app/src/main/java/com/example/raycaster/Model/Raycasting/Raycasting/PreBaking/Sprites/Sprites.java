@@ -2,10 +2,12 @@ package com.example.raycaster.Model.Raycasting.Raycasting.PreBaking.Sprites;
 
 import com.example.raycaster.Model.Raycasting.Raycasting.Analyse.Entities.Ray;
 import com.example.raycaster.Model.Raycasting.Raycasting.Analyse.Entities.Sight;
+import com.example.raycaster.Model.Raycasting.Raycasting.PreBaking.Sprites.Models.DynamicSprite;
+import com.example.raycaster.Model.Raycasting.Raycasting.PreBaking.Sprites.Models.StaticSprite;
 import com.example.raycaster.View.Raycasting.Half.Half;
 import com.example.raycaster.View.Raycasting.Half.HalfShapes;
 import com.example.raycaster.Model.Raycasting.Raycasting.PreBaking.Ray.PointOnRay;
-import com.example.raycaster.Model.Raycasting.Raycasting.PreBaking.Ray.PreColumns.PreColumn;
+import com.example.raycaster.Model.Raycasting.Raycasting.PreBaking.Ray.Buffers.PreColumn;
 import com.example.raycaster.View.Raycasting.Sprites.SpriteColumn;
 
 public final class Sprites {
@@ -17,6 +19,9 @@ public final class Sprites {
     }
 
 
+    private Sprites(){
+        
+    }
 
     public static void renderHalf(float heights){
         Ray.sprite = true;

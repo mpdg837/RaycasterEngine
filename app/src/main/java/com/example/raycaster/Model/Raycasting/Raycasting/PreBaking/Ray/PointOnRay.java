@@ -2,7 +2,7 @@ package com.example.raycaster.Model.Raycasting.Raycasting.PreBaking.Ray;
 
 import com.example.raycaster.Model.Raycasting.Raycasting.Analyse.Entities.Ray;
 import com.example.raycaster.Model.Raycasting.Raycasting.Analyse.Entities.Sight;
-import com.example.raycaster.Model.Raycasting.Raycasting.PreBaking.Ray.PreColumns.PreColumn;
+import com.example.raycaster.Model.Raycasting.Raycasting.PreBaking.Ray.Buffers.PreColumn;
 import com.example.raycaster.Model.Raycasting.RenderProcedure;
 
 public final class PointOnRay {
@@ -26,7 +26,11 @@ public final class PointOnRay {
     public static int lintdeltaPosX;
     public static int lintdeltaPosY;
 
-    public PointOnRay(){
+    private PointOnRay(){
+
+    }
+
+    public static void resetRay(){
         dr = 0;
         step = 0;
         nstep = 0;

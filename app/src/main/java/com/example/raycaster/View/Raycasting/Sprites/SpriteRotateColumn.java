@@ -4,7 +4,7 @@ import com.example.raycaster.Model.Raycasting.Raycasting.Analyse.Entities.InPoin
 import com.example.raycaster.Model.Raycasting.Raycasting.Analyse.Entities.Ray;
 import com.example.raycaster.Model.Raycasting.Raycasting.Analyse.Entities.Sight;
 import com.example.raycaster.Model.Raycasting.Raycasting.PreBaking.Ray.PointOnRay;
-import com.example.raycaster.Model.Raycasting.Raycasting.PreBaking.Ray.PreColumns.PreColumn;
+import com.example.raycaster.Model.Raycasting.Raycasting.PreBaking.Ray.Buffers.PreColumn;
 import com.example.raycaster.Model.Raycasting.Raycasting.RenderInfoBuffer;
 import com.example.raycaster.Model.Raycasting.RenderProcedure;
 import com.example.raycaster.Model.Raycasting.Raycasting.Textures.TextureContainer;
@@ -22,6 +22,10 @@ public final class SpriteRotateColumn extends SpriteRenderer{
     private static float texX;
 
     private static  float dtexX;
+
+    private SpriteRotateColumn(){
+
+    }
 
     private static void startPointOfSprite(){
 
