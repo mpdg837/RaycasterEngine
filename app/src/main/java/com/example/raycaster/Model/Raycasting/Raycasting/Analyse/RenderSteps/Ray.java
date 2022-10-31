@@ -2,8 +2,8 @@ package com.example.raycaster.Model.Raycasting.Raycasting.Analyse.RenderSteps;
 
 import com.example.raycaster.Model.Raycasting.Quality;
 import com.example.raycaster.Model.Raycasting.Raycasting.PreBaking.Ray.AngleRay;
-import com.example.raycaster.Model.Raycasting.Raycasting.PreBaking.Ray.PointOnRay;
 import com.example.raycaster.Model.Raycasting.Raycasting.PreBaking.Ray.Buffers.PreColumn;
+import com.example.raycaster.Model.Raycasting.Raycasting.PreBaking.Ray.PointOnRay;
 import com.example.raycaster.Model.Raycasting.RenderProcedure;
 import com.example.raycaster.Model.Resources.Map.Map;
 import com.example.raycaster.View.Raycasting.Sprites.SpriteBufferRender;
@@ -67,9 +67,6 @@ public final class Ray {
 
             UpperBuildingBlocks.maxh = 0;
 
-            PreColumn.minhh = 400;
-
-
             halfupx = 0;
             lhalfupx = 0;
 
@@ -81,8 +78,6 @@ public final class Ray {
 
             upper = false;
             half = false;
-
-
             oneheight = false;
 
             ceili = Map.ceiling[(int) PointOnRay.posX][(int) PointOnRay.posY];

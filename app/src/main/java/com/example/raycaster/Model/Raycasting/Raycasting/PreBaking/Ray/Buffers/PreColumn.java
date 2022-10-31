@@ -38,10 +38,8 @@ public final class PreColumn {
     public static void start(){
 
         maxh = 0;
-        minh = 0;
         mminh = 0;
 
-        maxh = 0;
         minh = RenderProcedure.cameraY<<1;
 
         llmaxh = RenderProcedure.cameraY<<1;

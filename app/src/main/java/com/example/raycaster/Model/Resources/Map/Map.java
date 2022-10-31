@@ -74,7 +74,7 @@ public final class Map {
 
 
         ceiling[58][68] = 1;
-        halfup[58][68] = 1;
+        halfup[58][68] = 0;
         map[58][68] = 5;
 
         ceiling[58][69] = 1;
@@ -82,7 +82,7 @@ public final class Map {
         map[58][69] = 1;
 
         upperbuilding[64][72] = true;
-        ceiling[64][72] = 1;
+        ceiling[64][72] = 2;
 
         upperbuilding[65][72] = true;
         ceiling[65][72] = 1;
@@ -94,15 +94,15 @@ public final class Map {
         ceiling[66][71]=2;
         upperbuilding[66][70] = true;
         ceiling[66][70]=2;
-        upperbuilding[66][69] = true;
-        ceiling[66][69]=2;
-        uppershape[66][69] =2;
-        map[66][69] = 11;
+        upperbuilding[65][69] = true;
+        ceiling[65][69]=2;
+        uppershape[65][69] =2;
+        map[65][69] = 11;
 
         upperbuilding[66][68] = true;
         ceiling[66][68]=2;
 
-        halfup[64][70] = 1;
+        halfup[64][70] = 0;
         ceiling[64][70] = 1;
         map[66][66] = 1;
         map[64][66] = 11;

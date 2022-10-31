@@ -1,6 +1,7 @@
 package com.example.raycaster.Model.Raycasting.Raycasting.PreBaking;
 
 import com.example.raycaster.Model.Raycasting.Quality;
+import com.example.raycaster.Model.Raycasting.Raycasting.Analyse.Uppers.UpperBlocks;
 import com.example.raycaster.Model.Resources.Map.Map;
 import com.example.raycaster.Model.Raycasting.Raycasting.Analyse.RenderSteps.Ray;
 import com.example.raycaster.Model.Raycasting.Raycasting.PreBaking.Ray.PointOnRay;
@@ -71,8 +72,10 @@ public final class Floor {
 
                                 if (ceil == 1) {
 
-                                    if(PreColumn.maxh < posstart)
-                                        PreColumn.maxh = posstart;
+                                    if(!halfupx) PreColumn.maxh = posstart;
+                                    else{
+                                        UpperBlocks.bufferHalfBlock();
+                                    }
 
                                 }
 

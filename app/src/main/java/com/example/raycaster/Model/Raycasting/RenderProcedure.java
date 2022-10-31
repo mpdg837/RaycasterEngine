@@ -14,7 +14,7 @@ public final class RenderProcedure extends Render {
 
 
     public final  static int canvasHeight= 200;
-    public final  static byte distance = 16;
+    public final  static byte distance =16;
     public final  static int deltaPosMask = 0x3f;
 
 

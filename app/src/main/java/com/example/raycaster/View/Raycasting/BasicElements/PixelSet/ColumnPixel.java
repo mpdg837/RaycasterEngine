@@ -46,10 +46,12 @@ public final class ColumnPixel {
         final int minimal =  llminh*(int)RenderProcedure.realWidth;
         final int maximal = llmaxh*(int)RenderProcedure.realWidth;
         final int minimalY =  (PreColumn.maxh+nhei)*(int)RenderProcedure.realWidth;
-        final int maximalY = (PreColumn.minhh+(nhei)) *(int)RenderProcedure.realWidth;
+
+        final int minY =  (PreColumn.minhh+nhei)*(int)RenderProcedure.realWidth;
+        final int maxY =  (PreColumn.maxhh+nhei)*(int)RenderProcedure.realWidth;
 
         for(int y=Column.posStart;y<Column.posFinal;y+=RenderProcedure.realWidth) {
-            if (((y >= minimal && y < maximal && (y>minimalY || y<=maximalY))) || upperb) {
+            if ((y >= minimal && y < maximal && y>=minimalY&& (y>maxY || y<minY)) || upperb) {
 
                 final int acolumn = ((int) Column.dc & RenderProcedure.deltaPosMask);
                setPixelColumn(y + Column.trnsx, acolumn, (int) texPos & 0x7f, shadow,tex);

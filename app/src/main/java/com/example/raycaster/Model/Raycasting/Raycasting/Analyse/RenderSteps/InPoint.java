@@ -32,20 +32,32 @@ public final class InPoint {
 
         Ray.lhalfupx = Ray.halfupx;
         Ray.halfupx = Map.halfup[(int)PointOnRay.posX][(int)PointOnRay.posY];
-        UpperBlocks.analyseUpperBlocking();
 
 
         Ray.lupperbuildingx = Ray.upperbuildingx;
         Ray.upperbuildingx = Map.upperbuilding[(int) PointOnRay.posX][(int) PointOnRay.posY];
 
 
-
-        if(inPlayerArea())
-            UpperBlocks.renderUpperBlocks();
+        UpperBlocks.renderUpperBlocks();
 
         if(Ray.halfupx == 0) Ray.lceiling = Ray.ceili;
 
         Ray.uppershapeX = Map.uppershape[(int) PointOnRay.posX][(int) PointOnRay.posY];
+
+
+
+    }
+
+
+    private static void renderFloor(float r,boolean oneheight,boolean halfupx){
+        Floor.renderFloor((int) PointOnRay.posX, (int) PointOnRay.posY, Ray.renderFloor, Sight.posScreenX, PointOnRay.deltaPosY, PointOnRay.deltaPosX, r,
+                Ray.half, oneheight,halfupx, PreColumn.maxhh, PreColumn.minhh);
+    }
+
+
+    private static void renderFloorUpper(float r,boolean oneheight,boolean halfupx){
+        Floor.renderFloor((int) PointOnRay.posX, (int) PointOnRay.posY, Ray.renderFloor, Sight.posScreenX, PointOnRay.deltaPosY, PointOnRay.deltaPosX, r,
+                false, false,false, 0, 400);
     }
 
     private static int countLocalPos(){
@@ -62,6 +74,7 @@ public final class InPoint {
 
         }
 
+
         if(Ray.uppershapeX != 0) {
             UpperShapes.renderUpperShapes();
         }
@@ -73,11 +86,15 @@ public final class InPoint {
         }
         if(Ray.finish) {
             if(!Ray.finalrender) {
-                if (Ray.ceili == 2)
+                if (Ray.ceili == 2) {
 
-                    renderFloor(r,false,true);
-
-                if (Ray.ceili == 1) Ray.finalrender = true;
+                    renderFloor(r, false, false);
+                }
+                if (Ray.ceili == 1 && (Ray.halfupx==0)) {
+                    Ray.finalrender = true;
+                }else if(Ray.halfupx == 1){
+                    UpperBlocks.bufferHalfBlock();
+                }
             }
         }else{
             switch (Sight.obj) {
@@ -109,8 +126,4 @@ public final class InPoint {
         }
     }
 
-    private static void renderFloor(float r,boolean oneheight,boolean halfupx){
-        Floor.renderFloor((int) PointOnRay.posX, (int) PointOnRay.posY, Ray.renderFloor, Sight.posScreenX, PointOnRay.deltaPosY, PointOnRay.deltaPosX, r,
-                Ray.half, oneheight,halfupx, PreColumn.maxhh, PreColumn.minhh);
-    }
 }

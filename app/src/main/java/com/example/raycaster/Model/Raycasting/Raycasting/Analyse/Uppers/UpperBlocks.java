@@ -1,9 +1,10 @@
 package com.example.raycaster.Model.Raycasting.Raycasting.Analyse.Uppers;
 
+import com.example.raycaster.Model.Raycasting.Raycasting.Analyse.RenderSteps.InPoint;
 import com.example.raycaster.Model.Raycasting.Raycasting.Analyse.RenderSteps.Ray;
+import com.example.raycaster.Model.Raycasting.Raycasting.PreBaking.Floor;
 import com.example.raycaster.Model.Raycasting.Raycasting.PreBaking.Ray.Buffers.BufferUpperColumn;
 import com.example.raycaster.Model.Raycasting.Raycasting.PreBaking.Ray.Buffers.PreColumn;
-import com.example.raycaster.Model.Raycasting.Raycasting.PreBaking.Ray.PointOnRay;
 import com.example.raycaster.Model.Raycasting.RenderProcedure;
 import com.example.raycaster.View.Raycasting.UpperBlocks.Full.UpperBlock;
 import com.example.raycaster.View.Raycasting.UpperBlocks.Other.UpperBuildingBlocks;
@@ -15,21 +16,22 @@ public final class UpperBlocks {
 
     }
 
-    public static void analyseUpperBlocking(){
 
-        if(Ray.halfupx == 1 && Ray.lhalfupx != 1){
-            final float height =  PreColumn.height;
-
-            if(PreColumn.mminh < RenderProcedure.cameraY - ((int)height<<1))
-                PreColumn.minhh = RenderProcedure.cameraY - ((int)height<<1);
-        }else if(Ray.ceili == 1 && Ray.lceili != 1){
-            PreColumn.minhh = 0;
-        }
+    public static boolean isRenderingUpperBlock(){
+        return (Ray.ceili == 1 && Ray.lceili != 1) || (Ray.lhalfupx == 1 && Ray.halfupx == 0 && Ray.ceili == 1);
     }
 
+    public static void bufferHalfBlock(){
 
+        int height = (int)PreColumn.height;
+
+        PreColumn.maxhh = RenderProcedure.cameraY - height;
+
+        if(PreColumn.minhh > RenderProcedure.cameraY - ((int)height<<1)- (Floor.hei))
+            PreColumn.minhh = RenderProcedure.cameraY - ((int)height<<1)- (Floor.hei);
+    }
     public static void renderUpperBlocks(){
-        if((Ray.ceili == 1 && Ray.lceili != 1) || (Ray.upperbuildingx&& !Ray.lupperbuildingx)){
+        if(isRenderingUpperBlock() || (Ray.upperbuildingx&& !Ray.lupperbuildingx)){
 
             final float height = PreColumn.fakeHeight / PreColumn.z;
             final float lha = PreColumn.getLastUpperHeight(height);
@@ -39,12 +41,12 @@ public final class UpperBlocks {
 
             int shadow = 0;
 
-            if((int)PointOnRay.posX != (int) RenderProcedure.pos.x || (int)PointOnRay.posY != (int)RenderProcedure.pos.y) {
+            if(InPoint.inPlayerArea()) {
 
 
                 UpperBuildingBlocks.analyse(height,0,lha,lhaa);
 
-                if (Ray.ceili == 1 && Ray.lceiling != 1) {
+                if (isRenderingUpperBlock()) {
 
                     if (Ray.halfupx == 0) {
                         UpperBlock.analyse(height, shadow, lha, lhaa);
