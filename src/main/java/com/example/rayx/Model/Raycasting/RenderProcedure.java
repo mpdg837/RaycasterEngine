@@ -15,11 +15,8 @@ public final class RenderProcedure extends Render {
     public  static int canvasHeight= 300;
     public final  static byte distance =16;
     public final  static int deltaPosMask = 0x3f;
-
-
     public static final  float pi = (float) Math.PI;
     public static float realWidth;
-
     public static RaycasterPoint pos = new RaycasterPoint(61.5f,64.5f);
     public static float angle = 0;
 

@@ -1,7 +1,6 @@
 package com.example.rayx.View.UI.Components;
 
 import com.example.rayx.View.Render;
-import javafx.scene.image.ImageView;
 import javafx.scene.image.PixelWriter;
 import javafx.scene.image.WritableImage;
 import javafx.scene.image.WritablePixelFormat;
@@ -61,7 +60,7 @@ public class StatusBar extends FullScreenComponent{
     public StatusBar(Stage stage) {
         super(stage);
 
-        this.setImage(img = generateImage(640,600,0,0,0));
+        this.setImage(img = generateImage(800,600,0,0,0));
 
     }
 }

@@ -10,9 +10,6 @@ import com.example.rayx.View.Raycasting.Sprites.SpriteBufferRender;
 import com.example.rayx.View.Raycasting.UpperBlocks.Other.UpperBuildingBlocks;
 
 public final class Ray extends RenderStep{
-
-
-
     public static boolean renderFloor;
 
     public static boolean finish;
@@ -31,26 +28,18 @@ public final class Ray extends RenderStep{
 
     public static byte halfupx;
     public static boolean halfupper;
-
     public static boolean spriterendered;
-
     public static int lceili;
-
     public static int spriteStableCounter;
-
     public static boolean upperbuildingx;
     public static boolean lupperbuildingx;
     public static byte lhalfupx;
-
     public static boolean upperbuildingXa;
     public static boolean upperXa;
-
     public static byte uppershapeX;
     public static boolean luppershape;
     public static boolean luppershapeR;
-
     public static boolean outside;
-
     public static int floorDown;
     public static int lfloorDown;
     public static int maxY;
@@ -136,7 +125,7 @@ public final class Ray extends RenderStep{
             InPoint.analyse(r);
 
 
-            if(Map.map[(int)  PointOnRay.posX][(int)  PointOnRay.posY] == 5 ){
+                if(Map.map[(int)  PointOnRay.posX][(int)  PointOnRay.posY] == 5 ){
                     PreColumn.minY = RenderProcedure.cameraY - (int)( PreColumn.height);
                 }
 

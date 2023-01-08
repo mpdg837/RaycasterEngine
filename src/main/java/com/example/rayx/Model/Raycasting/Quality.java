@@ -6,8 +6,8 @@ import com.example.rayx.View.Render;
 public final class Quality {
 
 
-    public static final int SCREEN_STEP_STAND =3;
-    public static final int SCREEN_STEP_WALK = 4;
+    public static final int SCREEN_STEP_STAND =4;
+    public static final int SCREEN_STEP_WALK = 5;
     public final  static byte textureResolution = 64;
 
     public static int SCREEN_STEP;

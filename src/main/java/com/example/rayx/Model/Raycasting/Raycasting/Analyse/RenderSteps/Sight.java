@@ -123,16 +123,16 @@ public final class Sight extends RenderStep{
         RenderProcedure.canvasHeight = 300;
 
         if(Map.floorH[(int)RenderProcedure.pos.x][(int)RenderProcedure.pos.y] ==-1){
-            RenderProcedure.cameraY = 260;
+            RenderProcedure.cameraY = 280;
         }else if(Map.floorH[(int)RenderProcedure.pos.x][(int)RenderProcedure.pos.y] ==1){
 
-            RenderProcedure.canvasHeight = 340;
-            RenderProcedure.cameraY = 340;
+            RenderProcedure.canvasHeight = 330;
+            RenderProcedure.cameraY = 330;
         }else{
             RenderProcedure.cameraY = 300;
         }
 
-        for(float fi = RenderProcedure.angle - RenderProcedure.pi/6 ;fi<RenderProcedure.angle+RenderProcedure.pi/6; fi+=Quality.deltaFi) {
+        for(float fi = RenderProcedure.angle - RenderProcedure.pi/4.8f ;fi<RenderProcedure.angle+RenderProcedure.pi/4.8f; fi+=Quality.deltaFi) {
             Ray.analyse(fi);
 
         }

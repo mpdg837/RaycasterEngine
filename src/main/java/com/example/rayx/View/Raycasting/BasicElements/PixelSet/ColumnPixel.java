@@ -11,7 +11,7 @@ import com.example.rayx.View.Render;
 
 public final class ColumnPixel {
 
-
+    final static int maxHeight = (int)(450*RenderProcedure.realWidth);
     public static void setPixelColumn(int pos, int column, int y, int shadow, Texture tex ){
         if(pos>0 && pos < Render.maxLen) {
 
@@ -53,13 +53,16 @@ public final class ColumnPixel {
         final int floorY =  (Ray.maxY)*(int)RenderProcedure.realWidth;
 
         for(int y=Column.posStart;y<Column.posFinal;y+=RenderProcedure.realWidth) {
-            if ((y<floorY && y >= minimal && y < maximal && y>=minimalY&& (y>maxY || y<minY)) || upperb) {
+            if(y < maxHeight) {
+                if ((y < floorY && y >= minimal && y < maximal && y >= minimalY && (y > maxY || y < minY)) || upperb) {
 
-                final int acolumn = ((int) Column.dc & RenderProcedure.deltaPosMask);
-               setPixelColumn(y + Column.trnsx, acolumn, (int) texPos & 0x7f, shadow,tex);
+                    final int acolumn = ((int) Column.dc & RenderProcedure.deltaPosMask);
+                    setPixelColumn(y + Column.trnsx, acolumn, (int) texPos & 0x7f, shadow, tex);
 
+                }
+            }else{
+                break;
             }
-
             deltaP ++;
             if(deltaP >= deltaPos) {
                 texPos+= deltaP / deltaPos;

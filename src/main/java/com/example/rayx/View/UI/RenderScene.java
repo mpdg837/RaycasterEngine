@@ -18,7 +18,7 @@ public class RenderScene extends Scene{
 
     public RenderScene(Stage stage, Pane root, RayApp app){
 
-        super(root, 800,600);
+        super(root, 1024,768);
 
         this.setCursor(null);
 

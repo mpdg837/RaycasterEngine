@@ -2,12 +2,12 @@ package com.example.rayx.View;
 
 public class ByteMatrix {
 
-    public static int SCREEN_WIDTH = 640;
+    public static int SCREEN_WIDTH = 800;
     public static int SCREEN_HEIGHT = 600;
 
     public static final int pixelWidth = 4;
     public static final int shiftPixelWidth = 2;
-    public static final int maxLen = 768000 << shiftPixelWidth>>1;
+    public static final int maxLen = 960000 << shiftPixelWidth>>1;
 
     public static int lenScreen = (SCREEN_WIDTH*SCREEN_HEIGHT) << shiftPixelWidth;
     public static byte[] pixels = new byte[lenScreen];

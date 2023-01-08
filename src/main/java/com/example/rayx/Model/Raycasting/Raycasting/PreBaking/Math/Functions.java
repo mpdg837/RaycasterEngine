@@ -39,7 +39,8 @@ public final class Functions {
         }
     }
     public static int getValue(double val){
-        return (int)((val + 6.283)*(double) 1000);
+        int nval = (int)((val + 6.283)*(double) 1000);
+        return nval >= 0 ? nval : 0;
     }
     public static float getSinDeltaX(int angle){
         return sinDeltaX[(angle)];
