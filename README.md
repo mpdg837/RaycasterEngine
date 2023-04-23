@@ -10,7 +10,7 @@ Silnik wymagado uruchomienia
 
 Projekt przystosowany do uruchamiania jedynie w systemach z rodziny Windows (jeżeli chodzi o pliki jar).
 
-# Przykłady
+# Przykład działania
 Przykładowe obrazy wygenerowane przez ten silnik znajdują się poniżej:
 
 <p align='center'>
